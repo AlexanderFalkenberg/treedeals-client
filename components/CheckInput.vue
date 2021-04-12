@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <label
       v-if="label"
       :for="name"
@@ -7,10 +7,8 @@
     >
       {{ label }}
     </label>
-    <textarea
-      rows="8"
+    <input
       :style="[errors[name] ? { border: '1px solid red !important' } : {}]"
-      :placeholder="placeholder"
       :name="name"
       :id="name"
       type="text"
@@ -18,11 +16,6 @@
       v-model="input"
       @keyup="$emit('update:input', input)"
     />
-    <div class="h-3 mt-1">
-      <div class="text-xs md:text-sm text-red-500" v-if="errors[name]">
-        {{ errors[name][0] }}
-      </div>
-    </div>
   </div>
 </template>
 
@@ -39,16 +32,8 @@ export default {
       type: String,
     },
     label: {
-      required: false,
-      type: String,
-    },
-    placeholder: {
-      required: false,
-      type: String,
-    },
-    errors: {
       required: true,
-      type: Array,
+      type: String,
     },
   },
 }

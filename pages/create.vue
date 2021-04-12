@@ -12,50 +12,51 @@
         </p>
       </div>
       <div class="flex justify-end space-x-2">
-        <button
-          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
-        >
-          Deal einreichen
-        </button>
+        <button>Einreichen</button>
       </div>
     </div>
 
-    <div class="max-w-md mx-auto py-2 space-y-4">
+    <div class="max-w-md mx-auto py-2 space-y-4 mt-4">
       <TextInput
         name="link"
-        label="Link zum Deal"
-        :input.sync="form.link"
+        placeholder="Link zum Deal"
+        :input.sync="deal.link"
         :errors="errors"
       />
       <TextInput
         name="title"
-        label="Bezeichnung des Deals"
-        :input.sync="form.title"
+        placeholder="Bezeichnung des Deals"
+        :input.sync="deal.title"
         :errors="errors"
       />
-      <div class="flex justify-between space-x-4 ">
-        <TextInput
-          name="original_preis"
-          label="Originalpreis"
-          :input.sync="form.price"
-          :errors="errors"
-        />
-        <TextInput
-          name="price"
-          label="Preis"
-          :input.sync="form.price"
-          :errors="errors"
-        />
-      </div>
+      <TextAreaInput
+        name="description"
+        placeholder="Beschreibung deines Deals"
+        :input.sync="deal.description"
+        :errors="errors"
+      />
+      <TextInput
+        name="original_price"
+        placeholder="Originalpreis"
+        :input.sync="deal.original_price"
+        :errors="errors"
+      />
+      <TextInput
+        name="price"
+        placeholder="Preis"
+        :input.sync="deal.price"
+        :errors="errors"
+      />
     </div>
   </form>
 </template>
 
 <script>
+import CardTest from '~/components/CardTest.vue'
 export default {
   data() {
     return {
-      form: {
+      deal: {
         link: '',
         title: '',
         description: '',
@@ -70,7 +71,7 @@ export default {
       try {
         await this.$axios.get('sanctum/csrf-cookie')
         const res = await this.$axios
-          .post('api/deals', this.form)
+          .post('api/deals', this.deal)
           .catch((errors) => {
             console.log(errors.response.data.errors.username)
             this.errors = errors.response.data.errors
