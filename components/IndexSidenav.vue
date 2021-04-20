@@ -1,6 +1,6 @@
 <template>
   <div class="text-sm">
-    <div class="font-bold text-green-500 mb-2 px-2">Kategorien</div>
+    <div class="font-bold text-green-00 mb-2 px-2">Kategorien</div>
     <nav>
       <ul>
         <li

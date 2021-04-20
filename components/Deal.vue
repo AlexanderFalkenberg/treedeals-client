@@ -1,7 +1,10 @@
 <template>
   <main v-editable="deal" class="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
     <div class="md:flex gap-4">
-      <div class="flex-1 min-h-image-single flex items-center">
+      <div
+        v-if="deal.gallery"
+        class="flex-1 min-h-image-single flex items-center"
+      >
         <div class="space-y-2 flex justify-center h-full flex-col">
           <button
             v-for="(image, index) in deal.gallery"
@@ -16,7 +19,7 @@
                 expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
               ]"
               :src="transformImage(image.filename, '100x130')"
-              :alt="deal.image.alt"
+              :alt="image.alt"
             />
           </button>
         </div>

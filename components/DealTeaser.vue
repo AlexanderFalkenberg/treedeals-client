@@ -1,17 +1,18 @@
 <template>
   <article
-    class="leading-tight flex flex-1 items-center bg-white border rounded relative p-3 hover:shadow-md max-w-xl"
+    class="leading-tight flex flex-1 items-center bg-white border relative p-3 hover:shadow-md max-w-xl"
   >
     <div class="hidden flex-shrink-0 mr-2 sm:block">
       <nuxt-link :to="meta.full_slug">
         <div class="w-36 h-36 flex items-center justify-center rounded">
           <img
+            v-if="deal.gallery"
             :style="[
               deal.expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
             ]"
             class="object-cover rounded"
             :src="transformImage(deal.img, '200x200')"
-            :alt="deal.image.alt"
+            :alt="deal.gallery[0].filename"
           />
         </div>
       </nuxt-link>
@@ -92,7 +93,7 @@
         <div class="text-xs text-gray-500">{{ timeago }} veröffentlicht</div>
 
         <div class="flex space-x-2 mt-1">
-          <LinkButton>
+          <LinkButton v-if="deal.link">
             <a :href="deal.link.url">Zum Angebot</a>
           </LinkButton>
 
