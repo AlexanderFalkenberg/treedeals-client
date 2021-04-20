@@ -37,6 +37,13 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: 'orL5ZAn9qQiNIFo5xlHXNwtt',
+        cacheProvider: 'memory',
+      },
+    ],
   ],
 
   auth: {

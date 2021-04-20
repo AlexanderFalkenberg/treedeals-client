@@ -1,46 +1,149 @@
 <template>
-  <div class="">
-    <template v-if="!$auth.loggedIn">
-      <nuxt-link to="/register">
-        <link-button>Registrieren</link-button>
-      </nuxt-link>
-    </template>
-    <div class="sm:grid grid-cols-12 gap-4 py-4 px-2 sm:px-4 lg:px-8">
-      <div class="hidden sm:block sm:col-span col-span-2">
-        <TheSidenav />
+  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
+    <component
+      v-if="story.content.component"
+      :key="story.content._uid"
+      :blok="story.content"
+      :is="story.content.component"
+    />
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-2 text-gray-600">
+        <ul class="space-y-1">
+          <li
+            class="hover:bg-grey-100 rounded-md"
+            v-for="category in categories"
+            :key="category._uid"
+          >
+            <nuxt-link :to="category.full_slug">{{ category.name }}</nuxt-link>
+          </li>
+        </ul>
       </div>
-      <div class="col-span-10 px-2">
-        <div class="space-y-4">
-          <div v-for="deal in deals" :key="deal.id">
-            <deal-card :deal="deal" />
-          </div>
-        </div>
-      </div>
+      <ul class="col-span-8 space-y-4">
+        <li v-for="deal in deals" :key="deal._uid">
+          <DealTeaser :meta="deal" :deal="deal.content" />
+        </li>
+      </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import TheSidenav from '~/components/IndexSidenav.vue'
-import { mapGetters, mapActions } from 'vuex'
-import DealCard from '~/components/DealCard.vue'
-import LinkButton from '~/components/LinkButton.vue'
+import Teaser from '~/components/Teaser.vue'
+
 export default {
-  components: { TheSidenav, DealCard, LinkButton },
-  computed: {
-    ...mapGetters({
-      deals: 'deals/deals',
-    }),
+  components: {
+    Teaser,
   },
-  methods: {
-    ...mapActions({
-      getDeals: 'deals/getDeals',
-    }),
+  data() {
+    return {
+      deals: [],
+      categories: [],
+      story: {},
+    }
   },
   mounted() {
-    this.getDeals()
+    // Use the input event for instant update of content
+    this.$storybridge.on('input', (event) => {
+      if (event.story.id === this.story.id) {
+        this.story.content = event.story.content
+      }
+    })
+    // Use the bridge to listen the events
+    this.$storybridge.on(['published', 'change'], (event) => {
+      // window.location.reload()
+      this.$nuxt.$router.go({
+        path: this.$nuxt.$router.currentRoute,
+        force: true,
+      })
+    })
+  },
+  async asyncData(context) {
+    // // This what would we do in real project
+    const version =
+      context.query._storyblok || context.isDev ? 'draft' : 'published'
+    const fullSlug =
+      context.route.path == '/' || context.route.path == ''
+        ? 'home'
+        : context.route.path
+
+    // Load the JSON from the API - loadig the home content (index page)
+
+    const { story } = await context.app.$storyapi
+      .get('cdn/stories/de', {
+        version: 'draft',
+      })
+      .then((res) => {
+        return res.data
+      })
+      .catch((res) => {
+        if (!res.response) {
+          console.error(res)
+          context.error({
+            statusCode: 404,
+            message: 'Failed to receive content form api',
+          })
+        } else {
+          console.error(res.response.data)
+          context.error({
+            statusCode: res.response.status,
+            message: res.response.data,
+          })
+        }
+      })
+
+    const deals = await context.app.$storyapi
+      .get('cdn/stories', {
+        starts_with: 'de/deals/',
+        version: 'draft',
+      })
+      .then((res) => {
+        return res.data
+      })
+      .catch((res) => {
+        if (!res.response) {
+          console.error(res)
+          context.error({
+            statusCode: 404,
+            message: 'Failed to receive content form api',
+          })
+        } else {
+          console.error(res.response.data)
+          context.error({
+            statusCode: res.response.status,
+            message: res.response.data,
+          })
+        }
+      })
+
+    const categories = await context.app.$storyapi
+      .get('cdn/stories', {
+        starts_with: 'de/kategorien/',
+        version: 'draft',
+      })
+      .then((res) => {
+        return res.data
+      })
+      .catch((res) => {
+        if (!res.response) {
+          console.error(res)
+          context.error({
+            statusCode: 404,
+            message: 'Failed to receive content form api',
+          })
+        } else {
+          console.error(res.response.data)
+          context.error({
+            statusCode: res.response.status,
+            message: res.response.data,
+          })
+        }
+      })
+
+    return {
+      story: story,
+      deals: deals.stories,
+      categories: categories.stories,
+    }
   },
 }
 </script>
-
-<style></style>

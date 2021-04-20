@@ -11,6 +11,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      minHeight: {
+        'image-single': '25rem',
+      },
       maxWidth: {
         truncate: '28rem',
         auth: '25rem',

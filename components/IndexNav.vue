@@ -1,21 +1,25 @@
 <template>
-  <header class="bg-white">
-    <div class="mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+  <header class="shadow">
+    <div
+      class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8 lg:divide-y lg:divide-gray-200"
+    >
       <div class="relative h-16 flex justify-between">
         <div class="relative z-10 px-2 flex items-center lg:px-0">
-          <div class="flex-shrink-0 flex items-center pr-3">
-            <nuxt-link to="/">TreeDeals</nuxt-link>
+          <div class="flex-shrink-0 flex items-center">
+            <nuxt-link class="font-bold text-2xl text-green-500" to="/"
+              >TreeDeals</nuxt-link
+            >
           </div>
           <template v-if="$auth.loggedIn">
-            <div class="text-sm">
+            <!--  <div class="ml-4 text-sm">
               <a class="text-green-800 font-bold">
                 <span class="mr-1">👋</span> {{ $auth.user.username }}
               </a>
-            </div>
+            </div> -->
           </template>
         </div>
 
-        <div
+        <!--  <div
           class="relative z-0 flex-1 px-2 flex items-center justify-center sm:absolute sm:inset-0"
         >
           <div class="w-full sm:max-w-xl">
@@ -24,7 +28,7 @@
               <div
                 class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center"
               >
-                <!-- Heroicon name: solid/search -->
+             
                 <svg
                   class="h-5 w-5 text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +52,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="relative z-10 flex items-center lg:hidden">
           <!-- Mobile menu button -->
           <button
@@ -107,11 +111,11 @@
         </div>
 
         <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
-          <button
+          <!--    <button
             class="flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-3"
           >
             <span class="sr-only">View notifications</span>
-            <!-- Heroicon name: outline/bell -->
+
             <svg
               class="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -127,13 +131,13 @@
                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
               />
             </svg>
-          </button>
+          </button> -->
 
-          <template v-if="!$auth.loggedIn">
+          <!--   <template v-if="!$auth.loggedIn">
             <nuxt-link to="/login">
               <link-button>Anmelden</link-button>
             </nuxt-link>
-          </template>
+          </template> -->
 
           <template v-if="$auth.loggedIn">#Abmelden</template>
         </div>

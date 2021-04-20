@@ -1,18 +1,6 @@
 <template>
-  <div class="relative">
-    <div class="max-w-6xl mx-auto">
-      <IndexNav />
-      <Nuxt />
-    </div>
-    <transition name="slide-fade">
-      <div
-        v-show="event.show"
-        class="fixed flex items-center z-40 bottom-0 right-0 m-4 text-sm py-4 px-4 bg-green-400 shadow rounded-md text-white transition"
-      >
-        <span class="font-bold text-green-800 mr-1">{{ event.text }} </span>
-        wurde in die Zwischenablage kopiert
-      </div>
-    </transition>
+  <div class="relative subpixel-antialiased">
+    <Nuxt />
   </div>
 </template>
 

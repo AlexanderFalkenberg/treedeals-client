@@ -22,11 +22,6 @@ export default {
       tags: [],
     }
   },
-  async fetch() {
-    this.tags = await fetch('http://localhost:3000/api/tags').then((res) =>
-      res.json()
-    )
-  },
 }
 </script>
 
