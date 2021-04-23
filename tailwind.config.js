@@ -1,19 +1,20 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
+  purge: {
+    enabled: true,
+    content: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js',
+      'nuxt.config.js',
+    ],
   },
-  purge: [
-    'components/**/*.vue',
-    'layouts/**/*.vue',
-    'pages/**/*.vue',
-    'plugins/**/*.js',
-  ],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
   theme: {
     extend: {
-      minHeight: {
-        'image-single': '25rem',
-      },
       maxWidth: {
         truncate: '28rem',
         auth: '25rem',

@@ -1,11 +1,5 @@
 <template>
   <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
-    <component
-      v-if="story.content.component"
-      :key="story.content._uid"
-      :blok="story.content"
-      :is="story.content.component"
-    />
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-2 text-gray-600">
         <IndexSidenav />
@@ -21,11 +15,9 @@
 
 <script>
 import IndexSidenav from '~/components/IndexSidenav.vue'
-import Teaser from '~/components/Teaser.vue'
 
 export default {
   components: {
-    Teaser,
     IndexSidenav,
   },
   data() {

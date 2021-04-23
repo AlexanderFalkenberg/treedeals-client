@@ -21,11 +21,9 @@
 
 <script>
 import IndexSidenav from '~/components/IndexSidenav.vue'
-import Teaser from '~/components/Teaser.vue'
 
 export default {
   components: {
-    Teaser,
     IndexSidenav,
   },
   data() {
