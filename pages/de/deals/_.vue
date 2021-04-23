@@ -13,14 +13,20 @@ export default {
     }
   },
   mounted() {
+    /*  this.$storybridge.resolveRelations(['relation'], (event) => {
+      console.log(event.story.content)
+      this.deal = event.story.content
+    }) */
+
     this.$storybridge.on('input', (event) => {
       if (event.story.id === this.meta.id) {
-        this.deal = event.story.content
+        this.$storybridge.resolveRelations(['deal.categories'], (event) => {
+          this.deal = event.story.content
+        })
       }
     })
-    // Use the bridge to listen the events
+
     this.$storybridge.on(['published', 'change'], (event) => {
-      window.location.reload()
       this.$nuxt.$router.go({
         path: this.$nuxt.$router.currentRoute,
         force: true,
@@ -33,6 +39,7 @@ export default {
 
     const deal = await context.app.$storyapi
       .get(`cdn/stories/${context.route.fullPath}`, {
+        resolve_relations: 'deal.categories',
         version: version,
       })
       .then((res) => {

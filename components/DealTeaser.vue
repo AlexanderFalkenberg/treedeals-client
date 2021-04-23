@@ -11,8 +11,8 @@
               deal.expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
             ]"
             class="object-cover rounded"
-            :src="transformImage(deal.img, '200x200')"
-            :alt="deal.gallery[0].filename"
+            :src="transformImage(deal.gallery[0].filename, '200x200')"
+            :alt="deal.gallery[0].alt"
           />
         </div>
       </nuxt-link>

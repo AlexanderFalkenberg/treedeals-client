@@ -8,15 +8,7 @@
     />
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-2 text-gray-600">
-        <ul class="space-y-1">
-          <li
-            class="hover:bg-grey-100 rounded-md"
-            v-for="category in categories"
-            :key="category._uid"
-          >
-            <nuxt-link :to="category.full_slug">{{ category.name }}</nuxt-link>
-          </li>
-        </ul>
+        <IndexSidenav />
       </div>
       <ul class="col-span-8 space-y-4">
         <li v-for="deal in deals" :key="deal._uid">
@@ -28,11 +20,13 @@
 </template>
 
 <script>
+import IndexSidenav from '~/components/IndexSidenav.vue'
 import Teaser from '~/components/Teaser.vue'
 
 export default {
   components: {
     Teaser,
+    IndexSidenav,
   },
   data() {
     return {

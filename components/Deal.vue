@@ -31,6 +31,7 @@
             :src="
               transformImage(deal.gallery[currentIndex].filename, '500x600')
             "
+            :alt="deal.gallery[currentIndex].alt"
           />
         </div>
       </div>
@@ -112,9 +113,10 @@
             <div class="flex space-x-1">
               <span
                 class="text-white mt-1 bg-gray-700 text-xs px-2 py-1 rounded-full"
-                v-for="category in categories"
-                :key="category.id"
-                ><nuxt-link :to="'/' + category.full_slug">{{
+                v-for="category in deal.categories"
+                :key="category.uuid"
+              >
+                <nuxt-link :to="'/' + category.full_slug">{{
                   category.name
                 }}</nuxt-link></span
               >
@@ -140,34 +142,6 @@ export default {
       currentIndex: 1,
       categories: [],
     }
-  },
-  async fetch() {
-    const response = await this.$nuxt.context.app.$storyapi
-      .get('cdn/stories', {
-        by_uuids: [this.meta.categories],
-        starts_with: 'de/kategorien/',
-        version: 'draft',
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          console.error(res)
-          context.error({
-            statusCode: 404,
-            message: 'Failed to receive content form api',
-          })
-        } else {
-          console.error(res.response.data)
-          context.error({
-            statusCode: res.response.status,
-            message: res.response.data,
-          })
-        }
-      })
-
-    this.categories = response.stories
   },
   props: {
     meta: {

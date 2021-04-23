@@ -1,86 +1,132 @@
-[
-  {
-    "name": "Another deal",
-    "created_at": "2021-04-13T07:32:37.782Z",
-    "published_at": "2021-04-13T08:24:10.294Z",
-    "alternates": [],
-    "id": 45276057,
-    "uuid": "d3313547-7db5-46fc-976f-094747b830e4",
-    "content": {
-      "_uid": "45d7968a-8aa5-4276-9d7e-e903291503b0",
-      "price": "500",
-      "title": "Another Deal",
-      "component": "deal",
-      "_editable": "<!--#storyblok#{\"name\": \"deal\", \"space\": \"111247\", \"uid\": \"45d7968a-8aa5-4276-9d7e-e903291503b0\", \"id\": \"45276057\"}-->"
+{
+  "name": "Another deal",
+  "created_at": "2021-04-13T07:32:37.782Z",
+  "published_at": "2021-04-19T11:56:29.746Z",
+  "alternates": [],
+  "id": 45276057,
+  "uuid": "d3313547-7db5-46fc-976f-094747b830e4",
+  "content": {
+    "img": "",
+    "_uid": "45d7968a-8aa5-4276-9d7e-e903291503b0",
+    "link": {
+      "id": "",
+      "url": "http://google.de",
+      "linktype": "url",
+      "fieldtype": "multilink",
+      "cached_url": "http://google.de"
     },
-    "slug": "another-deal",
-    "full_slug": "de/deals/another-deal",
-    "default_full_slug": null,
-    "sort_by_date": null,
-    "position": -10,
-    "tag_list": [],
-    "is_startpage": false,
-    "parent_id": 45253623,
-    "meta_data": null,
-    "group_id": "9c831e57-4825-4555-b82d-ad99c8437ec5",
-    "first_published_at": "2021-04-13T07:32:48.568Z",
-    "release_id": null,
-    "lang": "default",
-    "path": null,
-    "translated_slugs": []
-  },
-  {
-    "name": "my deal",
-    "created_at": "2021-04-12T20:04:45.483Z",
-    "published_at": "2021-04-13T09:08:25.373Z",
-    "alternates": [],
-    "id": 45259318,
-    "uuid": "a7242070-798a-4db4-999c-c6d3f6541f7e",
-    "content": {
-      "_uid": "94d0bc97-9ddd-4b72-8477-b0d87fc33f26",
-      "link": {
-        "id": "",
-        "url": "http://google.de",
-        "linktype": "url",
-        "fieldtype": "multilink",
-        "cached_url": "http://google.de"
+    "image": {
+      "id": null,
+      "alt": null,
+      "name": "",
+      "focus": null,
+      "title": null,
+      "filename": null,
+      "copyright": null,
+      "fieldtype": "asset"
+    },
+    "intro": "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. ",
+    "price": "500",
+    "title": "asfas",
+    "Detail": "",
+    "details": [
+      {
+        "key": "Mest",
+        "_uid": "62fea196-e149-4c40-bf9e-3a96b4455ea1",
+        "value": "Tasfas",
+        "component": "detail",
+        "_editable": "<!--#storyblok#{\"name\": \"detail\", \"space\": \"111247\", \"uid\": \"62fea196-e149-4c40-bf9e-3a96b4455ea1\", \"id\": \"45276057\"}-->"
       },
-      "image": {
-        "id": 2171855,
-        "alt": "Alt Text",
+      {
+        "key": "Mest",
+        "_uid": "e498cffc-ec03-4a2b-ab8a-805eeaf408c4",
+        "value": "Tasfasdg",
+        "component": "detail",
+        "_editable": "<!--#storyblok#{\"name\": \"detail\", \"space\": \"111247\", \"uid\": \"e498cffc-ec03-4a2b-ab8a-805eeaf408c4\", \"id\": \"45276057\"}-->"
+      }
+    ],
+    "expired": "2021-04-24 00:00",
+    "gallery": [
+      {
+        "id": 2218624,
+        "alt": null,
         "name": "",
         "focus": null,
-        "title": "",
-        "filename": "https://a.storyblok.com/f/111247/280x243/b2694a35cd/apple-tv-4k_280.jpg",
-        "copyright": "",
-        "fieldtype": "asset"
+        "title": null,
+        "filename": "https://a.storyblok.com/f/111247/280x243/eed58387b3/apple-tv-4k_280.jpg",
+        "copyright": null
       },
-      "price": "300",
-      "title": "iPhone 4",
-      "expired": "2021-06-26 00:00",
-      "discount": "",
-      "component": "deal",
-      "coupon_code": "Lorem Ipsum",
-      "description": "Lorem Ipsum ",
-      "sustainable": true,
-      "free_shipping": true,
-      "original_price": "500",
-      "_editable": "<!--#storyblok#{\"name\": \"deal\", \"space\": \"111247\", \"uid\": \"94d0bc97-9ddd-4b72-8477-b0d87fc33f26\", \"id\": \"45259318\"}-->"
-    },
-    "slug": "my-deal",
-    "full_slug": "de/deals/my-deal",
-    "default_full_slug": null,
-    "sort_by_date": null,
-    "position": 0,
-    "tag_list": [],
-    "is_startpage": false,
-    "parent_id": 45253623,
-    "meta_data": null,
-    "group_id": "247ac52d-ad21-4bae-bb8f-3587e7b8e4b4",
-    "first_published_at": "2021-04-12T20:04:59.098Z",
-    "release_id": null,
-    "lang": "default",
-    "path": null,
-    "translated_slugs": []
-  }
-]
+      {
+        "id": 2218626,
+        "alt": null,
+        "name": "",
+        "focus": null,
+        "title": null,
+        "filename": "https://a.storyblok.com/f/111247/770x486/bab17af5cb/bildschirmfoto-2021-02-07-um-13-43-14_770.jpg",
+        "copyright": null
+      },
+      {
+        "id": 2218625,
+        "alt": null,
+        "name": "",
+        "focus": null,
+        "title": null,
+        "filename": "https://a.storyblok.com/f/111247/1600x1047/344d1721ab/auth.jpg",
+        "copyright": null
+      }
+    ],
+    "discount": "",
+    "component": "deal",
+    "categories": [
+      {
+        "name": "Elektronik",
+        "created_at": "2021-04-12T18:21:15.093Z",
+        "published_at": null,
+        "alternates": [],
+        "id": 45259000,
+        "uuid": "b260b315-8c94-4412-8667-67e91b536ccd",
+        "content": {
+          "_uid": "be7c8cd6-48f0-45c8-a736-ee44abcde895",
+          "component": "category",
+          "_editable": "<!--#storyblok#{\"name\": \"category\", \"space\": \"111247\", \"uid\": \"be7c8cd6-48f0-45c8-a736-ee44abcde895\", \"id\": \"45259000\"}-->"
+        },
+        "slug": "elektronik",
+        "full_slug": "de/kategorien/elektronik",
+        "default_full_slug": null,
+        "sort_by_date": null,
+        "position": 0,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 45258999,
+        "meta_data": null,
+        "group_id": "869f63f7-63c9-493f-9547-dd287f71b671",
+        "first_published_at": null,
+        "release_id": null,
+        "lang": "default",
+        "path": null,
+        "translated_slugs": []
+      }
+    ],
+    "coupon_code": "",
+    "description": "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.",
+    "sustainable": true,
+    "free_shipping": true,
+    "original_price": "50",
+    "_editable": "<!--#storyblok#{\"name\": \"deal\", \"space\": \"111247\", \"uid\": \"45d7968a-8aa5-4276-9d7e-e903291503b0\", \"id\": \"45276057\"}-->"
+  },
+  "slug": "another-deal",
+  "full_slug": "de/deals/another-deal",
+  "default_full_slug": null,
+  "sort_by_date": null,
+  "position": -10,
+  "tag_list": [],
+  "is_startpage": false,
+  "parent_id": 45253623,
+  "meta_data": null,
+  "group_id": "9c831e57-4825-4555-b82d-ad99c8437ec5",
+  "first_published_at": "2021-04-13T07:32:48.568Z",
+  "release_id": null,
+  "lang": "default",
+  "path": null,
+  "translated_slugs": []
+}
