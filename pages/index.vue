@@ -12,7 +12,7 @@
       </div>
       <ul class="col-span-8 space-y-4">
         <li v-for="deal in deals" :key="deal._uid">
-          <DealTeaser :meta="deal" :deal="deal.content" />
+          <DealTeaser :deal="deal" />
         </li>
       </ul>
     </div>
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       deals: [],
-      categories: [],
       story: {},
     }
   },
@@ -107,34 +106,9 @@ export default {
         }
       })
 
-    const categories = await context.app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'de/kategorien/',
-        version: 'draft',
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          console.error(res)
-          context.error({
-            statusCode: 404,
-            message: 'Failed to receive content form api',
-          })
-        } else {
-          console.error(res.response.data)
-          context.error({
-            statusCode: res.response.status,
-            message: res.response.data,
-          })
-        }
-      })
-
     return {
       story: story,
       deals: deals.stories,
-      categories: categories.stories,
     }
   },
 }

@@ -9,7 +9,7 @@
           <button
             v-for="(image, index) in deal.gallery"
             type="button"
-            class="hover:border-2 focus:border-gray-200 focus:outline-none focus:shadow-outline-gray focus:ring-2 focus:ring-offset-1 focus:ring-gray-400"
+            class="focus:border-gray-200 focus:outline-none focus:shadow-outline-gray focus:ring-2 focus:ring-offset-1 focus:ring-gray-400"
             :class="{ isCurrent: 'border-2' }"
             :key="image.id"
             @click="current(index)"
