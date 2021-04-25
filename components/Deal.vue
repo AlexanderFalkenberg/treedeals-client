@@ -58,7 +58,7 @@
           </div>
 
           <div>
-            <h1 class="text-3xl font-bold">{{ deal.title }}</h1>
+            <h1 class="text-3xl font-bold">{{ meta.name }}</h1>
           </div>
 
           <div class="flex flex-1 items-center justify-between">
