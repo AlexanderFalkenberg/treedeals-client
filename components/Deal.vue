@@ -89,17 +89,6 @@
             </div>
           </div>
 
-          <div class="">
-            <div
-              class="flex justify-between text-gray-500"
-              v-for="detail in deal.details"
-              :key="detail._uid"
-            >
-              <span>{{ detail.key }}</span>
-              <span>{{ detail.value }}</span>
-            </div>
-          </div>
-
           <div class="space-y-2 mt-2">
             <LinkButton :expired="deal.expired">
               <a :href="deal.link.url">Zum Angebot</a>
@@ -131,6 +120,17 @@
 
     <section class="mx-auto py-4 max-w-3xl">
       <p>{{ deal.description }}</p>
+
+      <div class="p-4 bg-gray-100 my-4">
+        <div
+          class="flex justify-between text-gray-500"
+          v-for="detail in deal.details"
+          :key="detail._uid"
+        >
+          <span class="text-green-700 font-bold">{{ detail.key }}</span>
+          <span>{{ detail.value }}</span>
+        </div>
+      </div>
     </section>
   </main>
 </template>

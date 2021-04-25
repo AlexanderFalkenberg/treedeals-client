@@ -45,13 +45,13 @@
       >
         <span
           v-if="deal.content.sustainable"
-          class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs font-medium text-green-100 bg-green-600 py-1 px-2"
+          class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
         >
           Nachhaltig
         </span>
         <span
           v-if="deal.content.free_shipping"
-          class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs text-green-100 font-medium bg-gray-800 py-1 px-2"
+          class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium bg-gray-800 py-1 px-2"
         >
           Kostenloser Versand
         </span>
