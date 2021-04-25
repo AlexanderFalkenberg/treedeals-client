@@ -5,7 +5,10 @@
         v-if="deal.gallery"
         class="flex-1 min-h-image-single flex items-center"
       >
-        <div class="space-y-2 flex justify-center h-full flex-col">
+        <div
+          v-if="deal.gallery.length > 1"
+          class="space-y-2 flex justify-center h-full flex-col"
+        >
           <button
             v-for="(image, index) in deal.gallery"
             type="button"
@@ -23,7 +26,7 @@
             />
           </button>
         </div>
-        <div class="px-4">
+        <div v-if="deal.gallery" class="px-4">
           <img
             :style="[
               expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
@@ -139,7 +142,7 @@ import de from 'javascript-time-ago/locale/de'
 export default {
   data() {
     return {
-      currentIndex: 1,
+      currentIndex: 0,
       categories: [],
     }
   },
@@ -160,7 +163,9 @@ export default {
       return timeAgo.format(new Date(this.meta.published_at))
     },
     discount() {
-      return Math.floor((1 - this.deal.original_price / this.deal.price) * 100)
+      return `-${Math.round(
+        (1 - this.deal.price / this.deal.original_price) * 100
+      )}`
     },
     expired() {
       return false

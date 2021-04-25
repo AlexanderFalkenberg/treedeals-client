@@ -1,11 +1,14 @@
 <template>
   <div class="relative subpixel-antialiased">
+    <IndexNav />
     <Nuxt />
   </div>
 </template>
 
 <script>
+import IndexNav from '~/components/IndexNav.vue'
 export default {
+  components: { IndexNav },
   data() {
     return {
       event: {
@@ -34,9 +37,20 @@ export default {
 .slide-fade-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
+.slide-fade-enter,
+.slide-fade-leave-to {
   transform: translateX(10px);
+  opacity: 0;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+.page-enter,
+.page-leave-to {
   opacity: 0;
 }
 

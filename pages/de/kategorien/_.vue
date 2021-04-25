@@ -4,11 +4,16 @@
       <div class="col-span-2 text-gray-600">
         <IndexSidenav />
       </div>
-      <ul class="col-span-8 space-y-4">
-        <li v-for="deal in deals" :key="deal._uid">
-          <DealTeaser :meta="deal" :deal="deal.content" />
-        </li>
-      </ul>
+      <div class="col-span-8">
+        <h1 class="text-2xl font-bold text-green-900 mb-4">
+          {{ category.name }}
+        </h1>
+        <ul class="space-y-4">
+          <li v-for="deal in deals" :key="deal._uid">
+            <DealTeaser :deal="deal" />
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -23,8 +28,7 @@ export default {
   data() {
     return {
       deals: [],
-      categories: [],
-      story: {},
+      category: {},
     }
   },
   mounted() {
@@ -52,10 +56,9 @@ export default {
         ? 'home'
         : context.route.path
 
-    // Load the JSON from the API - loadig the home content (index page)
-
-    const { story } = await context.app.$storyapi
-      .get('cdn/stories/de', {
+    const { stories } = await context.app.$storyapi
+      .get('cdn/stories', {
+        starts_with: `de/kategorien/${context.route.params.pathMatch}`,
         version: 'draft',
       })
       .then((res) => {
@@ -79,31 +82,12 @@ export default {
 
     const deals = await context.app.$storyapi
       .get('cdn/stories', {
-        starts_with: 'de/deals/',
-        version: 'draft',
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          console.error(res)
-          context.error({
-            statusCode: 404,
-            message: 'Failed to receive content form api',
-          })
-        } else {
-          console.error(res.response.data)
-          context.error({
-            statusCode: res.response.status,
-            message: res.response.data,
-          })
-        }
-      })
-
-    const categories = await context.app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'de/kategorien/',
+        filter_query: {
+          categories: {
+            exists: stories[0]['uuid'],
+          },
+        },
+        starts_with: 'de/deals',
         version: 'draft',
       })
       .then((res) => {
@@ -126,9 +110,8 @@ export default {
       })
 
     return {
-      story: story,
       deals: deals.stories,
-      categories: categories.stories,
+      category: stories[0],
     }
   },
 }

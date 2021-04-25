@@ -1,30 +1,34 @@
 <template>
   <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
-    <component
+    <!--  <component
       v-if="story.content.component"
       :key="story.content._uid"
       :blok="story.content"
       :is="story.content.component"
-    />
+    /> -->
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-2 text-gray-600">
         <IndexSidenav />
       </div>
-      <ul class="col-span-8 space-y-4">
-        <li v-for="deal in deals" :key="deal._uid">
-          <DealTeaser :deal="deal" />
-        </li>
-      </ul>
+      <div class="col-span-7">
+        <ul v-if="deals.length > 0" class="space-y-4">
+          <li v-for="deal in deals" :key="deal._uid">
+            <DealTeaser :deal="deal" />
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
 import IndexSidenav from '~/components/IndexSidenav.vue'
+import SearchBox from '~/components/SearchBox.vue'
 
 export default {
   components: {
     IndexSidenav,
+    SearchBox,
   },
   data() {
     return {
@@ -57,8 +61,7 @@ export default {
         ? 'home'
         : context.route.path
 
-    // Load the JSON from the API - loadig the home content (index page)
-
+    // load home components from storyblok
     const { story } = await context.app.$storyapi
       .get('cdn/stories/de', {
         version: 'draft',
