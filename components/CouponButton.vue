@@ -4,7 +4,7 @@
       <button
         @mouseenter="showIcon = true"
         @mouseleave="showIcon = false"
-        class="w-40 bg-red-100 uppercase hover:bg-red-50 rounded py-2 border border-transparent px-2 md:py-3 text-green-900 text-sm inline-flex justify-center items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
+        class="w-full min-w-button bg-red-100 uppercase hover:bg-red-50 rounded py-2 border border-transparent px-4 text-green-900 text-sm inline-flex justify-center items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
       >
         {{ coupon_code }}
         <span class="h-5 w-5 absolute left-0 transform">

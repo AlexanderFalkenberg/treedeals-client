@@ -63,10 +63,12 @@
             <h1 class="text-3xl font-bold">{{ meta.name }}</h1>
           </div>
 
-          <div class="flex flex-1 items-center justify-between">
+          <div
+            v-if="deal.price"
+            class="flex flex-1 items-center justify-between"
+          >
             <div class="space-x-1">
               <span
-                v-if="deal.price"
                 :class="[
                   deal.expired ? 'text-gray-500' : 'text-green-500',
                   'text-sm md:text-3xl font-bold',
@@ -120,7 +122,7 @@
       </div>
     </div>
 
-    <section class="mx-auto bg-blue-200 py-8 max-w-3xl">
+    <section class="mx-auto py-8 max-w-3xl">
       <div v-if="deal.html" class="html">
         <rich-text-renderer :document="deal.html" />
       </div>

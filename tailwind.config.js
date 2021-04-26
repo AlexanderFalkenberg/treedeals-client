@@ -23,6 +23,9 @@ module.exports = {
       red: colors.red,
     },
     extend: {
+      minWidth: {
+        button: '9rem',
+      },
       maxWidth: {
         truncate: '28rem',
         auth: '25rem',

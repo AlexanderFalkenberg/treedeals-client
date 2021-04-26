@@ -105,7 +105,7 @@
 
         <div class="flex space-x-2 mt-1">
           <LinkButton v-if="deal.content.link">
-            <a :href="deal.content.link.url">Direkt zum Angebot</a>
+            <a :href="deal.content.link.url">Zum Angebot</a>
           </LinkButton>
 
           <coupon-button
