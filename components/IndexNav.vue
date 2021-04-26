@@ -20,7 +20,7 @@
       class="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-300 lg:px-8"
     >
       <div class="relative h-16 flex justify-between">
-        <div class="relative z-10 px-4 flex lg:px-2">
+        <div class="relative z-10 px-2 flex">
           <div class="flex-shrink-0 flex items-center">
             <TheLogo />
           </div>
@@ -81,7 +81,7 @@
             </svg>
           </button>
         </div>
-        <div class="w-full max-w-lg">
+        <div class="hidden md:block w-full max-w-lg">
           <SearchBox :search="fetchSuggestions" />
         </div>
       </div>

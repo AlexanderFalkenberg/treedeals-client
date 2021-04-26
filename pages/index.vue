@@ -7,10 +7,10 @@
       :is="story.content.component"
     /> -->
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-2 text-gray-600">
+      <div class="hidden md:block md:col-span-3 lg:col-span-2 text-gray-600">
         <IndexSidenav />
       </div>
-      <div class="col-span-7">
+      <div class="bg-blue-200 col-span-12 md:col-span-9 lg:col-span-7">
         <ul v-if="deals.length > 0" class="space-y-4">
           <li v-for="deal in deals" :key="deal._uid">
             <DealTeaser :deal="deal" />
