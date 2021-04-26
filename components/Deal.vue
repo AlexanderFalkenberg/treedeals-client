@@ -1,5 +1,5 @@
 <template>
-  <main v-editable="deal" class="max-w-5xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
+  <main v-editable="deal" class="max-w-5xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
     <div class="md:flex gap-4">
       <div
         v-if="deal.gallery"
@@ -120,8 +120,8 @@
       </div>
     </div>
 
-    <section class="mx-auto py-4 max-w-3xl">
-      <div class="">
+    <section class="mx-auto bg-blue-200 py-8 max-w-3xl">
+      <div class="html">
         <rich-text-renderer :document="deal.html" />
       </div>
 
@@ -191,4 +191,26 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="postcss">
+.html {
+  p {
+    @apply mb-1;
+  }
+
+  a {
+    @apply font-medium text-green-500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul {
+    @apply p-4;
+  }
+
+  li {
+    @apply list-disc;
+  }
+}
+</style>
