@@ -52,7 +52,9 @@
                 <span class="text-gray-500 line-through text-xs"
                   >{{ suggestion.content.original_price }}€</span
                 >
-                <span class="text-green-500 font-bold line-through text-xs"
+                <span
+                  v-if="suggestion.content.original_price"
+                  class="text-green-500 font-bold line-through text-xs"
                   >-
                   {{
                     Math.round(

@@ -7,7 +7,7 @@
       <div class="hidden flex-shrink-0 mr-2 sm:block">
         <div
           v-if="deal.content.gallery"
-          class="w-36 h-36 flex items-center justify-center"
+          class="w-40 h-40 flex items-center justify-center"
         >
           <img
             :style="[
@@ -15,7 +15,7 @@
                 ? { filter: 'grayscale(100%)', opacity: '50%' }
                 : {},
             ]"
-            class="object-cover"
+            class="object-cover rounded"
             :src="transformImage(deal.content.gallery[0].filename, '200x200')"
             :alt="deal.content.gallery[0].alt"
           />
