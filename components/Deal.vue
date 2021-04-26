@@ -12,8 +12,8 @@
           <button
             v-for="(image, index) in deal.gallery"
             type="button"
-            :class="{ isCurrent: 'border-2' }"
             :key="image.id"
+            class="focus:outline-none"
             @mouseover="current(index)"
           >
             <img
@@ -33,7 +33,7 @@
             :src="
               transformImage(
                 deal.gallery[currentIndex].filename,
-                '520x520/smart'
+                '600x520/smart'
               )
             "
             :alt="deal.gallery[currentIndex].alt"
@@ -41,8 +41,8 @@
         </div>
       </div>
 
-      <div class="md:w-5/12 flex flex-col justify-center">
-        <div class="border rounded p-4 space-y-4">
+      <div class="md:w-5/12 flex flex-col">
+        <div class="border p-4 space-y-4">
           <div class="flex items-center space-x-1">
             <span
               v-if="deal.sustainable"
@@ -121,9 +121,11 @@
     </div>
 
     <section class="mx-auto py-4 max-w-3xl">
-      <p>{{ deal.description }}</p>
+      <div class="">
+        <rich-text-renderer :document="deal.html" />
+      </div>
 
-      <div class="p-4 bg-gray-100 my-4 rounded">
+      <!-- <div class="p-4 bg-gray-100 my-4 rounded">
         <div
           class="flex justify-between text-gray-500"
           v-for="detail in deal.details"
@@ -132,7 +134,7 @@
           <span class="text-gray-500 font-bold">{{ detail.key }}</span>
           <span>{{ detail.value }}</span>
         </div>
-      </div>
+      </div> -->
     </section>
   </main>
 </template>
