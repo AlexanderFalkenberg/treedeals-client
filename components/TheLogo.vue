@@ -1,7 +1,7 @@
 <template>
   <nuxt-link to="/">
     <svg
-      class="h-10"
+      class="h-12"
       viewBox="0 0 369 102"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -114,7 +114,26 @@
       ></coupon-button>
     </div>
 
-    <div class="bg-gray-100 p-3 rounded text-sm mt-2">
+    <div
+      v-if="deal.content.update"
+      class="bg-gray-100 p-3 rounded text-sm mt-2"
+    >
+      <div class="float-right">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-green-800"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
       <p>{{ deal.content.update }}</p>
     </div>
   </article>
