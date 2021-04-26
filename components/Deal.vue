@@ -121,7 +121,7 @@
     </div>
 
     <section class="mx-auto bg-blue-200 py-8 max-w-3xl">
-      <div class="html">
+      <div v-if="deal.html" class="html">
         <rich-text-renderer :document="deal.html" />
       </div>
 
