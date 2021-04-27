@@ -25,7 +25,7 @@
             />
           </button>
         </div>
-        <div class="bg-gray-200" v-if="deal.gallery">
+        <div class="" v-if="deal.gallery">
           <img
             :style="[
               expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
@@ -33,7 +33,7 @@
             :src="
               transformImage(
                 deal.gallery[currentIndex].filename,
-                '620x520/smart'
+                '620x600/smart'
               )
             "
             :alt="deal.gallery[currentIndex].alt"
@@ -123,8 +123,11 @@
     </div>
 
     <section class="mx-auto max-w-4xl">
-      <div v-if="deal.update" class="bg-gray-100 mx-8 p-4 my-8">
-        <div class="float-right pl-1">
+      <div v-if="deal.update">
+        <div
+          v-if="deal.update.length > 0"
+          class="float-right pl-1 bg-gray-100 mx-8 p-4 my-8"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6 text-green-800"
