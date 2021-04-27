@@ -77,12 +77,4 @@ export default {
  *
  *
  */
-
-/* @font-face {
-  font-family: 'recoleta-semibold';
-  src: url('recoleta-semibold-webfont.woff2') format('woff2'),
-    url('recoleta-semibold-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-} */
 </style>

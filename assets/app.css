@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'recoleta-semibold';
+  font-display: swap;
+  src: url('~assets/fonts/recoleta-semibold-webfont.woff2') format('woff2'),
+    url('~assets/fonts/recoleta-semibold-webfont.eot'),
+    url('~assets/fonts/recoleta-semibold-webfont.ttf') format('truetype'),
+    url('~assets/fonts/recoleta-semibold-webfont.svg#recoletasemibold')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'recoleta-semibold';
+  font-weight: normal;
+}
+
+body {
+  @apply text-gray-700;
+}
+
+b {
+  font-weight: normal;
+}

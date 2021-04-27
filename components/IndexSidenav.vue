@@ -1,11 +1,13 @@
 <template>
   <div class="mt-2">
-    <div class="font-bold text-green-900 mb-2 px-2">Kategorien</div>
+    <div class="font-bold text-xl text-green-900 mb-2 px-2 font-display">
+      Kategorien
+    </div>
     <nav>
       <ul>
-        <li class="text-sm" v-for="tag in tags" :key="tag.id">
+        <li class="" v-for="tag in tags" :key="tag.id">
           <nuxt-link
-            class="hover:bg-gray-100 block py-1 px-2"
+            class="hover:bg-gray-100 block pb-2 px-2"
             :to="'/' + tag.full_slug"
             >{{ tag.name }}</nuxt-link
           >

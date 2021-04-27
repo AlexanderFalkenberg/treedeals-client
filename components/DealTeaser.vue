@@ -1,5 +1,5 @@
 <template>
-  <article class="bg-white p-2 md:p-3" v-if="deal">
+  <article class="bg-white∂" v-if="deal">
     <div class="leading-tight flex flex-1 items-stretch relative">
       <nuxt-link :to="`/de/deals/${deal.slug}`">
         <div class="flex-shrink-0 mr-2 sm:block">
@@ -24,7 +24,7 @@
       <div class="md:flex md:flex-col flex-1 pl-0 relative self-stretch">
         <div
           :class="[deal.content.expired ? 'text-gray-500' : 'text-gray-800']"
-          class="flex items-center space-x-1"
+          class="flex items-center space-x-1 mb-1"
         >
           <span
             v-if="deal.content.sustainable"
@@ -43,7 +43,7 @@
         <nuxt-link class="mt-auto" :to="`/de/deals/${deal.slug}`">
           <h3
             :class="[deal.content.expired ? 'text-gray-500' : 'text-gray-800']"
-            class="font-bold md:text-xl leading-none truncate max-w-xs md:max-w-truncate"
+            class="md:text-xl font-display lg:text-2xl leading-none truncate max-w-xs md:max-w-truncate"
           >
             {{ deal.name }}
           </h3>

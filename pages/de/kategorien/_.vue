@@ -1,11 +1,11 @@
 <template>
-  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
+  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-2 text-gray-600">
+      <div class="col-span-2 text-gray-600 bg-green-400">
         <IndexSidenav />
       </div>
-      <div class="col-span-8">
-        <h1 class="text-2xl font-bold text-green-900 mb-4">
+      <div class="col-span-8 px-4 bg-green-400">
+        <h1 class="font-bold text-green-900 mb-4">
           {{ category.name }}
         </h1>
         <ul class="space-y-4">

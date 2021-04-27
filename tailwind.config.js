@@ -13,6 +13,9 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      display: ['recoleta-semibold', 'system-ui', 'sans-serif'],
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
