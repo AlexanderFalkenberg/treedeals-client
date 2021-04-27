@@ -42,8 +42,24 @@
               :alt="suggestion.content.gallery[0].alt"
             />
             <div>
-              <p class="font-display text-gray-800">
+              <p
+                class="inline-flex justify-between items-center font-display text-gray-800"
+              >
                 {{ suggestion.name }}
+                <span class="flex items-center space-x-1 mb-1">
+                  <span
+                    v-if="suggestion.content.sustainable"
+                    class="mx-2 inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
+                  >
+                    Nachhaltig
+                  </span>
+                  <span
+                    v-if="suggestion.content.free_shipping"
+                    class="mx-2 inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium bg-gray-800 py-1 px-2"
+                  >
+                    Kostenloser Versand
+                  </span>
+                </span>
               </p>
               <p v-if="suggestion.content.price">
                 <span
