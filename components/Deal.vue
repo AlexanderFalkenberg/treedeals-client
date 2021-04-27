@@ -1,6 +1,6 @@
 <template>
   <main v-editable="deal" class="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
-    <div class="md:flex gap-4 justify-between space-y-4">
+    <div class="md:flex gap-4 justify-center space-y-4">
       <div
         v-if="deal.gallery"
         class="w-6/12 flex gap-4 flex-col justify-start lg:flex-row"
@@ -122,8 +122,8 @@
       </div>
     </div>
 
-    <section class="mx-auto max-w-3xl">
-      <div v-if="deal.update" class="bg-gray-100 p-4 my-8">
+    <section class="mx-auto max-w-4xl">
+      <div v-if="deal.update" class="bg-gray-100 mx-8 p-4 my-8">
         <div class="float-right pl-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@
         <p>{{ deal.update }}</p>
       </div>
 
-      <div v-if="deal.html" class="html p-4">
+      <div v-if="deal.html" class="html p-4 mx-8">
         <rich-text-renderer :document="deal.html" />
       </div>
     </section>
