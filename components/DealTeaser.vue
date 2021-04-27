@@ -1,11 +1,11 @@
 <template>
-  <article class="bg-white border hover:shadow-md p-2 md:p-3" v-if="deal">
+  <article class="bg-white p-2 md:p-3" v-if="deal">
     <div class="leading-tight flex flex-1 items-stretch relative">
       <nuxt-link :to="`/de/deals/${deal.slug}`">
         <div class="flex-shrink-0 mr-2 sm:block">
           <div
             v-if="deal.content.gallery"
-            class="h-20 w-20 md:w-32 md:h-32 lg:w-44 lg:h-44 flex items-center justify-center"
+            class="h-20 w-20 md:w-32 md:h-32 lg:w-40 lg:h-40 flex items-center justify-center"
           >
             <img
               :style="[
@@ -89,8 +89,7 @@
 
         <div class="hidden mt-auto lg:flex justify-between items-center">
           <div class="text-xs text-gray-500">{{ timeago }} veröffentlicht</div>
-
-          <div class="flex space-x-2 mt-1">
+          <div class="flex ml-auto space-x-2 mt-1">
             <LinkButton :link="deal.content.link.url" v-if="deal.content.link">
               Zum Angebot
             </LinkButton>
@@ -114,24 +113,29 @@
       ></coupon-button>
     </div>
 
-    <div v-if="deal.content.update" class="bg-gray-100 p-3 text-sm mt-2">
-      <div class="float-right">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5 text-green-800"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+    <div v-if="deal.content.update">
+      <div
+        class="bg-gray-100 p-3 text-xs md:text-sm mt-2"
+        v-if="deal.content.update.length > 1"
+      >
+        <div class="float-right">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 md:h-5 md:w-5 text-green-800"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <p>{{ deal.content.update }}</p>
       </div>
-      <p>{{ deal.content.update }}</p>
     </div>
   </article>
 </template>
