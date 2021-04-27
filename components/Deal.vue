@@ -1,13 +1,13 @@
 <template>
-  <main v-editable="deal" class="max-w-5xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
-    <div class="md:flex gap-4">
+  <main v-editable="deal" class="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
+    <div class="md:flex gap-4 justify-between space-y-4">
       <div
         v-if="deal.gallery"
-        class="flex-1 min-h-image-single flex items-center"
+        class="w-6/12 flex gap-4 flex-col justify-start lg:flex-row"
       >
         <div
           v-if="deal.gallery.length > 1"
-          class="space-y-2 flex justify-center h-full flex-col"
+          class="space-y-4 justify-between overflow-x-auto flex w-full md:w-auto lg:flex-col h-full order-last lg:order-first"
         >
           <button
             v-for="(image, index) in deal.gallery"
@@ -25,7 +25,7 @@
             />
           </button>
         </div>
-        <div v-if="deal.gallery" class="px-4">
+        <div class="bg-gray-200" v-if="deal.gallery">
           <img
             :style="[
               expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
@@ -33,7 +33,7 @@
             :src="
               transformImage(
                 deal.gallery[currentIndex].filename,
-                '600x520/smart'
+                '620x520/smart'
               )
             "
             :alt="deal.gallery[currentIndex].alt"
@@ -41,8 +41,8 @@
         </div>
       </div>
 
-      <div class="md:w-5/12 flex flex-col">
-        <div class="border p-4 space-y-4">
+      <div class="md:w-6/12 lg:w-5/12 flex flex-col">
+        <div class="p-4 space-y-4">
           <div class="flex items-center space-x-1">
             <span
               v-if="deal.sustainable"
@@ -108,7 +108,7 @@
             <span>{{ timeago }} veröffentlicht</span> in
             <div class="flex space-x-1">
               <span
-                class="text-white mt-1 bg-gray-700 text-xs px-2 py-1 rounded-full"
+                class="text-white mt-1 bg-gray-800 text-xs px-2 py-1 rounded-full"
                 v-for="category in deal.categories"
                 :key="category.uuid"
               >
@@ -122,21 +122,30 @@
       </div>
     </div>
 
-    <section class="mx-auto py-8 max-w-3xl">
-      <div v-if="deal.html" class="html">
-        <rich-text-renderer :document="deal.html" />
+    <section class="mx-auto max-w-3xl">
+      <div v-if="deal.update" class="bg-gray-100 p-4 my-8">
+        <div class="float-right pl-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-green-800"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <p>{{ deal.update }}</p>
       </div>
 
-      <!-- <div class="p-4 bg-gray-100 my-4 rounded">
-        <div
-          class="flex justify-between text-gray-500"
-          v-for="detail in deal.details"
-          :key="detail._uid"
-        >
-          <span class="text-gray-500 font-bold">{{ detail.key }}</span>
-          <span>{{ detail.value }}</span>
-        </div>
-      </div> -->
+      <div v-if="deal.html" class="html p-4">
+        <rich-text-renderer :document="deal.html" />
+      </div>
     </section>
   </main>
 </template>

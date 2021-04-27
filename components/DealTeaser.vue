@@ -13,7 +13,7 @@
                   ? { filter: 'grayscale(100%)', opacity: '50%' }
                   : {},
               ]"
-              class="object-cover rounded"
+              class="object-cover"
               :src="transformImage(deal.content.gallery[0].filename, '200x200')"
               :alt="deal.content.gallery[0].alt"
             />
@@ -28,13 +28,13 @@
         >
           <span
             v-if="deal.content.sustainable"
-            class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
+            class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
           >
             Nachhaltig
           </span>
           <span
             v-if="deal.content.free_shipping"
-            class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium bg-gray-800 py-1 px-2"
+            class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium bg-gray-800 py-1 px-2"
           >
             Kostenloser Versand
           </span>
@@ -91,8 +91,8 @@
           <div class="text-xs text-gray-500">{{ timeago }} veröffentlicht</div>
 
           <div class="flex space-x-2 mt-1">
-            <LinkButton v-if="deal.content.link">
-              <a :href="deal.content.link.url">Zum Angebot</a>
+            <LinkButton :link="deal.content.link.url" v-if="deal.content.link">
+              Zum Angebot
             </LinkButton>
 
             <coupon-button
@@ -114,10 +114,7 @@
       ></coupon-button>
     </div>
 
-    <div
-      v-if="deal.content.update"
-      class="bg-gray-100 p-3 rounded text-sm mt-2"
-    >
+    <div v-if="deal.content.update" class="bg-gray-100 p-3 text-sm mt-2">
       <div class="float-right">
         <svg
           xmlns="http://www.w3.org/2000/svg"

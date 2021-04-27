@@ -2,7 +2,7 @@
   <div class="relative w-full my-2">
     <!-- Magnifying glass icon -->
     <div
-      class="h-full absolute rounded-l top-0 left-0 bg-green-100 px-4 flex items-center"
+      class="h-full absolute top-0 left-0 bg-green-100 px-4 flex items-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
       @input="onInputChange"
       @blur="onInputBlur"
       placeholder="Suchen.."
-      class="w-full bg-white rounded border text-gray-700 outline-none focus:border-green-200 pl-16 py-3"
+      class="w-full bg-white border-t border-b lg:border text-gray-700 outline-none focus:border-green-200 pl-16 py-3"
     />
     <!-- Suggestions list -->
     <div class="relative">
@@ -30,7 +30,7 @@
           v-for="suggestion in suggestions"
           :key="suggestion.id"
           :to="`/de/deals/${suggestion.slug}`"
-          class="block truncate text-gray-700 hover:text-main hover:bg-gray-100 px-4 py-2"
+          class="block truncate text-gray-700 hover:text-main hover:bg-gray-100 px-2 py-2"
         >
           <div class="flex items-center">
             <img
@@ -45,11 +45,13 @@
               <p>
                 {{ suggestion.name }}
               </p>
-              <p>
+              <p v-if="suggestion.content.price">
                 <span class="font-semibold text-green-500 text-lg"
                   >{{ suggestion.content.price }}€</span
                 >
-                <span class="text-gray-500 line-through text-xs"
+                <span
+                  v-if="suggestion.content.original_price"
+                  class="text-gray-500 line-through text-xs"
                   >{{ suggestion.content.original_price }}€</span
                 >
                 <span

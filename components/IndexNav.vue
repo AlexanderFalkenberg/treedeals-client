@@ -15,20 +15,21 @@
   }
   ```
 -->
-  <header class="bg-white shadow">
-    <div
-      class="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-300 lg:px-8"
-    >
+  <header class="bg-white lg:shadow">
+    <div class="max-w-7xl mx-auto lg:px-8">
       <div class="relative h-16 flex justify-between">
         <div class="relative z-10 px-2 flex">
           <div class="flex-shrink-0 flex items-center">
             <TheLogo />
           </div>
         </div>
-
+        <div class="hidden lg:block w-full max-w-lg">
+          <SearchBox :search="fetchSuggestions" />
+        </div>
         <div class="relative z-10 flex items-center lg:hidden">
           <!-- Mobile menu button -->
           <button
+            @click="openNav = !openNav"
             type="button"
             class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
             aria-controls="mobile-menu"
@@ -81,9 +82,6 @@
             </svg>
           </button>
         </div>
-        <div class="hidden md:block w-full max-w-lg">
-          <SearchBox :search="fetchSuggestions" />
-        </div>
       </div>
       <!--   <nav class="hidden lg:py-2 lg:flex lg:space-x-8" aria-label="Global">
         <a
@@ -115,10 +113,18 @@
           Calendar
         </a>
       </nav> -->
+      <div class="w-full lg:hidden">
+        <SearchBox :search="fetchSuggestions" />
+      </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <nav class="hidden lg:hidden" aria-label="Global" id="mobile-menu">
+    <nav
+      :class="{ hidden: !openNav }"
+      class="lg:hidden"
+      aria-label="Global"
+      id="mobile-menu"
+    >
       <div class="pt-2 pb-3 px-2 space-y-1 text-green∂-900">
         <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" -->
         <a
@@ -209,6 +215,11 @@
 import TheLogo from './TheLogo.vue'
 
 export default {
+  data() {
+    return {
+      openNav: false,
+    }
+  },
   components: { TheLogo },
   methods: {
     async fetchSuggestions(searchInput) {
