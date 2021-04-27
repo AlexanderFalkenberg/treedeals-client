@@ -42,11 +42,13 @@
               :alt="suggestion.content.gallery[0].alt"
             />
             <div>
-              <p>
+              <p class="font-display text-gray-800">
                 {{ suggestion.name }}
               </p>
               <p v-if="suggestion.content.price">
-                <span class="font-semibold text-green-500 text-lg"
+                <span
+                  v-if="suggestion.content.price.length > 0"
+                  class="font-semibold text-green-500 text-lg"
                   >{{ suggestion.content.price }}€</span
                 >
                 <span

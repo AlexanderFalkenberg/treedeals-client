@@ -1,6 +1,6 @@
 <template>
   <main v-editable="deal" class="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
-    <div class="md:flex gap-4 justify-center space-y-4">
+    <div class="md:flex gap-4 justify-center">
       <div
         v-if="deal.gallery"
         class="w-6/12 flex gap-4 flex-col justify-start lg:flex-row"
@@ -42,7 +42,7 @@
       </div>
 
       <div class="md:w-6/12 lg:w-5/12 flex flex-col">
-        <div class="p-4 space-y-4">
+        <div class="px-4 space-y-2">
           <div class="flex items-center space-x-1">
             <span
               v-if="deal.sustainable"
@@ -53,14 +53,14 @@
 
             <span
               v-if="deal.free_shipping"
-              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium rounded bg-gray-800 py-1 px-2"
+              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white bg-gray-800 font-medium rounded bg-gray-00 py-1 px-2"
             >
               Kostenloser Versand
             </span>
           </div>
 
           <div>
-            <h1 class="text-3xl font-bold">{{ meta.name }}</h1>
+            <h1 class="text-3xl lg:text-4xl font-bold">{{ meta.name }}</h1>
           </div>
 
           <div
@@ -108,7 +108,7 @@
             <span>{{ timeago }} veröffentlicht</span> in
             <div class="flex space-x-1">
               <span
-                class="text-white mt-1 bg-gray-800 text-xs px-2 py-1 rounded-full"
+                class="text-white mt-1 bg-gray-600 text-xs px-2 py-1 rounded-full"
                 v-for="category in deal.categories"
                 :key="category.uuid"
               >
@@ -124,26 +124,27 @@
 
     <section class="mx-auto max-w-4xl">
       <div v-if="deal.update">
-        {{ deal.update }}
         <div
-          v-if="deal.update.length > 0"
-          class="float-right pl-1 bg-gray-100 mx-8 p-4 my-8"
+          class="flex items-center bg-gray-100 text-xs md:text-sm mt-2 mx-8"
+          v-if="deal.update.length > 1"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-green-800"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <p>{{ deal.update }}</p>
+          <p class="p-3">{{ deal.update }}</p>
+          <div class="bg-gray-200 self-stretch items-center inline-flex px-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 md:h-5 md:w-5 text-gray-800"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -213,7 +214,7 @@ export default {
   }
 
   a {
-    @apply font-medium text-green-500;
+    @apply font-medium text-green-500 font-semibold;
 
     &:hover {
       text-decoration: underline;
