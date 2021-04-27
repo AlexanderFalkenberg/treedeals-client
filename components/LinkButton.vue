@@ -6,10 +6,10 @@
     <span to="login" class="py-3 px-2 md:px-3">
       <slot></slot>
     </span>
-    <span class="bg-green-300 h-full px-3 inline-flex items-center">
+    <span class="lg:bg-green-300 h-full px-3 inline-flex items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
+        class="h-4 w-4 md:h-5 md:w-5"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
