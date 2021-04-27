@@ -115,13 +115,14 @@
 
     <div v-if="deal.content.update">
       <div
-        class="bg-gray-100 p-3 text-xs md:text-sm mt-2"
+        class="flex items-center bg-gray-100 text-xs md:text-sm mt-2"
         v-if="deal.content.update.length > 1"
       >
-        <div class="float-right">
+        <p class="p-3">{{ deal.content.update }}</p>
+        <div class="bg-gray-200 self-stretch items-center inline-flex px-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 md:h-5 md:w-5 text-green-800"
+            class="h-4 w-4 md:h-5 md:w-5 text-gray-800"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -134,7 +135,6 @@
             />
           </svg>
         </div>
-        <p>{{ deal.content.update }}</p>
       </div>
     </div>
   </article>

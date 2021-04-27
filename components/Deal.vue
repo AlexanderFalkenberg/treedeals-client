@@ -124,6 +124,7 @@
 
     <section class="mx-auto max-w-4xl">
       <div v-if="deal.update">
+        {{ deal.update }}
         <div
           v-if="deal.update.length > 0"
           class="float-right pl-1 bg-gray-100 mx-8 p-4 my-8"
@@ -142,8 +143,8 @@
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
+          <p>{{ deal.update }}</p>
         </div>
-        <p>{{ deal.update }}</p>
       </div>
 
       <div v-if="deal.html" class="html p-4 mx-8">
