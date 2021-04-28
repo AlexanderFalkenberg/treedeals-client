@@ -1,17 +1,19 @@
 <template>
-  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-4">
+  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 my-8">
     <!--  <component
       v-if="story.content.component"
       :key="story.content._uid"
       :blok="story.content"
       :is="story.content.component"
     /> -->
-    <div class="grid grid-cols-12 gap-4">
-      <div class="hidden md:block md:col-span-3 lg:col-span-2 text-gray-600">
+
+    <div class="w-full grid grid-cols-12">
+      <div class="hidden md:col-span-3 lg:col-span-2 text-gray-600">
+        <div class="font-display px-2 mb-2">Kategorien</div>
         <IndexSidenav />
       </div>
-      <div class="bg-blue-200 col-span-12 md:col-span-9 lg:col-span-8">
-        <ul v-if="deals.length > 0" class="space-y-4">
+      <div class="col-span-10 md:col-span-9 lg:col-span-8">
+        <ul v-if="deals.length > 0" class="space-y-8">
           <li v-for="deal in deals" :key="deal._uid">
             <DealTeaser :deal="deal" />
           </li>

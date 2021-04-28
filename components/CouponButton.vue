@@ -4,7 +4,7 @@
       <button
         @mouseenter="showIcon = true"
         @mouseleave="showIcon = false"
-        class="w-full min-w-button bg-gray-200 uppercase hover:bg-gray-300 py-3 px-4 text-gray-700 text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
+        class="w-full min-w-button border border-gray-800 bg-gray-50 border-dashed uppercase hover:bg-gray-200 py-3 px-4 text-gray-700 text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
       >
         {{ coupon_code }}
         <span class="h-5 w-5 absolute left-0 transform">
@@ -12,7 +12,7 @@
         ></span>
 
         <div
-          class="absolute right-0 h-full inline-flex items-center px-3 bg-gray-300"
+          class="absolute right-0 h-full inline-flex items-center px-3 border-b border-t border-r border-gray-800 border-dashed bg-gray-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

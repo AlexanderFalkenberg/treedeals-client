@@ -1,0 +1,315 @@
+// 20210428133307
+// https://api.storyblok.com/v1/cdn/stories/de/deals/583d27fc-1b2c-4027-a62f-9cf77bbd627d?version=draft&token=orL5ZAn9qQiNIFo5xlHXNwtt&cv=1619609587
+
+{
+  "story": {
+    "name": "Dampflok 3D Holz Puzzle",
+    "created_at": "2021-04-27T16:29:57.035Z",
+    "published_at": "2021-04-27T18:41:14.651Z",
+    "alternates": [],
+    "id": 47386250,
+    "uuid": "38d5a858-b218-4d13-9b50-06dc74781cb6",
+    "content": {
+      "img": "",
+      "_uid": "45d7968a-8aa5-4276-9d7e-e903291503b0",
+      "html": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 5
+            },
+            "content": [
+              {
+                "text": "Diese 3D Holz Puzzle Dampf Express Eisenbahn zum Selbstbauen kann man jetzt bei MagicHolz für 64,90 € erwerben.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Wer sich für den Newsletter anmeldet bekommt 10% Rabatt für die 1. Bestellung.",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Unser Preisvergleich über ",
+                "type": "text"
+              },
+              {
+                "text": "idealo",
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.awin1.com/cread.php?awinmid=15536&awinaffid=660489&ued=https%3A%2F%2Fwww.idealo.de%2Fpreisvergleich%2FMainSearchProductCategory.html%3Fq%3DMECHANISCHE%2BDAMPF-EXPRESS%2BEISENBAHN%2B3D%2BHolz%2BPuzzle",
+                      "uuid": null,
+                      "anchor": null,
+                      "target": "_blank",
+                      "linktype": "url"
+                    }
+                  }
+                ]
+              },
+              {
+                "text": " zeigte, dass dieser Deal zu den günstigsten gehört. Die ",
+                "type": "text"
+              },
+              {
+                "text": "Dampf Express Eisenbahn wird lediglich von einem weiteren Händler zum gleichen Preis angeboten.",
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Vorteile",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "content": [
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Fördert Motorik & Denkleistung",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Großartige Geschenkidee",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Kreatives Familienprojekt",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "100 Tage Rückgabegarantie",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Technische Details",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "content": [
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Zusammengebaute Größe: 370*120*185 mm ",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Verpackungsgröße: 250*370*70 mm",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Funktion: Mechanische Getriebe",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Gewicht: 1420g Geschätzte",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Montagezeit: 5 Stunden",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "list_item",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "text": "Altersgruppe: > 14 Jahre alt",
+                        "type": "text"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Warnung: Kleinteile nicht für Kinder unter 3 Jahren",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      },
+      "link": {
+        "id": "",
+        "url": "https://www.awin1.com/cread.php?awinaffid=660489&awinmid=21167&ued=https%3A%2F%2Fmagicholz.de%2Fproducts%2Fdampf-express-eisenbahn",
+        "linktype": "url",
+        "fieldtype": "multilink",
+        "cached_url": "https://www.awin1.com/cread.php?awinaffid=660489&awinmid=21167&ued=https%3A%2F%2Fmagicholz.de%2Fproducts%2Fdampf-express-eisenbahn"
+      },
+      "image": "",
+      "intro": "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. ",
+      "price": "64.90",
+      "title": "Wasserspar-Timer",
+      "Detail": "",
+      "update": "",
+      "details": [
+        {
+          "_uid": "a4273d27-9ac2-43fa-ab6c-898923386c35",
+          "title": "3D Holz Puzzle Dampf Express Eisenbahn",
+          "component": "deal_card",
+          "_editable": "<!--#storyblok#{\"name\": \"deal_card\", \"space\": \"111247\", \"uid\": \"a4273d27-9ac2-43fa-ab6c-898923386c35\", \"id\": \"47386250\"}-->"
+        }
+      ],
+      "expired": "",
+      "gallery": [
+        {
+          "id": 2255428,
+          "alt": "MECHANISCHE DAMPF-EXPRESS EISENBAHN",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/111247/520x520/c36884a58a/dampflok-aus-holz-mechanisch.jpg",
+          "copyright": ""
+        }
+      ],
+      "discount": "",
+      "component": "deal",
+      "categories": ["4c2bd9f1-c308-4b6a-94b2-3c39c29e3b3c"],
+      "coupon_code": "",
+      "description": "\nAuf der Suche nach einer Möglichkeit Wasserkosten zu senken? Ein hoher Wasserverbrauch kann z.B. beim Duschen entstehen. \nWenn man dagegen steuern möchte, dann  kann ein Wasserspar-Timer sehr nützlich sein. \n\nBei Tchibo gibt es derzeit diesen Wasserspar-Timer mit einem Ampelsystem  (Wasserverbrauch von unbedenklich bis kritisch Leuchtet in 3 verschiedenen Farben: Grün, Gelb und Rot, einfaches Befestigen per Saugnapf) für 12,99 EUR zzgl. Versand im Angebot.\n\nIm Preisvergleich über idealo, billiger.de & preisvergleich.de konnten wir keine weiteren Händler, die dieses Gadget für das Badezimmer anbieten, finden.\n",
+      "sustainable": true,
+      "free_shipping": true,
+      "original_price": "",
+      "_editable": "<!--#storyblok#{\"name\": \"deal\", \"space\": \"111247\", \"uid\": \"45d7968a-8aa5-4276-9d7e-e903291503b0\", \"id\": \"47386250\"}-->"
+    },
+    "slug": "583d27fc-1b2c-4027-a62f-9cf77bbd627d",
+    "full_slug": "de/deals/583d27fc-1b2c-4027-a62f-9cf77bbd627d",
+    "default_full_slug": null,
+    "sort_by_date": null,
+    "position": -10,
+    "tag_list": [],
+    "is_startpage": false,
+    "parent_id": 45253623,
+    "meta_data": null,
+    "group_id": "fc41ae01-5e50-40b9-827a-63b25335a897",
+    "first_published_at": "2021-04-13T07:32:48.000Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "translated_slugs": []
+  }
+}

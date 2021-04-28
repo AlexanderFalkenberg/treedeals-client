@@ -1,12 +1,14 @@
 <template>
-  <div class="relative subpixel-antialiased">
+  <div class="relative subpixel-antialiased min-h-screen flex flex-col">
     <IndexNav />
-    <Nuxt />
+    <Nuxt class="" />
+    <TheFooter class="mt-auto" />
   </div>
 </template>
 
 <script>
 import IndexNav from '~/components/IndexNav.vue'
+
 export default {
   components: { IndexNav },
   data() {

@@ -1,13 +1,12 @@
 <template>
   <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-2 text-gray-600 bg-green-400">
+      <div class="col-span-2 text-gray-600">
+        <div class="font-display px-2 mb-2">Kategorien</div>
         <IndexSidenav />
       </div>
-      <div class="col-span-8 px-4 bg-green-400">
-        <h1 class="font-bold text-green-900 mb-4">
-          {{ category.name }}
-        </h1>
+      <div class="col-span-8 px-4">
+        <div class="font-display mb-2">{{ category.name }}</div>
         <ul class="space-y-4">
           <li v-for="deal in deals" :key="deal._uid">
             <DealTeaser :deal="deal" />

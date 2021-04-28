@@ -7,7 +7,7 @@
       >
         <div
           v-if="deal.gallery.length > 1"
-          class="space-y-4 justify-between overflow-x-auto flex w-full md:w-auto lg:flex-col h-full order-last lg:order-first"
+          class="space-y-4 justify-start overflow-x-auto flex w-full md:w-auto lg:flex-col h-full order-last lg:order-first"
         >
           <button
             v-for="(image, index) in deal.gallery"
@@ -94,10 +94,9 @@
           </div>
 
           <div class="space-y-2 mt-2">
-            <LinkButton :expired="deal.expired">
-              <a :href="deal.link.url">Zum Angebot</a>
+            <LinkButton :link="deal.link.url" v-if="deal.link">
+              Zum Angebot
             </LinkButton>
-
             <coupon-button
               v-if="deal.coupon_code"
               :coupon_code="deal.coupon_code"
@@ -128,8 +127,10 @@
           class="flex items-center bg-gray-100 text-xs md:text-sm mt-2 mx-8"
           v-if="deal.update.length > 1"
         >
-          <p class="p-3">{{ deal.update }}</p>
-          <div class="bg-gray-200 self-stretch items-center inline-flex px-3">
+          <p class="p-3 flex-1">{{ deal.update }}</p>
+          <div
+            class="bg-gray-200 self-stretch items-center inline-flex px-3 ml-auto"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4 md:h-5 md:w-5 text-gray-800"
@@ -209,8 +210,18 @@ export default {
 
 <style lang="postcss">
 .html {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-normal;
+    font-family: system-ui, sans-serif;
+  }
+
   p {
-    @apply mb-1;
+    @apply mb-4;
   }
 
   a {

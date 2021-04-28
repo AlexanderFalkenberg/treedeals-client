@@ -1,20 +1,13 @@
 <template>
-  <div class="mt-2">
-    <div class="font-bold text-xl text-green-900 mb-2 px-2 font-display">
-      Kategorien
-    </div>
-    <nav>
-      <ul>
-        <li class="" v-for="tag in tags" :key="tag.id">
-          <nuxt-link
-            class="hover:bg-gray-100 block pb-2 px-2"
-            :to="'/' + tag.full_slug"
-            >{{ tag.name }}</nuxt-link
-          >
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav>
+    <ul class="flex flex-wrap">
+      <li class="" v-for="tag in tags" :key="tag.id">
+        <nuxt-link class="pb-2 pr-2" :to="'/' + tag.full_slug">{{
+          tag.name
+        }}</nuxt-link>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
