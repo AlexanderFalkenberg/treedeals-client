@@ -2,40 +2,19 @@
   <main v-editable="deal" class="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mt-8">
     <div class="md:flex gap-4 justify-center">
       <div
-        v-if="deal.gallery"
-        class="w-6/12 flex gap-4 flex-col justify-start lg:flex-row"
+        class="w-6/12 h-96 flex gap-4 flex-col justify-start lg:flex-row content-wrapper"
       >
-        <div
-          v-if="deal.gallery.length > 1"
-          class="space-y-4 justify-start overflow-x-auto flex w-full md:w-auto lg:flex-col h-full order-last lg:order-first"
-        >
-          <button
-            v-for="(image, index) in deal.gallery"
-            type="button"
-            :key="image.id"
-            class="focus:outline-none"
-            @mouseover="current(index)"
-          >
-            <img
-              :style="[
-                expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
-              ]"
-              :src="transformImage(image.filename, '100x130')"
-              :alt="image.alt"
-            />
-          </button>
-        </div>
-        <div class="" v-if="deal.gallery">
+        <content-loader
+          v-if="!deal.gallery"
+          :speed="3"
+          :animate="true"
+        ></content-loader>
+        <div else>
           <img
             :style="[
               expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
             ]"
-            :src="
-              transformImage(
-                deal.gallery[currentIndex].filename,
-                '620x600/smart'
-              )
-            "
+            :src="deal.gallery[currentIndex].filename"
             :alt="deal.gallery[currentIndex].alt"
           />
         </div>
@@ -46,7 +25,7 @@
           <div class="flex items-center space-x-1">
             <span
               v-if="deal.sustainable"
-              class="inline-flex rounded justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
+              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
             >
               Nachhaltig
             </span>
@@ -159,8 +138,12 @@
 <script>
 import TimeAgo from 'javascript-time-ago'
 import de from 'javascript-time-ago/locale/de'
+import { ContentLoader } from 'vue-content-loader'
 
 export default {
+  components: {
+    ContentLoader,
+  },
   data() {
     return {
       currentIndex: 0,
@@ -207,37 +190,3 @@ export default {
   },
 }
 </script>
-
-<style lang="postcss">
-.html {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-normal;
-    font-family: system-ui, sans-serif;
-  }
-
-  p {
-    @apply mb-4;
-  }
-
-  a {
-    @apply font-medium text-green-500 font-semibold;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  ul {
-    @apply p-4;
-  }
-
-  li {
-    @apply list-disc;
-  }
-}
-</style>

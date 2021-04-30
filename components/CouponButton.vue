@@ -1,5 +1,5 @@
 <template>
-  <div v-if="coupon_code" class="relative">
+  <div v-if="coupon_code" class="w-full relative">
     <CopyToClipboard :text="coupon_code" @copy="handleCopy">
       <button
         @mouseenter="showIcon = true"

@@ -23,8 +23,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vue-copy-to-clipboard',
-    '~/plugins/composition-api.js',
     '~/plugins/storyblok-rich-text-renderer.js',
+    '~/plugins/content-loader.js',
+    '~/plugins/vue-placeholders.js',
+    '~/plugins/vue-observe-visibility.client.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -34,6 +36,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/composition-api/module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

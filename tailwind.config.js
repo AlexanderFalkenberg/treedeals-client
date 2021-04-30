@@ -29,11 +29,16 @@ module.exports = {
       minWidth: {
         button: '9rem',
       },
+      height: {
+        100: '30rem',
+      },
+      width: {
+        100: '30rem',
+      },
       maxWidth: {
-        truncate: '28rem',
         auth: '25rem',
+        xs: '12rem',
         sm: '18rem',
-        xs: '15rem',
         xl: '40rem',
       },
     },

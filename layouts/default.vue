@@ -1,7 +1,7 @@
 <template>
   <div class="relative subpixel-antialiased min-h-screen flex flex-col">
     <IndexNav />
-    <Nuxt class="" />
+    <Nuxt />
     <TheFooter class="mt-auto" />
   </div>
 </template>
