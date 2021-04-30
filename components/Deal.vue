@@ -161,6 +161,12 @@ export default {
     },
   },
   computed: {
+    price() {
+      return this.deal.content.price.toString().replace('.', ',')
+    },
+    original_price() {
+      return this.deal.content.original_price.toString().replace('.', ',')
+    },
     timeago() {
       TimeAgo.addLocale(de)
       const timeAgo = new TimeAgo('de-DE')

@@ -5,7 +5,7 @@
     class="container mx-auto px-2 sm:px-4 lg:px-8"
   >
     <div class="flex mx-auto mt-8">
-      <div class="flex justify-end">
+      <div v-if="deal.content.gallery" class="flex justify-end">
         <div
           v-if="deal.content.gallery.length > 1"
           class="flex flex-col justify-start space-y-4 mr-4"
@@ -96,13 +96,13 @@
                   deal.content.expired ? 'text-gray-500' : 'text-green-500',
                   'text-sm md:text-3xl  font-bold',
                 ]"
-                >{{ deal.content.price }}€</span
+                >{{ price }}€</span
               >
 
               <span
                 v-if="deal.content.original_price"
                 class="text-gray-300 md:text-2xl line-through text-xs"
-                >{{ deal.content.original_price }}€</span
+                >{{ original_price }}€</span
               >
 
               <span
@@ -118,7 +118,7 @@
             </div>
           </div>
 
-          <div class="flex space-x-4 mt-8">
+          <div class="flex space-x-4 mt-4">
             <coupon-button
               class="max-w-xs"
               v-if="deal.content.coupon_code"
@@ -223,6 +223,12 @@ export default {
     })
   },
   computed: {
+    price() {
+      return this.deal.content.price.toString().replace('.', ',')
+    },
+    original_price() {
+      return this.deal.content.original_price.toString().replace('.', ',')
+    },
     timeago() {
       TimeAgo.addLocale(de)
       const timeAgo = new TimeAgo('de-DE')
