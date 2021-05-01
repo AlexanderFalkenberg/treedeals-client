@@ -2,11 +2,11 @@
   <header class="lg:shadow">
     <div class="bg-gray-100">
       <div
-        class="max-w-7xl text-xs font-bold mx-auto py-2 flex item-center justify-between px-2 sm:px-4 lg:px-10 overflow-x-auto whitespace-nowrap space-x-4"
+        class="max-w-7xl text-xs font-bold mx-auto py-2 flex item-center justify-between px-2 sm:px-4 lg:px-10 overflow-x-auto whitespace-nowrap space-x-4 text-center"
       >
         <p>Für jeden vermittelten Deal lassen wir einen Baum pflanzen</p>
-        <p>Großteil an nachhaltigen Produkten</p>
-        <p>Schnäppchen, Deals und Angebote</p>
+        <p>Schnäppchen und Angebote</p>
+        <p>Große Zahl an preiswerten, nachhaltigen Produkten</p>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
