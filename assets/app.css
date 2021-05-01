@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'recoleta-semibold';
-  font-display: swap;
+
   src: url('~assets/fonts/recoleta-semibold-webfont.woff2') format('woff2'),
     url('~assets/fonts/recoleta-semibold-webfont.eot'),
     url('~assets/fonts/recoleta-semibold-webfont.ttf') format('truetype'),

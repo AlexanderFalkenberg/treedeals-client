@@ -24,17 +24,16 @@
         <div class="px-4 space-y-2">
           <div class="flex items-center space-x-1">
             <span
-              v-if="deal.sustainable"
-              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
+              v-if="deal.content.sustainable"
+              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium bg-green-100 py-1 px-2"
             >
-              Nachhaltig
+              🌱 Nachhaltig
             </span>
-
             <span
-              v-if="deal.free_shipping"
-              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white bg-gray-800 font-medium rounded bg-gray-00 py-1 px-2"
+              v-if="deal.content.free_shipping"
+              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium bg-gray-100 py-1 px-2"
             >
-              Kostenloser Versand
+              🚚 Kostenloser Versand
             </span>
           </div>
 

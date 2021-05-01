@@ -1,14 +1,20 @@
 <template>
   <a
     v-if="link"
-    class="relative w-full min-w-button bg-green-400 text-white uppercase hover:bg-green-500 focus:outline-none focus:shadow-outline-green active:bg-green-400 focus:ring-2 focus:ring-offset-0 focus:ring-green-100 inline-flex items-center justify-center whitespace-nowrap font-bold text-xs md:text-sm transition duration-150 ease-in-out"
-    :href="link"
+    :class="[
+      expired ? 'bg-gray-300 ' : 'bg-green-700 text-white',
+      'relative w-full min-w-buttontext-white tracking-wider  uppercase  focus:outline-none focus:shadow-outline-green active:bg-green-400 focus:ring-2 focus:ring-offset-0 focus:ring-green-100 inline-flex items-center whitespace-nowrap font-bold text-sm transition duration-150 ease-in-out',
+    ]"
+    :href="!expired ? link : ''"
   >
     <span class="py-3 px-2 md:px-3">
       <slot></slot>
     </span>
     <span
-      class="self-stretch px-3 ml-auto bg-green-300 inline-flex items-center"
+      :class="[
+        expired ? 'bg-gray-300' : 'bg-green-600  ',
+        'self-stretch px-3 ml-auto inline-flex items-center',
+      ]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +37,10 @@
 <script>
 export default {
   props: {
+    expired: {
+      type: Boolean,
+      required: true,
+    },
     link: {
       type: String,
       required: false,

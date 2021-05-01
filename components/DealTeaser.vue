@@ -5,12 +5,12 @@
         <div class="flex-shrink-0 mr-2 sm:block">
           <div
             v-if="deal.content.gallery"
-            class="h-20 w-20 bg-gray-200 md:w-32 md:h-32 lg:w-40 lg:h-40 flex items-center justify-center"
+            class="h-20 w-20 bg-gray-200 md:w-32 md:h-32 lg:w-40 lg:h-40 relative flex items-center justify-center"
           >
             <img
               :style="[
                 deal.content.expired
-                  ? { filter: 'grayscale(100%)', opacity: '50%' }
+                  ? { filter: 'grayscale(100%)', opacity: '35%' }
                   : {},
               ]"
               class="object-cover"
@@ -27,35 +27,17 @@
       </nuxt-link>
 
       <div class="md:flex md:flex-col flex-1 pl-0 relative self-stretch">
-        <div
-          :class="[deal.content.expired ? 'text-gray-500' : 'text-gray-800']"
-          class="flex justify-between items-center space-x-1 mb-1"
-        >
-          <div>
-            <span
-              v-if="deal.content.sustainable"
-              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
-            >
-              Nachhaltig
-            </span>
-            <span
-              v-if="deal.content.free_shipping"
-              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium bg-gray-800 py-1 px-2"
-            >
-              Kostenloser Versand
-            </span>
-          </div>
-        </div>
+        <Labels class="mb-1" :deal="deal" />
 
         <nuxt-link :to="`/de/deals/${deal.slug}`">
           <h3
             :class="[deal.content.expired ? 'text-gray-500' : 'text-gray-800']"
-            class="sm:text-lg md:text-xl font-display lg:text-2xl line-clamp-1"
+            class="sm:text-lg md:text-xl font-display line-clamp-1"
           >
             {{ deal.name }}
           </h3>
 
-          <p class="line-clamp-2 text-gray-700 mb-1">
+          <p class="line-clamp-2 text-gray-600 mb-1">
             {{ deal.content.intro }}
           </p>
 
@@ -108,8 +90,9 @@
             >{{ timeago }} veröffentlicht</span
           >
 
-          <div class="ml-auto flex justify-end w-2/3 space-x-2 mt-1">
+          <div class="ml-auto flex justify-end w-2/3 space-x-2">
             <LinkButton
+              :expired="expired"
               class="max-w-xs"
               :link="deal.content.link.url"
               v-if="deal.content.link"
@@ -126,16 +109,17 @@
         </div>
       </div>
     </div>
-    <div class="mt-2 flex space-x-2 lg:hidden items-center bg-blue-200">
+    <div class="flex space-x-2 lg:hidden items-center bg-blue-200 mt-2">
       <LinkButton
-        class="ml-auto w-1/2 max-w-xs"
+        :expired="expired"
+        class="ml-auto w-1/2 sm:max-w-xs"
         :link="deal.content.link.url"
         v-if="deal.content.link"
       >
         Zum Angebot
       </LinkButton>
       <coupon-button
-        class="max-w-xs"
+        class="w-1/2 sm:max-w-xs"
         v-if="deal.content.coupon_code"
         :coupon_code="deal.content.coupon_code"
       ></coupon-button>
@@ -195,6 +179,9 @@ export default {
     },
   },
   computed: {
+    expired() {
+      return new Date() > new Date(this.deal.content.expired)
+    },
     price() {
       return this.deal.content.price.toString().replace('.', ',')
     },

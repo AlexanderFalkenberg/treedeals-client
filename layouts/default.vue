@@ -1,8 +1,8 @@
 <template>
-  <div class="relative subpixel-antialiased min-h-screen flex flex-col">
+  <div class="relative min-h-screen flex flex-col">
     <IndexNav />
     <Nuxt />
-    <TheFooter class="mt-auto" />
+    <TheFooter />
   </div>
 </template>
 
@@ -49,13 +49,12 @@ export default {
 .page-leave-active {
   transition-property: opacity;
   transition-timing-function: ease-in-out;
-  transition-duration: 300ms;
+  transition-duration: 400ms;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
 }
-
 /*!
  * Web Fonts from Fontspring.com
  *

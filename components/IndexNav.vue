@@ -1,22 +1,15 @@
 <template>
-  <!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ]
-  }
-  ```
--->
-  <header class="bg-white lg:shadow">
-    <div class="max-w-7xl mx-auto lg:px-8">
+  <header class="lg:shadow">
+    <div class="bg-gray-100">
+      <div
+        class="max-w-7xl px-2 sm:px-4 lg:px-8 text-xs font-bold mx-auto py-2 flex item-center justify-evenly"
+      >
+        <p>Für jeden vermittelten Deal wird ein Baum gepflanzt</p>
+        <p>Größtenteils nachhaltige Produkte</p>
+        <p>Schnäppchen, Deals und Angebote</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
       <div class="relative h-16 flex justify-between">
         <div class="relative z-10 px-2 flex">
           <div class="flex-shrink-0 flex items-center">
@@ -113,9 +106,7 @@
           Calendar
         </a>
       </nav> -->
-      <div class="w-full lg:hidden">
-        <SearchBox :search="fetchSuggestions" />
-      </div>
+      <div class="w-full lg:hidden"></div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
@@ -127,91 +118,14 @@
     >
       <div class="pt-2 pb-3 px-2 space-y-1 text-green∂-900">
         <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" -->
-        <a
-          href="#"
-          class="bg-gray-100 block rounded-md py-2 px-3 text-base font-medium"
-          aria-current="page"
-          >Deal einreichen</a
-        >
-
-        <a
-          href="#"
-          class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium"
-          >Team</a
-        >
-
-        <a
-          href="#"
-          class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium"
-          >Projects</a
-        >
-
-        <a
-          href="#"
-          class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium"
-          >Calendar</a
-        >
-      </div>
-      <div class="border-t border-gray-200 pt-4 pb-3">
-        <div class="px-4 flex items-center">
-          <div class="flex-shrink-0">
-            <img
-              class="h-10 w-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=o5hV0Qxnus&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
-          </div>
-          <div class="ml-3">
-            <div class="text-base font-medium text-gray-800">Tom Cook</div>
-            <div class="text-sm font-medium text-gray-500">tom@example.com</div>
-          </div>
-          <button
-            class="ml-auto flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span class="sr-only">View notifications</span>
-            <!-- Heroicon name: outline/bell -->
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-3 px-2 space-y-1">
-          <a
-            href="#"
-            class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-            >Your Profile</a
-          >
-
-          <a
-            href="#"
-            class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-            >Settings</a
-          >
-
-          <a
-            href="#"
-            class="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
-            >Sign out</a
-          >
-        </div>
+        <IndexSidenav class="flex justify-between font-display py-2" />
       </div>
     </nav>
   </header>
 </template>
 
 <script>
+import IndexSidenav from './IndexSidenav.vue'
 import TheLogo from './TheLogo.vue'
 
 export default {

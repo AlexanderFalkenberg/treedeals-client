@@ -2,13 +2,16 @@
   <main
     v-if="deal.content"
     v-editable="deal"
-    class="container mx-auto px-2 sm:px-4 lg:px-8"
+    class="w-full px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto"
   >
-    <div class="flex mx-auto mt-8">
-      <div v-if="deal.content.gallery" class="flex justify-end">
+    <div class="lg:flex max-w-5xl mx-auto">
+      <div
+        v-if="deal.content.gallery"
+        class="flex flex-col sm:flex-row justify-center my-8"
+      >
         <div
           v-if="deal.content.gallery.length > 1"
-          class="flex flex-col justify-start space-y-4 mr-4"
+          class="flex flex-row sm:flex-col justify-between items-center sm:justify-start mt-4 sm:mt-0 sm:space-y-4 md:mr-4 order-last sm:order-first"
         >
           <button
             v-for="(image, index) in deal.content.gallery.slice(0, 3)"
@@ -29,9 +32,15 @@
           </button>
         </div>
         <div>
-          <div class="w-96 h-100 bg-gray-100" v-if="deal.content">
+          <div
+            class="md:w-96 md:h-100 bg-gray-100 relative"
+            v-if="deal.content"
+          >
             <img
-              class="w-96 h-100"
+              :style="[
+                expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
+              ]"
+              class="sm:w-96 sm:h-100"
               :src="
                 transformImage(
                   deal.content.gallery[currentIndex].filename,
@@ -44,46 +53,33 @@
         </div>
       </div>
 
-      <div class="flex self-stretch flex-1">
+      <div class="flex self-stretch flex-1 mt-8">
         <div class="px-4 w-full">
-          <div class="flex items-center mb-8">
+          <Labels :deal="deal" />
+          <div class="sm:my-12">
             <span
-              v-if="deal.content.sustainable"
-              class="inline-flex justify-center mr-2 items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
+              v-if="expired"
+              class="bg-gray-800 inline-block text-gray-200 font-display p-2 mb-2"
             >
-              Nachhaltig
+              Abgelaufen
             </span>
-
-            <span
-              v-if="deal.content.free_shipping"
-              class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white bg-gray-800 font-medium bg-gray-00 py-1 px-2"
+            <h1
+              :class="[
+                deal.content.expired ? 'text-gray-500' : 'text-gray-800',
+                'text-sm md:text-3xl  font-bold',
+              ]"
+              class="text-3xl lg:text-3xl font-bold"
             >
-              Kostenloser Versand
-            </span>
-
-            <div
-              class="ml-auto text-sm flex items-center space-x-2 text-gray-500"
-            >
-              <span>{{ timeago }} veröffentlicht in</span>
-              <div class="flex space-x-1">
-                <span
-                  class="text-white py-1 bg-gray-800 text-xs px-2 rounded-full"
-                  v-for="category in deal.content.categories"
-                  :key="category.uuid"
-                >
-                  <nuxt-link :to="'/' + category.full_slug">{{
-                    category.name
-                  }}</nuxt-link></span
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <h1 class="text-3xl lg:text-3xl font-bold">
               {{ deal.name }}
             </h1>
-            <p>{{ deal.content.intro }}</p>
+            <p
+              :class="[
+                deal.content.expired ? 'text-gray-500' : 'text-gray-800',
+                '',
+              ]"
+            >
+              {{ deal.content.intro }}
+            </p>
           </div>
 
           <div
@@ -94,7 +90,7 @@
               <span
                 :class="[
                   deal.content.expired ? 'text-gray-500' : 'text-green-500',
-                  'text-sm md:text-3xl  font-bold',
+                  'text-xl sm:text-2xl md:text-3xl  font-bold',
                 ]"
                 >{{ price }}€</span
               >
@@ -118,31 +114,40 @@
             </div>
           </div>
 
-          <div class="flex space-x-4 mt-4">
+          <div
+            class="flex-1 md:flex items-center space-y-4 sm:space-y-0 space-x-0 sm:space-x-2 my-12"
+          >
             <coupon-button
-              class="max-w-xs"
+              class="w-full md:max-w-xs"
               v-if="deal.content.coupon_code"
               :coupon_code="deal.content.coupon_code"
             ></coupon-button>
             <LinkButton
-              class="max-w-xs"
+              :expired="expired"
+              class="w-full md:max-w-xs"
               :link="deal.content.link.url"
               v-if="deal.content.link"
             >
               Zum Angebot
             </LinkButton>
+
+            <!--  <div @click="openSocial" class="p-3 bg-gray-200 text-gray-600">
+              <div class="">
+                <SocialLinks />
+              </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
 
-    <section class="mx-auto max-w-4xl">
+    <section class="mx-auto mt-12 sm:mt-0 max-w-4xl">
       <div v-if="deal.content.update">
         <div
-          class="flex items-center bg-gray-100 text-xs md:text-sm mt-2 mx-8"
+          class="flex items-center bg-gray-100 text-xs md:text-sm mt-2 lg:mx-8"
           v-if="deal.content.update.length > 1"
         >
-          <p class="p-3 flex-1">{{ deal.content.update }}</p>
+          <p class="p-4 flex-1">{{ deal.content.update }}</p>
           <div
             class="bg-gray-200 self-stretch items-center inline-flex px-3 ml-auto"
           >
@@ -164,7 +169,7 @@
         </div>
       </div>
 
-      <div v-if="deal.content.html" class="html p-4 mx-8">
+      <div v-if="deal.content.html" class="html md:p-4 lg:mx-8">
         <rich-text-renderer :document="deal.content.html" />
       </div>
     </section>
@@ -175,19 +180,25 @@
 import TimeAgo from 'javascript-time-ago'
 import de from 'javascript-time-ago/locale/de'
 import { ContentLoader } from 'vue-content-loader'
+import SocialLinks from '~/components/SocialLinks.vue'
 
 export default {
   components: {
     ContentLoader,
+    SocialLinks,
   },
   data() {
     return {
+      openSocial: false,
       currentIndex: 0,
       deal: {},
       meta: {},
     }
   },
   methods: {
+    url() {
+      return this.$nuxt.context.env.baseUrl
+    },
     current(index) {
       this.currentIndex = index
     },
@@ -202,6 +213,8 @@ export default {
   },
 
   mounted() {
+    console.log(window.location.href)
+
     /*  this.$storybridge.resolveRelations(['relation'], (event) => {
       console.log(event.story.content)
       this.deal = event.story.content
@@ -240,7 +253,7 @@ export default {
       )}`
     },
     expired() {
-      return false
+      return new Date() > new Date(this.deal.content.expired)
     },
   },
   async fetch() {

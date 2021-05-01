@@ -8,13 +8,9 @@
     /> -->
 
     <div class="grid grid-cols-12">
-      <div class="hidden md:col-span-3 lg:col-span-2 text-gray-600">
-        <div class="font-display px-2 mb-2">Kategorien</div>
+      <div class="hidden lg:block md:col-span-3 lg:col-span-2">
         <IndexSidenav />
       </div>
-      <!--      <template v-else-if="!$fetchState.error">
-        <p>{{ $fetchState.error.message }}</p>
-      </template> -->
       <template>
         <div class="col-span-12 md:col-span-9 lg:col-span-8">
           <template v-if="$fetchState.pending">
@@ -85,8 +81,8 @@ export default {
       })
     })
   },
+  fetchDealy: 500,
   fetchKey: 'Index',
-  fetchDelay: 500,
   async fetch() {
     let version =
       this.$nuxt.context.query._storyblok || this.$nuxt.context.isDev
@@ -97,7 +93,7 @@ export default {
       .get(`cdn/stories`, {
         starts_with: 'de/deals',
         version: version,
-        per_page: 5,
+        per_page: 7,
         page: this.currentPage,
       })
       .then((res) => {

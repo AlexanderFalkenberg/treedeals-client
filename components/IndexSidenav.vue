@@ -1,20 +1,54 @@
 <template>
-  <nav>
-    <ul class="flex flex-wrap">
-      <li class="" v-for="tag in tags" :key="tag.id">
-        <nuxt-link class="pb-2 pr-2" :to="'/' + tag.full_slug">{{
-          tag.name
-        }}</nuxt-link>
-      </li>
-    </ul>
-  </nav>
+  <div class="px-2">
+    <h2 class="text-2xl font-display mb-2">Kategorien</h2>
+    <template v-if="$fetchState.pending">
+      <content-loader
+        v-for="p in 15"
+        class="mb-4"
+        :key="p"
+        :width="120"
+        :height="16"
+        :speed="2"
+        primaryColor="#f3f3f3"
+        secondaryColor="#ecebeb"
+      >
+        <rect
+          x="0"
+          y="0"
+          rx="0"
+          ry="0"
+          width="85"
+          height="16"
+        /> </content-loader
+    ></template>
+    <template else>
+      <nav class="w-full">
+        <ul>
+          <li v-for="category in categories" :key="category.uid">
+            <nuxt-link class="block pb-2 pr-2" :to="'/' + category.full_slug">{{
+              category.name
+            }}</nuxt-link>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-4">
+        <h2 class="mb-1">Informationen</h2>
+        <ul class="space-y-1">
+          <li><nuxt-link to="/impressum">Impressum</nuxt-link></li>
+          <li><nuxt-link to="/datenschutz">Datenschutz</nuxt-link></li>
+        </ul>
+      </nav>
+    </template>
+  </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
-      tags: [],
+      categories: [],
     }
   },
   async fetch() {
@@ -42,7 +76,13 @@ export default {
         }
       })
 
-    this.tags = response.stories
+    this.setCategories(response.stories)
+    this.categories = response.stories
+  },
+  methods: {
+    ...mapMutations({
+      setCategories: 'categories/SET_CATEGORIES',
+    }),
   },
 }
 </script>

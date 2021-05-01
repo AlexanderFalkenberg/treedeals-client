@@ -43,6 +43,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'vue-social-sharing/nuxt',
     '@nuxtjs/auth-next',
     [
       'storyblok-nuxt',
