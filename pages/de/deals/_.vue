@@ -59,25 +59,20 @@
           <div class="sm:my-12">
             <span
               v-if="expired"
-              class="bg-gray-800 inline-block text-gray-200 font-display p-2 mb-2"
+              class="bg-gray-800 inline-block text-white font-display p-2 mb-2"
             >
               Abgelaufen
             </span>
             <h1
               :class="[
-                deal.content.expired ? 'text-gray-500' : 'text-gray-800',
+                expired ? 'text-gray-500' : 'text-gray-800',
                 'text-sm md:text-3xl  font-bold',
               ]"
               class="text-3xl lg:text-3xl font-bold"
             >
               {{ deal.name }}
             </h1>
-            <p
-              :class="[
-                deal.content.expired ? 'text-gray-500' : 'text-gray-800',
-                '',
-              ]"
-            >
+            <p :class="[expired ? 'text-gray-500' : 'text-gray-800', '']">
               {{ deal.content.intro }}
             </p>
           </div>
@@ -89,7 +84,7 @@
             <div class="space-x-2">
               <span
                 :class="[
-                  deal.content.expired ? 'text-gray-500' : 'text-green-500',
+                  expired ? 'text-gray-500' : 'text-green-500',
                   'text-xl sm:text-2xl md:text-3xl  font-bold',
                 ]"
                 >{{ price }}€</span
@@ -305,6 +300,11 @@ export default {
 
   p {
     @apply mb-4;
+  }
+
+  b,
+  strong {
+    @apply font-bold;
   }
 
   a {

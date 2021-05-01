@@ -21,7 +21,7 @@
           height="16"
         /> </content-loader
     ></template>
-    <template else>
+    <template v-else>
       <nav class="w-full">
         <ul>
           <li v-for="category in categories" :key="category.uid">

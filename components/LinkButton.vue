@@ -8,7 +8,10 @@
     :href="!expired ? link : ''"
   >
     <span class="py-3 px-2 md:px-3">
-      <slot></slot>
+      <template v-if="!expired">
+        <slot></slot>
+      </template>
+      <template v-else>abgelaufen</template>
     </span>
     <span
       :class="[

@@ -33,33 +33,24 @@
           class="block truncate text-gray-700 hover:text-main hover:bg-gray-100 px-2 py-2"
         >
           <div class="flex items-center">
-            <img
-              v-if="suggestion.content.gallery"
-              class="w-16 h-16 mr-2"
-              :src="
-                transformImage(suggestion.content.gallery[0].filename, '50x50')
-              "
-              :alt="suggestion.content.gallery[0].alt"
-            />
+            <div class="w-16 h-16 bg-gray-100 mr-2">
+              <img
+                v-if="suggestion.content.gallery"
+                class="w-16 h-16 mr-2"
+                :src="
+                  transformImage(
+                    suggestion.content.gallery[0].filename,
+                    '50x50'
+                  )
+                "
+                :alt="suggestion.content.gallery[0].alt"
+              />
+            </div>
             <div>
               <p
-                class="inline-flex justify-between items-center font-display text-gray-800"
+                class="inline-flex justify-between items-center font-display text-gray-800 line-clamp-1"
               >
                 {{ suggestion.name }}
-                <span class="flex items-center space-x-1 mb-1">
-                  <span
-                    v-if="suggestion.content.sustainable"
-                    class="mx-2 inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-medium text-white bg-green-600 py-1 px-2"
-                  >
-                    Nachhaltig
-                  </span>
-                  <span
-                    v-if="suggestion.content.free_shipping"
-                    class="mx-2 inline-flex justify-center items-center md:h-auto md:w-auto text-xs text-white font-medium bg-gray-800 py-1 px-2"
-                  >
-                    Kostenloser Versand
-                  </span>
-                </span>
               </p>
               <p v-if="suggestion.content.price">
                 <span
