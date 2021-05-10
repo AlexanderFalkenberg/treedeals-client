@@ -37,7 +37,7 @@
         <template v-else-if="!$fetchState.error">
           <div v-for="(deal, i) in deals" :key="deal._uid" class="">
             <DealTeaser
-              :deal="deal"
+              :data="deal"
               v-observe-visibility="
                 i === deals.length - 1 ? lazyLoadArticles : false
               "
