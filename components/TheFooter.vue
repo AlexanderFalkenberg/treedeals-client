@@ -1,9 +1,9 @@
 <template>
-  <footer class="mt-auto bg-gray-800">
-    <div class="max-w-7xl mx-auto flex space-x-8 px-2 sm:px-4 lg:px-8 py-8">
+  <footer class="mt-auto bg-gray-800 px-2 sm:px-4 lg:px-10">
+    <div class="max-w-7xl mx-auto flex space-x-8 py-8">
       <div class="">
         <h2 class="text-gray-400">Top Kategorien</h2>
-        <nav class="flex flex-wrap text-gray-100 max-w-md">
+        <nav class="flex text-sm flex-wrap text-gray-100 max-w-md">
           <div class="pr-3" v-for="category in categories" :key="category.uid">
             <nuxt-link :to="'/' + category.full_slug">{{
               category.name

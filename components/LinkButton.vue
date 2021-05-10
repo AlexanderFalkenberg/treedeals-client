@@ -2,12 +2,14 @@
   <a
     v-if="link"
     :class="[
-      expired ? 'bg-gray-300 ' : 'bg-green-700 text-white',
-      'relative w-full min-w-buttontext-white tracking-wider  uppercase  focus:outline-none focus:shadow-outline-green active:bg-green-400 focus:ring-2 focus:ring-offset-0 focus:ring-green-100 inline-flex items-center whitespace-nowrap font-bold text-sm transition duration-150 ease-in-out',
+      expired
+        ? 'bg-gray-300  focus:outline-none'
+        : 'bg-green-700 text-white focus:outline-none focus:shadow-outline-green active:bg-green-400 focus:ring-2 focus:ring-offset-0 focus:ring-green-100',
+      'relative w-full min-w-button text-white tracking-wider uppercase inline-flex items-center whitespace-nowrap font-bold text-sm transition duration-150 ease-in-out',
     ]"
     :href="!expired ? link : ''"
   >
-    <span class="py-3 px-2 md:px-3">
+    <span class="py-3 px-4 md:px-6">
       <template v-if="!expired">
         <slot></slot>
       </template>

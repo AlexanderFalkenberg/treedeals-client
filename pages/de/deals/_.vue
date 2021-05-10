@@ -1,27 +1,29 @@
 <template>
   <main
-    v-if="deal.content"
+    v-if="deal"
     v-editable="deal"
     class="w-full px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto"
   >
-    <div class="lg:flex max-w-5xl mx-auto">
+    <div
+      class="flex flex-col items-center lg:flex-row max-w-5xl mx-auto space-x-2"
+    >
       <div
-        v-if="deal.content.gallery"
+        v-if="deal.gallery"
         class="flex flex-col sm:flex-row justify-center my-8"
       >
         <div
-          v-if="deal.content.gallery.length > 1"
-          class="flex flex-row sm:flex-col justify-between items-center sm:justify-start mt-4 sm:mt-0 sm:space-y-4 md:mr-4 order-last sm:order-first"
+          v-if="deal.gallery.length > 1"
+          class="mx-auto flex flex-row sm:flex-col justify-start items-center sm:justify-start mt-4 sm:mt-0 space-x-4 sm:space-x-0 sm:space-y-4 sm:mr-4 order-last sm:order-first"
         >
           <button
-            v-for="(image, index) in deal.content.gallery.slice(0, 3)"
+            v-for="(image, index) in deal.gallery.slice(0, 3)"
             :key="image.id"
             class="focus:outline-none block"
             @mouseover="current(index)"
           >
-            <div class="bg-gray-100 w-20 h-28">
+            <div class="w-20 h-28 flex">
               <img
-                class="w-20 h-28"
+                class="w-20 h-28 bg-gray-100"
                 :style="[
                   expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
                 ]"
@@ -33,21 +35,21 @@
         </div>
         <div>
           <div
-            class="md:w-96 md:h-100 bg-gray-100 relative"
-            v-if="deal.content"
+            class="md:w-96 md:h-100 relative flex justify-center"
+            v-if="deal"
           >
             <img
               :style="[
                 expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
               ]"
-              class="sm:w-96 sm:h-100"
+              class="sm:w-96 sm:h-100 bg-gray-100"
               :src="
                 transformImage(
-                  deal.content.gallery[currentIndex].filename,
+                  deal.gallery[currentIndex].filename,
                   '384x480/smart'
                 )
               "
-              :alt="deal.content.gallery[currentIndex].alt"
+              :alt="deal.gallery[currentIndex].alt"
             />
           </div>
         </div>
@@ -70,15 +72,15 @@
               ]"
               class="text-3xl lg:text-3xl font-bold"
             >
-              {{ deal.name }}
+              {{ title }}
             </h1>
             <p :class="[expired ? 'text-gray-500' : 'text-gray-800', '']">
-              {{ deal.content.intro }}
+              {{ deal.intro }}
             </p>
           </div>
 
           <div
-            v-if="deal.content.price"
+            v-if="deal.price"
             class="flex flex-1 items-center justify-between"
           >
             <div class="space-x-2">
@@ -91,13 +93,13 @@
               >
 
               <span
-                v-if="deal.content.original_price"
+                v-if="deal.original_price"
                 class="text-gray-300 md:text-2xl line-through text-xs"
                 >{{ original_price }}€</span
               >
 
               <span
-                v-if="deal.content.original_price"
+                v-if="deal.original_price"
                 :class="[
                   expired
                     ? 'text-gray-600'
@@ -114,35 +116,29 @@
           >
             <coupon-button
               class="w-full md:max-w-xs"
-              v-if="deal.content.coupon_code"
-              :coupon_code="deal.content.coupon_code"
+              v-if="deal.coupon_code"
+              :coupon_code="deal.coupon_code"
             ></coupon-button>
             <LinkButton
               :expired="expired"
               class="w-full md:max-w-xs"
-              :link="deal.content.link.url"
-              v-if="deal.content.link"
+              :link="deal.link.url"
+              v-if="deal.link"
             >
               Zum Angebot
             </LinkButton>
-
-            <!--  <div @click="openSocial" class="p-3 bg-gray-200 text-gray-600">
-              <div class="">
-                <SocialLinks />
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
 
-    <section class="mx-auto mt-12 sm:mt-0 max-w-4xl">
-      <div v-if="deal.content.update">
+    <section class="mx-auto md:my-8 max-w-4xl">
+      <div v-if="deal.update">
         <div
           class="flex items-center bg-gray-100 text-xs md:text-sm mt-2 lg:mx-8"
-          v-if="deal.content.update.length > 1"
+          v-if="deal.update.length > 1"
         >
-          <p class="p-4 flex-1">{{ deal.content.update }}</p>
+          <p class="p-4 flex-1">{{ deal.update }}</p>
           <div
             class="bg-gray-200 self-stretch items-center inline-flex px-3 ml-auto"
           >
@@ -164,8 +160,8 @@
         </div>
       </div>
 
-      <div v-if="deal.content.html" class="html md:p-4 lg:mx-8">
-        <rich-text-renderer :document="deal.content.html" />
+      <div v-if="deal.html" class="html px-4 md:px-8">
+        <rich-text-renderer :document="deal.html" />
       </div>
     </section>
   </main>
@@ -186,9 +182,36 @@ export default {
     return {
       openSocial: false,
       currentIndex: 0,
-      deal: {},
+      data: {},
       meta: {},
     }
+  },
+  computed: {
+    title() {
+      return this.data.name ? this.data.name : false
+    },
+    deal() {
+      return this.data.content ? this.data.content : false
+    },
+    price() {
+      return this.data.content.price.toString().replace('.', ',')
+    },
+    original_price() {
+      return this.data.content.original_price.toString().replace('.', ',')
+    },
+    timeago() {
+      TimeAgo.addLocale(de)
+      const timeAgo = new TimeAgo('de-DE')
+      return timeAgo.format(new Date(this.data.published_at))
+    },
+    discount() {
+      return `-${Math.round(
+        (1 - this.deal.price / this.deal.original_price) * 100
+      )}`
+    },
+    expired() {
+      return new Date() > new Date(this.deal.expired)
+    },
   },
   methods: {
     url() {
@@ -206,15 +229,7 @@ export default {
       return imageService + option + path
     },
   },
-
   mounted() {
-    console.log(window.location.href)
-
-    /*  this.$storybridge.resolveRelations(['relation'], (event) => {
-      console.log(event.story.content)
-      this.deal = event.story.content
-    }) */
-
     this.$storybridge.on('input', (event) => {
       if (event.story.id === this.meta.id) {
         this.$storybridge.resolveRelations(['deal.categories'], (event) => {
@@ -230,34 +245,14 @@ export default {
       })
     })
   },
-  computed: {
-    price() {
-      return this.deal.content.price.toString().replace('.', ',')
-    },
-    original_price() {
-      return this.deal.content.original_price.toString().replace('.', ',')
-    },
-    timeago() {
-      TimeAgo.addLocale(de)
-      const timeAgo = new TimeAgo('de-DE')
-      return timeAgo.format(new Date(this.deal.published_at))
-    },
-    discount() {
-      return `-${Math.round(
-        (1 - this.deal.content.price / this.deal.content.original_price) * 100
-      )}`
-    },
-    expired() {
-      return new Date() > new Date(this.deal.content.expired)
-    },
-  },
+
   async fetch() {
     let version =
       this.$nuxt.context.query._storyblok || this.$nuxt.context.isDev
         ? 'draft'
         : 'published'
 
-    const deal = await this.$nuxt.context.app.$storyapi
+    const getData = await this.$nuxt.context.app.$storyapi
       .get(`cdn/stories${this.$nuxt.context.route.fullPath}`, {
         resolve_relations: 'deal.categories',
         version: version,
@@ -281,7 +276,7 @@ export default {
         }
       })
 
-    this.deal = deal.story
+    this.data = getData.story
   },
 }
 </script>

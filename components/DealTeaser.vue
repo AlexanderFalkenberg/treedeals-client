@@ -1,26 +1,19 @@
 <template>
   <article class="w-full mb-8" v-if="deal">
     <div class="leading-tight flex flex-1 items-stretch relative">
-      <nuxt-link :to="`/de/deals/${deal.slug}`">
+      <nuxt-link :to="`/de/deals/${slug}`">
         <div class="flex-shrink-0 mr-2 sm:block">
           <div
-            v-if="deal.content.gallery"
+            v-if="deal.gallery"
             class="h-20 w-20 bg-gray-200 md:w-32 md:h-32 lg:w-40 lg:h-40 relative flex items-center justify-center"
           >
             <img
               :style="[
-                deal.content.expired
-                  ? { filter: 'grayscale(100%)', opacity: '35%' }
-                  : {},
+                expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
               ]"
               class="object-cover"
-              :src="
-                transformImage(
-                  deal.content.gallery[0].filename,
-                  '160x160/smart'
-                )
-              "
-              :alt="deal.content.gallery[0].alt"
+              :src="transformImage(deal.gallery[0].filename, '160x160/smart')"
+              :alt="deal.gallery[0].alt"
             />
           </div>
         </div>
@@ -29,16 +22,16 @@
       <div class="md:flex md:flex-col flex-1 pl-0 relative self-stretch">
         <Labels class="mb-1" :deal="deal" />
 
-        <nuxt-link :to="`/de/deals/${deal.slug}`">
+        <nuxt-link :to="`/de/deals/${slug}`">
           <h3
-            :class="[deal.content.expired ? 'text-gray-500' : 'text-gray-800']"
+            :class="[expired ? 'text-gray-500' : 'text-gray-800']"
             class="sm:text-lg md:text-xl font-display line-clamp-1"
           >
-            {{ deal.name }}
+            {{ title }}
           </h3>
 
           <p class="line-clamp-2 text-gray-600 mb-1">
-            {{ deal.content.intro }}
+            {{ deal.intro }}
           </p>
 
           <!--       <div class="html">
@@ -50,29 +43,26 @@
             </div>
           </div> -->
 
-          <div
-            v-if="deal.content.price"
-            class="flex items-center justify-between"
-          >
+          <div v-if="deal.price" class="flex items-center justify-between">
             <div class="space-x-1">
               <span
                 :class="[
-                  deal.content.expired ? 'text-gray-500' : 'text-green-500',
+                  deal.expired ? 'text-gray-500' : 'text-green-500',
                   'text-sm sm:text-xl md:text-2xl font-bold',
                 ]"
                 >{{ price }}€</span
               >
 
               <span
-                v-if="deal.content.original_price"
+                v-if="deal.original_price"
                 class="text-gray-400 line-through text-xs md:text-xl"
                 >{{ original_price }}€</span
               >
 
               <span
-                v-if="deal.content.original_price"
+                v-if="deal.original_price"
                 :class="[
-                  deal.content.expired
+                  expired
                     ? 'text-gray-500'
                     : 'text-white bg-green-400 py-1 px-1.5',
                   'font-bold text-xs md:text-xl',
@@ -89,48 +79,50 @@
           <span class="text-xs text-gray-500"
             >{{ timeago }} veröffentlicht</span
           >
-
-          <div class="ml-auto flex justify-end w-2/3 space-x-2">
+          <div class="lg:flex ml-auto space-x-2">
             <LinkButton
               :expired="expired"
-              class="max-w-xs"
-              :link="deal.content.link.url"
-              v-if="deal.content.link"
+              class="max-w-xs min-w-button"
+              :link="deal.link.url"
+              v-if="deal.link"
             >
               Zum Angebot
             </LinkButton>
 
             <coupon-button
               class="max-w-xs"
-              v-if="deal.content.coupon_code"
-              :coupon_code="deal.content.coupon_code"
+              v-if="deal.coupon_code"
+              :coupon_code="deal.coupon_code"
             ></coupon-button>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex space-x-2 lg:hidden items-center bg-blue-200 mt-2">
+    <div
+      class="lg:hidden sm:flex justify-between items-center bg-blue-200 mt-2 space-y-2 sm:space-y-0"
+    >
+      <span class="text-xs text-gray-500">{{ timeago }} veröffentlicht</span>
       <LinkButton
         :expired="expired"
-        class="ml-auto w-1/2 sm:max-w-xs"
-        :link="deal.content.link.url"
-        v-if="deal.content.link"
+        class="sm:ml-auto sm:w-1/2 sm:max-w-xs"
+        :link="deal.link.url"
+        v-if="deal.link"
       >
         Zum Angebot
       </LinkButton>
       <coupon-button
-        class="w-1/2 sm:max-w-xs"
-        v-if="deal.content.coupon_code"
-        :coupon_code="deal.content.coupon_code"
+        class="sm:w-1/2 sm:max-w-xs"
+        v-if="deal.coupon_code"
+        :coupon_code="deal.coupon_code"
       ></coupon-button>
     </div>
 
-    <div v-if="deal.content.update">
+    <div v-if="deal.update">
       <div
         class="flex items-center bg-gray-100 text-xs md:text-sm mt-2"
-        v-if="deal.content.update.length > 1"
+        v-if="deal.update.length > 1"
       >
-        <p class="p-3 flex-1">{{ deal.content.update }}</p>
+        <p class="p-3 flex-1">{{ deal.update }}</p>
         <div
           class="bg-gray-200 ml-auto self-stretch items-center inline-flex px-3"
         >
@@ -162,7 +154,7 @@ import de from 'javascript-time-ago/locale/de'
 export default {
   components: { CouponButton },
   props: {
-    deal: {
+    data: {
       type: Object,
       required: true,
     },
@@ -179,27 +171,33 @@ export default {
     },
   },
   computed: {
+    slug() {
+      return this.data.slug ? this.data.slug : false
+    },
+    title() {
+      return this.data.name ? this.data.name : false
+    },
+    deal() {
+      return this.data.content ? this.data.content : false
+    },
     expired() {
-      return new Date() > new Date(this.deal.content.expired)
+      return new Date() > new Date(this.data.content.expired)
     },
     price() {
-      return this.deal.content.price.toString().replace('.', ',')
+      return this.data.content.price.toString().replace('.', ',')
     },
     original_price() {
-      return this.deal.content.original_price.toString().replace('.', ',')
+      return this.data.content.original_price.toString().replace('.', ',')
     },
     timeago() {
       TimeAgo.addLocale(de)
       const timeAgo = new TimeAgo('de-DE')
-      return timeAgo.format(new Date(this.deal.published_at))
+      return timeAgo.format(new Date(this.data.published_at))
     },
     discount() {
-      if (
-        parseInt(this.deal.content.original_price) >
-        parseInt(this.deal.content.price)
-      ) {
+      if (parseInt(this.deal.original_price) > parseInt(this.deal.price)) {
         return `-${Math.round(
-          (1 - this.deal.content.price / this.deal.content.original_price) * 100
+          (1 - this.deal.price / this.deal.original_price) * 100
         )}%`
       } else {
         return '<span class="text-red-500">Originalpreis muss größer sein als Preis</span>'

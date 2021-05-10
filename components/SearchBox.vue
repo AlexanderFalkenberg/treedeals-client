@@ -1,8 +1,8 @@
 <template>
-  <div class="relative w-full my-2">
+  <div class="relative w-full my-2 -mx-2">
     <!-- Magnifying glass icon -->
     <div
-      class="h-full absolute top-0 left-0 bg-green-800 text-white px-4 flex items-center border-green-900"
+      class="h-full absolute top-0 left-0 bg-green-800 text-white px-4 flex items-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@
       v-model="searchInput"
       @input="onInputChange"
       @blur="onInputBlur"
-      placeholder="Suchen.."
+      placeholder="Suchen"
       class="w-full border-t border-b lg:border-none lg:bg-gray-100 text-gray-700 outline-none focus:border-green-700 focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-700 pl-16 py-3"
     />
     <!-- Suggestions list -->
@@ -48,7 +48,7 @@
             </div>
             <div>
               <p
-                class="inline-flex justify-between items-center font-display text-gray-800 line-clamp-1"
+                class="inline-flex justify-between items-center font-display text-gray-800 line-cla"
               >
                 {{ suggestion.name }}
               </p>

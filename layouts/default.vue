@@ -3,6 +3,15 @@
     <IndexNav />
     <Nuxt />
     <TheFooter />
+    <transition>
+      <div
+        v-if="event.show"
+        class="fixed bottom-5 z-40 right-1/2 transform translate-x-1/2 px-6 py-3 rounded bg-green-500 text-white shadow-lg"
+      >
+        <span class="font-bold uppercase">{{ event.text }}</span> wurde in die
+        Zwischenablage kopiert
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -55,27 +64,4 @@ export default {
 .page-leave-to {
   opacity: 0;
 }
-/*!
- * Web Fonts from Fontspring.com
- *
- * All OpenType features and all extended glyphs have been removed.
- * Fully installable fonts can be purchased at http://www.fontspring.com
- *
- * The fonts included in this stylesheet are subject to the End User License you purchased
- * from Fontspring. The fonts are protected under domestic and international trademark and 
- * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
- * distributing this font software.
- *
- * (c) 2010-2021 Fontspring
- *
- *
- *
- *
- * The fonts included are copyrighted by the vendor listed below.
- *
- * Vendor:      Latinotype
- * License URL: https://www.fontspring.com/licenses/latinotype/webfont
- *
- *
- */
 </style>

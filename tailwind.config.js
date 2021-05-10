@@ -27,13 +27,14 @@ module.exports = {
     },
     extend: {
       minWidth: {
-        button: '9rem',
+        button: '13rem',
       },
       height: {
         100: '30rem',
       },
       width: {
         100: '30rem',
+        button: '10rem',
       },
       maxWidth: {
         auth: '25rem',
@@ -41,6 +42,10 @@ module.exports = {
         sm: '18rem',
         xl: '40rem',
       },
+      backgroundImage: (theme) => ({
+        hero:
+          "url('https://img2.storyblok.com/800x0/f/111247/1950x1300/70a5a1ca1b/photo-1516214104703-d870798883c5.jpeg')",
+      }),
     },
   },
   variants: {

@@ -67,7 +67,6 @@ export default {
       currentPage: 1,
       total: 0,
       deals: [],
-      story: {},
     }
   },
   mounted() {
@@ -126,7 +125,10 @@ export default {
   methods: {
     lazyLoadArticles(isVisible) {
       if (isVisible) {
-        if (this.currentPage < this.total / this.currentPage) {
+        if (
+          this.currentPage < this.total / this.currentPage + 1 &&
+          this.total > 7
+        ) {
           this.currentPage++
           this.$fetch()
         }

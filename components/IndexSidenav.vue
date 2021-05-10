@@ -1,6 +1,6 @@
 <template>
   <div class="px-2">
-    <h2 class="text-2xl font-display mb-2">Kategorien</h2>
+    <h2 class="text-2xlfont-display mb-2">Kategorien</h2>
     <template v-if="$fetchState.pending">
       <content-loader
         v-for="p in 15"
@@ -25,15 +25,17 @@
       <nav class="w-full">
         <ul>
           <li v-for="category in categories" :key="category.uid">
-            <nuxt-link class="block pb-2 pr-2" :to="'/' + category.full_slug">{{
-              category.name
-            }}</nuxt-link>
+            <nuxt-link
+              class="block pb-2 pr-2 text-sm"
+              :to="'/' + category.full_slug"
+              >{{ category.name }}</nuxt-link
+            >
           </li>
         </ul>
       </nav>
       <nav class="mt-4">
         <h2 class="mb-1">Informationen</h2>
-        <ul class="space-y-1">
+        <ul class="space-y-1 text-sm">
           <li><nuxt-link to="/impressum">Impressum</nuxt-link></li>
           <li><nuxt-link to="/datenschutz">Datenschutz</nuxt-link></li>
         </ul>
@@ -43,9 +45,13 @@
 </template>
 
 <script>
+import { ContentLoader } from 'vue-content-loader'
 import { mapMutations } from 'vuex'
 
 export default {
+  components: {
+    ContentLoader,
+  },
   data() {
     return {
       categories: [],

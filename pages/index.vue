@@ -1,12 +1,35 @@
 <template>
-  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 my-8">
+  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
     <!--  <component
       v-if="story.content.component"
       :key="story.content._uid"
       :blok="story.content"
       :is="story.content.component"
     /> -->
+    <div class="md:flex space-x-4 px-2 my-4">
+      <div
+        class="sm:bg-green-800 bg-hero-pattern bg-cover bg-left relative w-full md:w-5/12 sm:p-8 lg:py-20 overflow-hidden"
+      >
+        <div
+          class="relative z-40 h-full w-full text-green-800 sm:text-white items-center"
+        >
+          <h1
+            class="text-center sm:text-left tracking-wider leading-9 font-bold text-3xl lg:text-4xl subpixel-antialiased"
+          >
+            Die Schnäppchen-Plattform, die Bäume pflanzen lässt
+          </h1>
 
+          <p
+            class="text-center sm:text-left lg:text-lg mt-1 tracking-wider subpixel-antialiased"
+          >
+            Ein Stück nachhaltiger shoppen und sparen
+          </p>
+        </div>
+      </div>
+      <div
+        class="hidden md:block flex-1 bg-hero bg-cover bg-no-repeat self-stretch"
+      ></div>
+    </div>
     <div class="grid grid-cols-12">
       <div class="hidden lg:block md:col-span-3 lg:col-span-2">
         <IndexSidenav />
@@ -33,9 +56,9 @@
           </template>
 
           <template else>
-            <div v-for="(deal, i) in deals" :key="deal._uid" class="">
+            <div v-for="(deal, i) in deals" :key="deal._uid" class="px-2">
               <DealTeaser
-                :deal="deal"
+                :data="deal"
                 v-observe-visibility="
                   i === deals.length - 1 ? lazyLoadArticles : false
                 "
@@ -106,7 +129,10 @@ export default {
   methods: {
     lazyLoadArticles(isVisible) {
       if (isVisible) {
-        if (this.currentPage < this.total / this.currentPage) {
+        if (
+          this.currentPage < this.total / this.currentPage + 1 &&
+          this.total > 7
+        ) {
           this.currentPage++
           this.$fetch()
         }

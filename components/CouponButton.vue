@@ -1,10 +1,10 @@
 <template>
-  <div v-if="coupon_code" class="w-full relative">
+  <div v-if="coupon_code" class="min-w-button w-full relative">
     <CopyToClipboard :text="coupon_code" @copy="handleCopy">
       <button
         @mouseenter="showIcon = true"
         @mouseleave="showIcon = false"
-        class="w-full min-w-button tracking-wider uppercase bg-gray-100 hover:bg-gray-200 py-3 px-4 text-gray-700 text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
+        class="w-full tracking-wider uppercase bg-green-400 hover:bg-green-500 py-3 px-4 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
       >
         {{ coupon_code }}
         <span class="absolute left-0 transform">
@@ -12,7 +12,7 @@
         ></span>
 
         <div
-          class="absolute right-0 h-full inline-flex items-center px-3 bg-gray-200"
+          class="absolute right-0 h-full inline-flex items-center px-3 bg-green-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

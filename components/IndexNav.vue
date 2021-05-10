@@ -1,12 +1,14 @@
 <template>
-  <header class="lg:shadow">
-    <div class="bg-gray-100">
+  <header class="shadow">
+    <div class="bg-gray-100 border-b">
       <div
         class="max-w-7xl text-xs font-bold mx-auto py-2 flex item-center justify-between px-2 sm:px-4 lg:px-10 overflow-x-auto whitespace-nowrap space-x-4 text-center"
       >
-        <p>Für jeden vermittelten Deal lassen wir einen Baum pflanzen</p>
-        <p>Schnäppchen und Angebote</p>
-        <p>Große Zahl an preiswerten, nachhaltigen Produkten</p>
+        <p>
+          Für jeden erfolgreich vermittelten Deal leisten wir einen Beitrag zum
+          Umweltschutz
+        </p>
+        <p>Große Zahl an preiswerten und nachhaltigen Produkten</p>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
@@ -15,7 +17,13 @@
           <div class="flex-shrink-0 flex items-center">
             <TheLogo />
           </div>
+          <div
+            class="ml-8 fond-bold text-sm hidden lg:flex items-center space-x-3"
+          >
+            <div>So funktionierts</div>
+          </div>
         </div>
+
         <div class="hidden lg:block w-full max-w-lg">
           <SearchBox :search="fetchSuggestions" />
         </div>
@@ -24,7 +32,7 @@
           <button
             @click="openNav = !openNav"
             type="button"
-            class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            class="rounded-md p-2 inline-flex items-center justify-center text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-400"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
@@ -37,6 +45,7 @@
             Menu open: "hidden", Menu closed: "block"
           -->
             <svg
+              :class="{ hidden: openNav }"
               class="block h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -59,7 +68,8 @@
             Menu open: "block", Menu closed: "hidden"
           -->
             <svg
-              class="hidden h-6 w-6"
+              :class="{ hidden: !openNav }"
+              class="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -110,29 +120,37 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <nav
+    <div
       :class="{ hidden: !openNav }"
-      class="lg:hidden"
-      aria-label="Global"
-      id="mobile-menu"
+      class="lg:hidden pt-2 pb-4 px-4 sm:px-6 lg:px-10"
     >
-      <div class="pt-2 pb-3 px-2 space-y-1 text-green∂-900">
-        <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" -->
-        <IndexSidenav class="flex justify-between font-display py-2" />
-      </div>
-    </nav>
+      <h2 class="font-display text-xl mb-4">Kategorien</h2>
+      <nav class="grid grid-cols-2" aria-label="Global" id="mobile-menu">
+        <span v-for="category in categories" :key="category.uid">
+          <nuxt-link class="mb-4 inline-block" :to="'/' + category.full_slug">{{
+            category.name
+          }}</nuxt-link>
+        </span>
+      </nav>
+    </div>
   </header>
 </template>
 
 <script>
 import IndexSidenav from './IndexSidenav.vue'
 import TheLogo from './TheLogo.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
       openNav: false,
     }
+  },
+  computed: {
+    ...mapGetters({
+      categories: 'categories/categories',
+    }),
   },
   components: { TheLogo },
   methods: {
