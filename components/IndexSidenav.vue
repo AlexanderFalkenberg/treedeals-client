@@ -1,6 +1,6 @@
 <template>
   <div class="px-2">
-    <h2 class="text-2xlfont-display mb-2">Kategorien</h2>
+    <h2 class="text-xl text-green-800 font-display mb-2">Kategorien</h2>
     <template v-if="$fetchState.pending">
       <content-loader
         v-for="p in 15"
@@ -33,9 +33,12 @@
           </li>
         </ul>
       </nav>
-      <nav class="mt-4">
-        <h2 class="mb-1">Informationen</h2>
+      <nav class="mt-2">
+        <h2 class="text-xl text-green-800 font-display mb-1">Informationen</h2>
         <ul class="space-y-1 text-sm">
+          <li>
+            <nuxt-link to="/so-funktioniert-s">So funktioniert's</nuxt-link>
+          </li>
           <li><nuxt-link to="/impressum">Impressum</nuxt-link></li>
           <li><nuxt-link to="/datenschutz">Datenschutz</nuxt-link></li>
         </ul>

@@ -6,29 +6,29 @@
       :blok="story.content"
       :is="story.content.component"
     /> -->
-    <div class="md:flex space-x-4 px-2 my-4">
+    <div class="md:flex space-x-4 px-2 my-8 sm:my-4">
       <div
-        class="sm:bg-green-800 bg-hero-pattern bg-cover bg-left relative w-full md:w-5/12 sm:p-8 lg:py-20 overflow-hidden"
+        class="sm:bg-green-800 rounded bg-contain bg-left relative w-full sm:p-8 md:py-16 overflow-hidden"
       >
         <div
-          class="relative z-40 h-full w-full text-green-800 sm:text-white items-center"
+          class="relative z-20 h-full w-full text-green-800 sm:text-white items-center"
         >
           <h1
-            class="text-center sm:text-left tracking-wider leading-9 font-bold text-3xl lg:text-4xl subpixel-antialiased"
+            class="text-center tracking-wider leading-9 font-bold text-3xl lg:text-4xl subpixel-antialiased"
           >
             Die Schnäppchen-Plattform, die Bäume pflanzen lässt
           </h1>
 
           <p
-            class="text-center sm:text-left lg:text-lg mt-1 tracking-wider subpixel-antialiased"
+            class="text-center lg:text-xl mt-1 tracking-wider subpixel-antialiased"
           >
             Ein Stück nachhaltiger shoppen und sparen
           </p>
         </div>
+        <div
+          class="hidden sm:block bg-hero-pattern absolute w-full h-full top-0"
+        ></div>
       </div>
-      <div
-        class="hidden md:block flex-1 bg-hero bg-cover bg-no-repeat self-stretch"
-      ></div>
     </div>
     <div class="grid grid-cols-12">
       <div class="hidden lg:block md:col-span-3 lg:col-span-2">
@@ -54,7 +54,6 @@
               <rect x="530" y="140" rx="0" ry="0" width="180" height="50" />
             </content-loader>
           </template>
-
           <template else>
             <div v-for="(deal, i) in deals" :key="deal._uid" class="px-2">
               <DealTeaser
@@ -104,7 +103,6 @@ export default {
       })
     })
   },
-  fetchDealy: 500,
   fetchKey: 'Index',
   async fetch() {
     let version =
@@ -116,7 +114,7 @@ export default {
       .get(`cdn/stories`, {
         starts_with: 'de/deals',
         version: version,
-        per_page: 7,
+        per_page: 8,
         page: this.currentPage,
       })
       .then((res) => {
@@ -128,14 +126,15 @@ export default {
   },
   methods: {
     lazyLoadArticles(isVisible) {
-      if (isVisible) {
-        if (
-          this.currentPage < this.total / this.currentPage + 1 &&
-          this.total > 7
-        ) {
-          this.currentPage++
-          this.$fetch()
-        }
+      if (!isVisible || this.total < 8) {
+        return
+      }
+
+      console.log('Test')
+
+      if (this.currentPage < Math.ceil(this.total / 8) && this.total > 8) {
+        this.currentPage++
+        this.$fetch()
       }
     },
   },

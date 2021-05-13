@@ -15,6 +15,7 @@
         ></path>
       </svg>
     </div>
+
     <!-- Search Input -->
     <input
       v-model="searchInput"
@@ -25,7 +26,7 @@
     />
     <!-- Suggestions list -->
     <div class="relative">
-      <div class="absolute z-30 bg-white top-1 inset-x-0 shadow-lg mt-1">
+      <div class="absolute z-40 bg-white top-1 inset-x-0 shadow-lg mt-1">
         <nuxt-link
           v-for="suggestion in suggestions"
           :key="suggestion.id"

@@ -1,6 +1,6 @@
 <template>
   <header class="shadow">
-    <div class="bg-gray-100 border-b">
+    <div class="bg-gray-100">
       <div
         class="max-w-7xl text-xs font-bold mx-auto py-2 flex item-center justify-between px-2 sm:px-4 lg:px-10 overflow-x-auto whitespace-nowrap space-x-4 text-center"
       >
@@ -11,7 +11,7 @@
         <p>Große Zahl an preiswerten und nachhaltigen Produkten</p>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 border-b md:border-0">
       <div class="relative h-16 flex justify-between">
         <div class="relative z-10 px-2 flex">
           <div class="flex-shrink-0 flex items-center">
@@ -20,7 +20,9 @@
           <div
             class="ml-8 fond-bold text-sm hidden lg:flex items-center space-x-3"
           >
-            <div>So funktionierts</div>
+            <div>
+              <nuxt-link to="/so-funktioniert-s">So funktioniert's</nuxt-link>
+            </div>
           </div>
         </div>
 
@@ -122,9 +124,9 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div
       :class="{ hidden: !openNav }"
-      class="lg:hidden pt-2 pb-4 px-4 sm:px-6 lg:px-10"
+      class="lg:hidden pb-4 px-4 sm:px-6 lg:px-10"
     >
-      <h2 class="font-display text-xl mb-4">Kategorien</h2>
+      <h2 class="font-display text-green-800 text-xl mb-4 mt-8">Kategorien</h2>
       <nav class="grid grid-cols-2" aria-label="Global" id="mobile-menu">
         <span v-for="category in categories" :key="category.uid">
           <nuxt-link class="mb-4 inline-block" :to="'/' + category.full_slug">{{

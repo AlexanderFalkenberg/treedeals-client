@@ -12,7 +12,7 @@
                 expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
               ]"
               class="object-cover"
-              :src="transformImage(deal.gallery[0].filename, '160x160/smart')"
+              :src="transformImage(deal.gallery[0].filename, '220x220/smart')"
               :alt="deal.gallery[0].alt"
             />
           </div>
@@ -20,11 +20,11 @@
       </nuxt-link>
 
       <div class="md:flex md:flex-col flex-1 pl-0 relative self-stretch">
-        <Labels class="mb-1" :deal="deal" />
+        <Labels class="mb-1 mt-auto" :deal="deal" />
 
         <nuxt-link :to="`/de/deals/${slug}`">
           <h3
-            :class="[expired ? 'text-gray-500' : 'text-gray-800']"
+            :class="[expired ? 'text-gray-500' : 'text-green-800']"
             class="sm:text-lg md:text-xl font-display line-clamp-1"
           >
             {{ title }}
@@ -64,7 +64,7 @@
                 :class="[
                   expired
                     ? 'text-gray-500'
-                    : 'text-white bg-green-400 py-1 px-1.5',
+                    : 'text-white bg-green-400 py-1 px-2',
                   'font-bold text-xs md:text-xl',
                 ]"
                 v-html="discount"
@@ -74,9 +74,9 @@
         </nuxt-link>
 
         <div
-          class="hidden mt-auto mr-auto w-full lg:flex justify-between items-center"
+          class="hidden mt-3 mr-auto w-full lg:flex justify-between items-center"
         >
-          <span class="text-xs text-gray-500"
+          <span v-if="timeago" class="text-xs text-gray-500"
             >{{ timeago }} veröffentlicht</span
           >
           <div class="lg:flex ml-auto space-x-2">
@@ -90,7 +90,7 @@
             </LinkButton>
 
             <coupon-button
-              class="max-w-xs"
+              class="max-w-xs ml-auto"
               v-if="deal.coupon_code"
               :coupon_code="deal.coupon_code"
             ></coupon-button>
@@ -99,9 +99,11 @@
       </div>
     </div>
     <div
-      class="lg:hidden sm:flex justify-between items-center bg-blue-200 mt-2 space-y-2 sm:space-y-0"
+      class="lg:hidden sm:flex justify-between items-center mt-4 space-y-2 sm:space-y-0"
     >
-      <span class="text-xs text-gray-500">{{ timeago }} veröffentlicht</span>
+      <span v-if="timeago" class="text-xs text-gray-500"
+        >{{ timeago }} veröffentlicht</span
+      >
       <LinkButton
         :expired="expired"
         class="sm:ml-auto sm:w-1/2 sm:max-w-xs"
@@ -111,7 +113,7 @@
         Zum Angebot
       </LinkButton>
       <coupon-button
-        class="sm:w-1/2 sm:max-w-xs"
+        class="sm:w-1/2 sm:max-w-xs ml-auto"
         v-if="deal.coupon_code"
         :coupon_code="deal.coupon_code"
       ></coupon-button>
@@ -192,7 +194,9 @@ export default {
     timeago() {
       TimeAgo.addLocale(de)
       const timeAgo = new TimeAgo('de-DE')
-      return timeAgo.format(new Date(this.data.published_at))
+      return this.data.published_at
+        ? timeAgo.format(new Date(this.data.published_at))
+        : false
     },
     discount() {
       if (parseInt(this.deal.original_price) > parseInt(this.deal.price)) {

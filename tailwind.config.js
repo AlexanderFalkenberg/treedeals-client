@@ -1,3 +1,4 @@
+const { green } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -45,6 +46,18 @@ module.exports = {
       backgroundImage: (theme) => ({
         hero:
           "url('https://img2.storyblok.com/800x0/f/111247/1950x1300/70a5a1ca1b/photo-1516214104703-d870798883c5.jpeg')",
+      }),
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            h1: {
+              color: theme('colors.green.800'),
+            },
+            a: {
+              color: theme('colors.green.500'),
+            },
+          },
+        },
       }),
     },
   },
