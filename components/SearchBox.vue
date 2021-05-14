@@ -2,7 +2,7 @@
   <div class="relative w-full my-2 -mx-2">
     <!-- Magnifying glass icon -->
     <div
-      class="h-full absolute top-0 left-0 bg-green-800 text-white px-4 flex items-center"
+      class="h-full absolute top-0 left-0 rounded-l bg-green-800 text-white px-4 flex items-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
       @input="onInputChange"
       @blur="onInputBlur"
       placeholder="Suchen"
-      class="w-full border-t border-b lg:border-none lg:bg-gray-100 text-gray-700 outline-none focus:border-green-700 focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-700 pl-16 py-3"
+      class="w-full border-t border-b rounded-r lg:border-none lg:bg-gray-100 text-gray-700 outline-none focus:border-green-700 focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-700 pl-16 py-3"
     />
     <!-- Suggestions list -->
     <div class="relative">

@@ -11,7 +11,7 @@
               :style="[
                 expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
               ]"
-              class="object-cover"
+              class="object-cover rounded"
               :src="transformImage(deal.gallery[0].filename, '220x220/smart')"
               :alt="deal.gallery[0].alt"
             />
@@ -48,7 +48,7 @@
               <span
                 :class="[
                   deal.expired ? 'text-gray-500' : 'text-green-500',
-                  'text-sm sm:text-xl md:text-2xl font-bold',
+                  'text-sm sm:text-xl md:text-2xl font-bold ',
                 ]"
                 >{{ price }}€</span
               >
@@ -65,7 +65,7 @@
                   expired
                     ? 'text-gray-500'
                     : 'text-white bg-green-400 py-1 px-2',
-                  'font-bold text-xs md:text-xl',
+                  'font-bold text-xs md:text-xl rounded',
                 ]"
                 v-html="discount"
               ></span>
@@ -76,7 +76,7 @@
         <div
           class="hidden mt-3 mr-auto w-full lg:flex justify-between items-center"
         >
-          <span v-if="timeago" class="text-xs text-gray-500"
+          <span v-if="timeago" class="md:hidden xl:block text-xs text-gray-500"
             >{{ timeago }} veröffentlicht</span
           >
           <div class="lg:flex ml-auto space-x-2">
@@ -86,7 +86,7 @@
               :link="deal.link.url"
               v-if="deal.link"
             >
-              Zum Angebot
+              Zum Deal
             </LinkButton>
 
             <coupon-button

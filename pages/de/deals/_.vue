@@ -104,7 +104,7 @@
                   expired
                     ? 'text-gray-600'
                     : 'text-white bg-green-400 py-1.5 px-2',
-                  'font-bold text-xs md:text-2xl',
+                  'font-bold text-xs md:text-2xl rounded',
                 ]"
                 >{{ discount }}%</span
               >

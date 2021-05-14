@@ -1,9 +1,11 @@
 <template>
-  <footer class="mt-auto bg-gray-800 px-2 sm:px-4 lg:px-10">
-    <div class="max-w-7xl mx-auto flex space-x-8 py-8">
+  <footer class="mt-auto bg-gray-800">
+    <div
+      class="container max-w-7xl mx-auto flex space-x-8 py-8 px-2 sm:px-4 lg:px-10"
+    >
       <div class="">
-        <h2 class="text-gray-400">Top Kategorien</h2>
-        <nav class="flex text-sm flex-wrap text-gray-100 max-w-md">
+        <h2 class="text-gray-100">Top Kategorien</h2>
+        <nav class="text-sm grid grid-cols-2 gap-2 text-gray-100">
           <div class="pr-3" v-for="category in categories" :key="category.uid">
             <nuxt-link :to="'/' + category.full_slug">{{
               category.name
@@ -11,10 +13,13 @@
           </div>
         </nav>
       </div>
-      <div class="space-y-2 text-gray-200">
+      <div class="space-y-2 text-gray-100">
         <nav>
-          <h2 class="text-gray-400">Informationen</h2>
-          <ul class="text-sm space-y-1">
+          <h2 class="text-gray-100">Informationen</h2>
+          <ul class="text-sm space-y-2">
+            <li>
+              <nuxt-link to="/about">So funktioniert's</nuxt-link>
+            </li>
             <li><nuxt-link to="/impressum">Impressum</nuxt-link></li>
             <li><nuxt-link to="/datenschutz">Datenschutz</nuxt-link></li>
           </ul>

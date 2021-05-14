@@ -21,7 +21,7 @@
             class="ml-8 fond-bold text-sm hidden lg:flex items-center space-x-3"
           >
             <div>
-              <nuxt-link to="/so-funktioniert-s">So funktioniert's</nuxt-link>
+              <nuxt-link to="/about">So funktioniert's</nuxt-link>
             </div>
           </div>
         </div>

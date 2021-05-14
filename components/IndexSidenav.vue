@@ -37,7 +37,7 @@
         <h2 class="text-xl text-green-800 font-display mb-1">Informationen</h2>
         <ul class="space-y-1 text-sm">
           <li>
-            <nuxt-link to="/so-funktioniert-s">So funktioniert's</nuxt-link>
+            <nuxt-link to="/about">So funktioniert's</nuxt-link>
           </li>
           <li><nuxt-link to="/impressum">Impressum</nuxt-link></li>
           <li><nuxt-link to="/datenschutz">Datenschutz</nuxt-link></li>

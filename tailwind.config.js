@@ -53,6 +53,9 @@ module.exports = {
             h1: {
               color: theme('colors.green.800'),
             },
+            h2: {
+              color: theme('colors.green.800'),
+            },
             a: {
               color: theme('colors.green.500'),
             },

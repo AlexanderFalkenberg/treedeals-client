@@ -14,9 +14,9 @@
           class="relative z-20 h-full w-full text-green-800 sm:text-white items-center"
         >
           <h1
-            class="text-center tracking-wider leading-9 font-bold text-3xl lg:text-4xl subpixel-antialiased"
+            class="text-center tracking-wider rounded-md leading-9 font-bold text-3xl lg:text-4xl subpixel-antialiased"
           >
-            Die Schnäppchen-Plattform, die Bäume pflanzen lässt
+            Die Schnäppchen-Plattform, die Bäume pflanzt
           </h1>
 
           <p
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="grid grid-cols-12">
-      <div class="hidden lg:block md:col-span-3 lg:col-span-2">
+      <div class="hidden md:block md:col-span-3 lg:col-span-2">
         <IndexSidenav />
       </div>
       <template>
