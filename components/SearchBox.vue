@@ -22,7 +22,7 @@
       @input="onInputChange"
       @blur="onInputBlur"
       placeholder="Schnäppchen und Gutscheine suchen"
-      class="w-full border lg:rounded-md text-gray-700 outline-none focus:outline-none focus:shadow-lg focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 px-3 py-3"
+      class="w-full border-b lg:border lg:rounded-md text-gray-700 outline-none focus:outline-none focus:shadow-lg focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 px-3 py-3"
     />
     <!-- Suggestions list -->
     <div class="relative">
