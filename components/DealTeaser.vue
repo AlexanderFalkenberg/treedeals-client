@@ -80,6 +80,11 @@
             >{{ timeago }} veröffentlicht</span
           >
           <div class="lg:flex ml-auto space-x-2">
+            <coupon-button
+              class="max-w-xs ml-auto"
+              v-if="deal.coupon_code"
+              :coupon_code="deal.coupon_code"
+            ></coupon-button>
             <LinkButton
               :expired="expired"
               class="max-w-xs min-w-button"
@@ -88,12 +93,6 @@
             >
               Zum Deal
             </LinkButton>
-
-            <coupon-button
-              class="max-w-xs ml-auto"
-              v-if="deal.coupon_code"
-              :coupon_code="deal.coupon_code"
-            ></coupon-button>
           </div>
         </div>
       </div>
@@ -104,6 +103,11 @@
       <span v-if="timeago" class="text-xs text-gray-500"
         >{{ timeago }} veröffentlicht</span
       >
+      <coupon-button
+        class="sm:w-1/2 sm:max-w-xs ml-auto"
+        v-if="deal.coupon_code"
+        :coupon_code="deal.coupon_code"
+      ></coupon-button>
       <LinkButton
         :expired="expired"
         class="sm:ml-auto sm:w-1/2 sm:max-w-xs"
@@ -112,11 +116,6 @@
       >
         Zum Angebot
       </LinkButton>
-      <coupon-button
-        class="sm:w-1/2 sm:max-w-xs ml-auto"
-        v-if="deal.coupon_code"
-        :coupon_code="deal.coupon_code"
-      ></coupon-button>
     </div>
 
     <div v-if="deal.update">
