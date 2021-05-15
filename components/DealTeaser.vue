@@ -81,7 +81,7 @@
           >
           <div class="lg:flex ml-auto space-x-2">
             <coupon-button
-             :expired="expired"
+              :expired="expired"
               class="max-w-xs ml-auto"
               v-if="deal.coupon_code"
               :coupon_code="deal.coupon_code"
@@ -99,7 +99,7 @@
       </div>
     </div>
     <div
-      class="lg:hidden sm:flex justify-between items-center mt-4 space-y-2 sm:space-y-0"
+      class="lg:hidden sm:flex justify-between items-center mt-1 space-y-2 sm:space-y-0"
     >
       <span v-if="timeago" class="text-xs text-gray-500"
         >{{ timeago }} veröffentlicht</span
