@@ -4,12 +4,11 @@
     <Nuxt />
     <TheFooter />
     <transition>
-      <div
-        v-if="event.show"
-        class="fixed bottom-5 z-40 right-1/2 transform translate-x-1/2 px-6 py-3 rounded bg-green-500 text-white shadow-lg"
-      >
-        <span class="font-bold uppercase">{{ event.text }}</span> wurde in die
-        Zwischenablage kopiert
+      <div v-if="event.show" class="fixed min-w-full bottom-0 z-40">
+        <div class="bg-gray-800 text-white px-6 py-4 text-center shadow-lg">
+          <span class="font-bold uppercase">{{ event.text }}</span> wurde in die
+          Zwischenablage kopiert
+        </div>
       </div>
     </transition>
   </div>
