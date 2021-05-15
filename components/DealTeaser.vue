@@ -47,7 +47,7 @@
             <div class="space-x-1">
               <span
                 :class="[
-                  deal.expired ? 'text-gray-500' : 'text-green-500',
+                  expired ? 'text-gray-500' : 'text-green-500',
                   'text-sm sm:text-xl md:text-2xl font-bold ',
                 ]"
                 >{{ price }}€</span
