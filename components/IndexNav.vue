@@ -29,12 +29,12 @@
         <div class="hidden lg:block w-full max-w-lg">
           <SearchBox :search="fetchSuggestions" />
         </div>
-        <div class="relative z-10 flex items-center lg:hidden">
+        <div class="relative z-10 flex items-center lg:hidden px-2">
           <!-- Mobile menu button -->
           <button
             @click="openNav = !openNav"
             type="button"
-            class="rounded-md p-2 inline-flex items-center justify-center text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-400"
+            class="rounded-md p-2 inline-flex items-center justify-center text-white bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-100"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
