@@ -81,6 +81,7 @@
           >
           <div class="lg:flex ml-auto space-x-2">
             <coupon-button
+             :expired="expired"
               class="max-w-xs ml-auto"
               v-if="deal.coupon_code"
               :coupon_code="deal.coupon_code"
