@@ -19,6 +19,22 @@ import IndexNav from '~/components/IndexNav.vue'
 
 export default {
   components: { IndexNav },
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return {
+      title: this.$t('Schnäppchen und Angebote'),
+      titleTemplate: '%s -  Treedeals',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'my website description',
+        },
+      ],
+    }
+  },
   data() {
     return {
       event: {
@@ -39,6 +55,14 @@ export default {
   },
 }
 </script>
+
+<i18n>
+{
+  "ru": {
+    "Schnäppchen und Angebote": "Скидки и промокоды"
+  }
+}
+</i18n>
 
 <style>
 .slide-fade-enter-active {

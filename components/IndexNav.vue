@@ -4,10 +4,15 @@
       <div
         class="max-w-7xl text-xs font-bold mx-auto py-2 flex item-center justify-between px-2 sm:px-4 lg:px-10 overflow-x-auto whitespace-nowrap space-x-4 text-center"
       >
-        <p>Schnäppchen, Angebote und Gutscheine</p>
+        <p>{{ $t('Schnäppchen und Gutscheine') }}</p>
         <p>
-          Ein Großteil unseres Gewinns investieren wir in Baumbestände weltweit
+          {{
+            $t(
+              'Ein Großteil unseres Gewinns investieren wir in Baumbestände weltweit'
+            )
+          }}
         </p>
+
         <p>Große Zahl an preiswerten und nachhaltigen Produkten</p>
       </div>
     </div>
@@ -21,7 +26,9 @@
             class="ml-8 fond-bold text-sm hidden lg:flex items-center space-x-3"
           >
             <div>
-              <nuxt-link to="/about">So funktioniert's</nuxt-link>
+              <nuxt-link to="/about">{{
+                $t('So funktioniert Treedeals')
+              }}</nuxt-link>
             </div>
           </div>
         </div>
@@ -32,7 +39,7 @@
         <div class="relative z-10 flex items-center lg:hidden px-2">
           <!-- Mobile menu button -->
           <button
-            @click="openNav = !openNav"
+            @click="toggleMenu"
             type="button"
             class="rounded-md p-2 inline-flex items-center justify-center text-white bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-100"
             aria-controls="mobile-menu"
@@ -47,7 +54,7 @@
             Menu open: "hidden", Menu closed: "block"
           -->
             <svg
-              :class="{ hidden: openNav }"
+              :class="{ hidden: isMenuOpen }"
               class="block h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -70,7 +77,7 @@
             Menu open: "block", Menu closed: "hidden"
           -->
             <svg
-              :class="{ hidden: !openNav }"
+              :class="{ hidden: !isMenuOpen }"
               class="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -118,11 +125,10 @@
           Calendar
         </a>
       </nav> -->
-      <div class="w-full lg:hidden"></div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div :class="{ hidden: !openNav }" class="lg:hidden">
+    <div :class="{ hidden: !isMenuOpen }" class="lg:hidden">
       <SearchBox :search="fetchSuggestions" />
       <div class="pb-4 px-4 sm:px-6 lg:px-10 mt-8">
         <h2 class="font-display text-green-800 text-xl mb-2">Kategorien</h2>
@@ -143,9 +149,10 @@
 <script>
 import IndexSidenav from './IndexSidenav.vue'
 import TheLogo from './TheLogo.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
+  components: { TheLogo },
   data() {
     return {
       openNav: false,
@@ -153,11 +160,14 @@ export default {
   },
   computed: {
     ...mapGetters({
+      isMenuOpen: 'menu/isMenuOpen',
       categories: 'categories/categories',
     }),
   },
-  components: { TheLogo },
   methods: {
+    ...mapMutations({
+      toggleMenu: 'menu/TOGGLE_MENU',
+    }),
     async fetchSuggestions(searchInput) {
       const { data } = await this.$storyapi.get('cdn/stories', {
         starts_with: 'de/deals/',
@@ -171,3 +181,13 @@ export default {
   },
 }
 </script>
+
+<i18n>
+{
+  "ru": {
+    "So funktioniert Treedeals": "Так работает Treedeals",
+    "Schnäppchen und Gutscheine" : "Скидки и Промокоды",
+    "Ein Großteil unseres Gewinns investieren wir in Baumbestände weltweit": ""
+  }
+}
+</i18n>

@@ -4,7 +4,8 @@
       <button
         @mouseenter="showIcon = true"
         @mouseleave="showIcon = false"
-        class="w-full tracking-wider uppercase rounded bg-green-400 hover:bg-green-500 py-3 px-4 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
+        :class="[expired ? 'bg-gray-300' : 'bg-green-400 hover:bg-green-500 ']"
+        class="w-full tracking-wider uppercase rounded py-3 px-4 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
       >
         {{ coupon_code }}
         <span class="absolute left-0 transform">
@@ -12,7 +13,8 @@
         ></span>
 
         <div
-          class="absolute right-0 h-full inline-flex items-center px-3 bg-green-500 rounded-r"
+          :class="[expired ? 'bg-gray-300' : 'bg-green-500']"
+          class="absolute right-0 h-full inline-flex items-center px-3 rounded-r"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +51,10 @@ export default {
   props: {
     coupon_code: {
       type: String,
+      required: true,
+    },
+    expired: {
+      type: Boolean,
       required: true,
     },
   },

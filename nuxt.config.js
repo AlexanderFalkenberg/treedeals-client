@@ -43,6 +43,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-i18n',
     'vue-social-sharing/nuxt',
     '@nuxtjs/auth-next',
     [
@@ -63,13 +64,28 @@ export default {
     },
   },
 
+  i18n: {
+    locales: [
+      {
+        code: 'de',
+        iso: 'ru-RU',
+      },
+      {
+        code: 'ru',
+        iso: 'de-DE',
+      },
+    ],
+    defaultLocale: process.env.LOCALE,
+    vueI18nLoader: true,
+  },
+
   tailwindcss: {
     jit: true,
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: process.env.BASE_URL,
     credentials: true,
   },
 

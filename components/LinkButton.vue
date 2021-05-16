@@ -8,12 +8,12 @@
       'rounded relative w-full min-w-button text-white tracking-wider uppercase inline-flex items-center whitespace-nowrap font-bold text-sm transition duration-150 ease-in-out',
     ]"
     :href="!expired ? link : ''"
+    :target="!expired ? '_blank' : ''"
   >
     <span class="py-3 px-4 md:px-6">
-      <template v-if="!expired">
+      <template>
         <slot></slot>
       </template>
-      <template v-else>abgelaufen</template>
     </span>
     <span
       :class="[

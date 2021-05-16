@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden sm:flex items-center space-x-2">
+  <div class="sm:flex items-center space-x-2">
     <span
       v-if="deal.sustainable"
       class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-bold bg-green-100 rounded py-1 px-2"

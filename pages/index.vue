@@ -8,7 +8,7 @@
     /> -->
     <div class="md:flex space-x-4 px-2 my-8 sm:my-4">
       <div
-        class="sm:bg-green-800 rounded bg-contain bg-left relative w-full sm:p-8 md:py-16 overflow-hidden"
+        class="sm:bg-green-800 rounded-md bg-contain bg-left relative w-full sm:p-8 md:py-16 overflow-hidden"
       >
         <div
           class="relative z-20 h-full w-full text-green-800 sm:text-white items-center"
@@ -31,11 +31,11 @@
       </div>
     </div>
     <div class="grid grid-cols-12">
-      <div class="hidden md:block md:col-span-3 lg:col-span-2">
+      <div class="hidden lg:block md:col-span-3 lg:col-span-2">
         <IndexSidenav />
       </div>
       <template>
-        <div class="col-span-12 md:col-span-9 lg:col-span-8">
+        <div class="col-span-12 lg:col-span-8">
           <template v-if="$fetchState.pending">
             <content-loader
               v-for="p in 5"

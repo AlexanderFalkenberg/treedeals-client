@@ -2,7 +2,7 @@
   <div class="relative w-full lg:my-2 lg:-mx-2">
     <!-- Magnifying glass icon -->
     <div
-      class="h-full absolute top-0 right-0 lg:rounded-l text-green-800 px-4 flex items-center"
+      class="h-full absolute top-0 right-0 lg:rounded-l text-green-800 px-8 lg:px-4 flex items-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
       @input="onInputChange"
       @blur="onInputBlur"
       placeholder="Schnäppchen und Gutscheine suchen"
-      class="w-full border-b lg:border lg:rounded-md text-gray-700 outline-none focus:outline-none focus:shadow-lg focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 px-3 py-3"
+      class="w-full border-b lg:border lg:rounded-md text-gray-700 outline-none focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 pl-6 px-3 py-3"
     />
     <!-- Suggestions list -->
     <div class="relative">

@@ -5,7 +5,7 @@
         <div class="flex-shrink-0 mr-2 sm:block">
           <div
             v-if="deal.gallery"
-            class="h-20 w-20 bg-gray-200 md:w-32 md:h-32 lg:w-40 lg:h-40 relative flex items-center justify-center"
+            class="h-20 w-20 bg-gray-200 md:w-32 md:h-32 lg:w-44 lg:h-44 relative flex items-center justify-center"
           >
             <img
               :style="[
@@ -20,7 +20,7 @@
       </nuxt-link>
 
       <div class="md:flex md:flex-col flex-1 pl-0 relative self-stretch">
-        <Labels class="mb-1 mt-auto" :deal="deal" />
+        <Labels class="hidden sm:flex mb-1 mt-auto" :deal="deal" />
 
         <nuxt-link :to="`/de/deals/${slug}`">
           <h3
@@ -82,13 +82,13 @@
           <div class="lg:flex ml-auto space-x-2">
             <coupon-button
               :expired="expired"
-              class="max-w-xs ml-auto"
+              class="ml-auto"
               v-if="deal.coupon_code"
               :coupon_code="deal.coupon_code"
             ></coupon-button>
             <LinkButton
               :expired="expired"
-              class="max-w-xs min-w-button"
+              class="min-w-button"
               :link="deal.link.url"
               v-if="deal.link"
             >
@@ -104,19 +104,22 @@
       <span v-if="timeago" class="text-xs text-gray-500"
         >{{ timeago }} veröffentlicht</span
       >
-      <coupon-button
-        class="sm:w-1/2 sm:max-w-xs ml-auto"
-        v-if="deal.coupon_code"
-        :coupon_code="deal.coupon_code"
-      ></coupon-button>
-      <LinkButton
-        :expired="expired"
-        class="sm:ml-auto sm:w-1/2 sm:max-w-xs"
-        :link="deal.link.url"
-        v-if="deal.link"
-      >
-        Zum Angebot
-      </LinkButton>
+      <div class="flex ml-auto space-x-2">
+        <coupon-button
+          :expired="expired"
+          class="max-w-xs ml-auto min-w-button"
+          v-if="deal.coupon_code"
+          :coupon_code="deal.coupon_code"
+        ></coupon-button>
+        <LinkButton
+          :expired="expired"
+          class="max-w-xs min-w-button"
+          :link="deal.link.url"
+          v-if="deal.link"
+        >
+          Zum Deal
+        </LinkButton>
+      </div>
     </div>
 
     <div v-if="deal.update">

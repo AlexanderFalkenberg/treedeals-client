@@ -28,7 +28,7 @@ module.exports = {
     },
     extend: {
       minWidth: {
-        button: '13rem',
+        button: '10rem',
       },
       height: {
         100: '30rem',

@@ -9,7 +9,7 @@
     >
       <div
         v-if="deal.gallery"
-        class="flex flex-col sm:flex-row justify-center my-8"
+        class="flex flex-col sm:flex-row justify-center my-6 lg:my-8"
       >
         <div
           v-if="deal.gallery.length > 1"
@@ -56,22 +56,21 @@
       </div>
 
       <div class="flex self-stretch flex-1 mt-8">
-        <div class="px-4 w-full">
+        <div class="px-2 md:px-4 w-full">
           <Labels :deal="deal" />
           <div class="sm:my-12">
-            <span
-              v-if="expired"
-              class="bg-gray-800 inline-block text-white font-display p-2 mb-2"
-            >
-              Abgelaufen
-            </span>
             <h1
               :class="[
-                expired ? 'text-gray-500' : 'text-gray-800',
-                'text-sm md:text-3xl  font-bold',
+                expired ? 'text-gray-500 line-through' : 'text-gray-800 ',
               ]"
-              class="text-3xl lg:text-3xl font-bold"
+              class="text-xl lg:text-2xl font-bold"
             >
+              <span
+                v-if="expired"
+                class="bg-gray-800 rounded inline-block text-white font-display p-2"
+              >
+                Abgelaufen
+              </span>
               {{ title }}
             </h1>
             <p :class="[expired ? 'text-gray-500' : 'text-gray-800', '']">
@@ -81,7 +80,7 @@
 
           <div
             v-if="deal.price"
-            class="flex flex-1 items-center justify-between"
+            class="flex flex-1 items-center justify-between py-4"
           >
             <div class="space-x-2">
               <span
@@ -94,7 +93,7 @@
 
               <span
                 v-if="deal.original_price"
-                class="text-gray-300 md:text-2xl line-through text-xs"
+                class="text-gray-400 md:text-2xl line-through text-xs"
                 >{{ original_price }}€</span
               >
 
@@ -112,7 +111,7 @@
           </div>
 
           <div
-            class="flex-1 md:flex items-center space-y-4 sm:space-y-0 space-x-0 sm:space-x-2 my-12"
+            class="flex-1 md:flex items-center space-y-4 sm:space-y-0 space-x-0 sm:space-x-2 my-2 lg:my-12"
           >
             <coupon-button
               class="w-full md:max-w-xs"
@@ -132,7 +131,7 @@
       </div>
     </div>
 
-    <section class="mx-auto md:my-8 max-w-4xl">
+    <section class="mx-auto my-4 md:my-8 max-w-4xl">
       <div v-if="deal.update">
         <div
           class="flex items-center bg-gray-100 text-xs md:text-sm mt-2 lg:mx-8"
@@ -177,6 +176,22 @@ export default {
   components: {
     ContentLoader,
     SocialLinks,
+  },
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return {
+      title: this.title,
+      titleTemplate: '%s -  Treedeals',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: this.deal.title,
+          content: this.deal.description,
+        },
+      ],
+    }
   },
   data() {
     return {
@@ -303,11 +318,7 @@ export default {
   }
 
   a {
-    @apply font-medium text-green-500 font-semibold;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    @apply font-medium text-gray-500 underline;
   }
 
   ul {
