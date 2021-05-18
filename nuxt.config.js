@@ -68,11 +68,11 @@ export default {
     locales: [
       {
         code: 'de',
-        iso: 'ru-RU',
+        iso: 'de-DE',
       },
       {
         code: 'ru',
-        iso: 'de-DE',
+        iso: 'ru-RU',
       },
     ],
     defaultLocale: process.env.LOCALE,
