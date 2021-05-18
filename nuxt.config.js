@@ -76,6 +76,7 @@ export default {
       },
     ],
     defaultLocale: process.env.LOCALE,
+    detectBrowserLanguage: false,
     vueI18nLoader: true,
   },
 
