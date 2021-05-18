@@ -33,7 +33,7 @@
           :to="`/de/deals/${suggestion.slug}`"
           class="block truncate text-gray-700 hover:text-main hover:bg-gray-100 px-2 py-2"
         >
-          <div class="flex items-center">
+          <div @click="toggleMenu" class="flex items-center">
             <div class="w-16 h-16 bg-gray-100 mr-2">
               <img
                 v-if="suggestion.content.gallery"
@@ -88,6 +88,7 @@
 
 <script>
 import debounce from 'lodash/debounce'
+import { mapMutations } from 'vuex'
 
 export default {
   props: {
@@ -101,6 +102,9 @@ export default {
     suggestions: [],
   }),
   methods: {
+    ...mapMutations({
+      toggleMenu: 'menu/TOGGLE_MENU',
+    }),
     onInputChange: debounce(async function () {
       this.suggestions = await this.search(this.searchInput)
     }, 300),

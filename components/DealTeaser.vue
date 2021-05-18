@@ -113,7 +113,7 @@
         ></coupon-button>
         <LinkButton
           :expired="expired"
-          class="max-w-xs min-w-button"
+          class="max-w-xs ml-auto min-w-button"
           :link="deal.link.url"
           v-if="deal.link"
         >

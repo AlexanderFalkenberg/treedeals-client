@@ -55,10 +55,10 @@
         </div>
       </div>
 
-      <div class="flex self-stretch flex-1 mt-8">
+      <div class="flex self-stretch flex-1 lg:mt-8">
         <div class="px-2 md:px-4 w-full">
           <Labels :deal="deal" />
-          <div class="sm:my-12">
+          <div class="my-8 lg:my-12">
             <h1
               :class="[
                 expired ? 'text-gray-500 line-through' : 'text-gray-800 ',
@@ -80,7 +80,7 @@
 
           <div
             v-if="deal.price"
-            class="flex flex-1 items-center justify-between py-4"
+            class="flex flex-1 items-center justify-between"
           >
             <div class="space-x-2">
               <span
@@ -111,7 +111,7 @@
           </div>
 
           <div
-            class="flex-1 md:flex items-center space-y-4 sm:space-y-0 space-x-0 sm:space-x-2 my-2 lg:my-12"
+            class="flex-1 md:flex items-center space-y-4 sm:space-y-0 space-x-0 sm:space-x-2 mt-8 my-2 lg:my-12"
           >
             <coupon-button
               class="w-full md:max-w-xs"
