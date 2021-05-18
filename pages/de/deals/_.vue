@@ -124,7 +124,7 @@
               :link="deal.link.url"
               v-if="deal.link"
             >
-              Zum Angebot
+              Zum Deal
             </LinkButton>
           </div>
         </div>

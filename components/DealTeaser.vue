@@ -104,16 +104,16 @@
       <span v-if="timeago" class="text-xs text-gray-500"
         >{{ timeago }} veröffentlicht</span
       >
-      <div class="flex ml-auto space-x-2">
+      <div class="sm:flex ml-auto space-y-2 sm:space-y-0 sm:space-x-2">
         <coupon-button
           :expired="expired"
-          class="max-w-xs ml-auto min-w-button"
+          class="w-full sm:max-w-xs ml-auto min-w-button"
           v-if="deal.coupon_code"
           :coupon_code="deal.coupon_code"
         ></coupon-button>
         <LinkButton
           :expired="expired"
-          class="max-w-xs ml-auto min-w-button"
+          class="w-full sm:max-w-xs ml-auto min-w-button"
           :link="deal.link.url"
           v-if="deal.link"
         >
