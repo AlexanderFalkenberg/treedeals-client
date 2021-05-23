@@ -198,12 +198,12 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.title,
+          content: this.description,
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.deal.gallery[0],
+          content: this.deal.gallery[0].filename,
         },
       ],
     }

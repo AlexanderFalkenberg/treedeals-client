@@ -42,8 +42,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content:
-            'Schnäppchenplattform die Bäume pflanzt | Angebote, Gutscheine und nachhaltige Produkte',
+          content: 'Spannende Angebote, Gutscheine und nachhaltige Produkte',
         },
       ],
     }
