@@ -188,7 +188,22 @@ export default {
         {
           hid: this.deal.description,
           name: this.deal.title,
-          content: this.deal.description,
+          content: this.title,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.title,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.title,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.deal.gallery[0],
         },
       ],
     }
