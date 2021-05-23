@@ -28,10 +28,17 @@ export default {
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
-          hid: 'Schnäppchen und Gutscheine mit dem grünen Extra',
+          hid:
+            'Schnäppchenplattform die Bäume pflanzt | Schnäppchen und Gutscheine',
           name: 'Treedeals | Schnäppchen und Gutschein',
           content:
             'Treedeals ist eine Plattform für Schnäppchen, Gutscheine und Produkte, die den Großteil seines Gewinns in Aufforstungsprojekte weltweit investiert.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            'Schnäppchenplattform die Bäume pflanzt | Schnäppchen und Gutscheine',
         },
       ],
     }
