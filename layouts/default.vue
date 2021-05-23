@@ -28,9 +28,10 @@ export default {
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
-          hid: 'description',
-          name: 'description',
-          content: 'my website description',
+          hid: 'Schnäppchen und Gutscheine mit dem grünen Extra',
+          name: 'Treedeals | Schnäppchen und Gutschein',
+          content:
+            'Treedeals ist eine Plattform für Schnäppchen, Gutscheine und Produkte, die den Großteil seines Gewinns in Aufforstungsprojekte weltweit investiert.',
         },
       ],
     }
