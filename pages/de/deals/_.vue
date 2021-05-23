@@ -198,7 +198,8 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.description,
+          content:
+            'Schnäppchenplattform die Bäume pflanzt | Spannende Angebote, Gutscheine',
         },
         {
           hid: 'og:image',
