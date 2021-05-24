@@ -16,7 +16,7 @@
         <p>Große Zahl an preiswerten und nachhaltigen Produkten</p>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 border-b md:border-0">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 border-b lg:border-0">
       <div class="relative h-16 flex justify-between">
         <div class="relative z-10 px-2 flex">
           <div class="flex-shrink-0 flex items-center">
@@ -41,7 +41,7 @@
           <button
             @click="toggleMenu"
             type="button"
-            class="rounded-md p-2 inline-flex items-center justify-center text-white bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-100"
+            class="rounded-md p-2 inline-flex items-center justify-center text-white bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-transparent"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
