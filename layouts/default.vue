@@ -71,7 +71,8 @@ export default {
         {
           hid: 'twitter:image:alt',
           name: 'twitter:image:alt',
-          content: 'Schnäppchenplattform die Bäume pflanzt',
+          content:
+            'https://a.storyblok.com/f/111247/1200x657/55ab3e08a9/social.png',
         },
       ],
     }
