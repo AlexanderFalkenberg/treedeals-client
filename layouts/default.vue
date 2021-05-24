@@ -51,6 +51,28 @@ export default {
           content:
             'https://a.storyblok.com/f/111247/1200x657/55ab3e08a9/social.png',
         },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Schnäppchenplattform die Bäume pflanzt',
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content:
+            'Spannende Angebote, Gutscheine und nachhaltige Produkte mit dem grünen Extra',
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content:
+            'https://a.storyblok.com/f/111247/1200x657/55ab3e08a9/social.png',
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: 'Schnäppchenplattform die Bäume pflanzt',
+        },
       ],
     }
   },
