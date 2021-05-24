@@ -42,7 +42,8 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: 'Spannende Angebote, Gutscheine und nachhaltige Produkte',
+          content:
+            'Spannende Angebote, Gutscheine und nachhaltige Produkte mit dem grünen Extra',
         },
         {
           hid: 'og:image',
