@@ -44,6 +44,12 @@ export default {
           property: 'og:description',
           content: 'Spannende Angebote, Gutscheine und nachhaltige Produkte',
         },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content:
+            'https://a.storyblok.com/f/111247/1200x657/55ab3e08a9/social.png',
+        },
       ],
     }
   },
