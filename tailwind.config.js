@@ -28,14 +28,14 @@ module.exports = {
     },
     extend: {
       minWidth: {
-        button: '10rem',
+        button: '12rem',
       },
       height: {
         100: '30rem',
       },
       width: {
         100: '30rem',
-        button: '10rem',
+        button: '12rem',
       },
       maxWidth: {
         auth: '25rem',
