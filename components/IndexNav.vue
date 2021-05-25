@@ -133,7 +133,11 @@
       <div class="pb-4 px-4 sm:px-6 lg:px-10 mt-8">
         <h2 class="font-display text-green-800 text-xl mb-2">Kategorien</h2>
         <nav class="grid grid-cols-2" aria-label="Global" id="mobile-menu">
-          <span v-for="category in categories" :key="category.uid">
+          <span
+            @click="toggleMenu"
+            v-for="category in categories"
+            :key="category.uid"
+          >
             <nuxt-link
               class="mb-4 inline-block"
               :to="'/' + category.full_slug"
