@@ -27,19 +27,16 @@ module.exports = {
       red: colors.red,
     },
     extend: {
-      minWidth: {
-        button: '12rem',
-      },
+      minWidth: {},
       height: {
         100: '30rem',
       },
       width: {
         100: '30rem',
-        button: '12rem',
       },
       maxWidth: {
         auth: '25rem',
-        xs: '12rem',
+        xs: '16rem',
         sm: '18rem',
         xl: '40rem',
       },

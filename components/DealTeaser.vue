@@ -76,9 +76,6 @@
         <div
           class="hidden mt-3 mr-auto w-full lg:flex justify-between items-center"
         >
-          <span v-if="timeago" class="md:hidden xl:block text-xs text-gray-500"
-            >{{ timeago }} veröffentlicht</span
-          >
           <div class="lg:flex ml-auto space-x-2">
             <coupon-button
               :expired="expired"
@@ -88,7 +85,6 @@
             ></coupon-button>
             <LinkButton
               :expired="expired"
-              class="min-w-button"
               :link="deal.link.url"
               v-if="deal.link"
             >
@@ -99,21 +95,18 @@
       </div>
     </div>
     <div
-      class="lg:hidden sm:flex justify-between items-center mt-1 space-y-2 sm:space-y-0"
+      class="lg:hidden sm:flex justify-between items-center mt-2 space-y-2 sm:space-y-0"
     >
-      <span v-if="timeago" class="text-xs text-gray-500"
-        >{{ timeago }} veröffentlicht</span
-      >
       <div class="sm:flex ml-auto space-y-2 sm:space-y-0 sm:space-x-2">
         <coupon-button
           :expired="expired"
-          class="w-full sm:max-w-xs ml-auto min-w-button"
+          class="w-fullml-auto"
           v-if="deal.coupon_code"
           :coupon_code="deal.coupon_code"
         ></coupon-button>
         <LinkButton
           :expired="expired"
-          class="w-full sm:max-w-xs ml-auto min-w-button"
+          class="w-full ml-auto"
           :link="deal.link.url"
           v-if="deal.link"
         >

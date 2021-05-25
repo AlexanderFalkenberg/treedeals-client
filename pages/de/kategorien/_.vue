@@ -44,7 +44,7 @@
             />
           </div>
         </template>
-        <template else>
+        <template v-if="this.total === 0">
           <h2 class="font-display text-2xl">Noch keine Angebote hier</h2>
         </template>
       </div>

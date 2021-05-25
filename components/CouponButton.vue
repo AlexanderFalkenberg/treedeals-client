@@ -1,11 +1,11 @@
 <template>
-  <div v-if="coupon_code" class="min-w-button w-full relative">
+  <div v-if="coupon_code" class="relative">
     <CopyToClipboard :text="coupon_code" @copy="handleCopy">
       <button
         @mouseenter="showIcon = true"
         @mouseleave="showIcon = false"
         :class="[expired ? 'bg-gray-300' : 'bg-green-400 hover:bg-green-500 ']"
-        class="w-full tracking-wider uppercase truncate rounded py-3 px-4 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
+        class="w-full tracking-wider rounded py-3 px-6 pr-16 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
       >
         {{ coupon_code }}
         <span class="absolute left-0 transform">
@@ -55,7 +55,7 @@ export default {
     },
     expired: {
       type: Boolean,
-      required: true,
+      required: false,
     },
   },
   methods: {

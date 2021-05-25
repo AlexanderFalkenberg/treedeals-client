@@ -198,13 +198,12 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content:
-            'Schnäppchenplattform die Bäume pflanzt | Spannende Angebote, Gutscheine',
+          content: this.deal.description,
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.deal.gallery[0].filename,
+          content: this.deal.gallery ? this.deal.gallery[0] : '',
         },
       ],
     }
