@@ -34,7 +34,7 @@
             <rect x="530" y="140" rx="0" ry="0" width="180" height="50" />
           </content-loader>
         </template>
-        <template v-else-if="!$fetchState.error">
+        <template else>
           <div v-for="(deal, i) in deals" :key="deal._uid" class="">
             <DealTeaser
               :data="deal"
@@ -97,7 +97,7 @@ export default {
       .get(`cdn/stories`, {
         starts_with: `de/kategorien/${this.$nuxt.context.route.params.pathMatch}`,
         version: version,
-        per_page: 5,
+        per_page: 8,
         page: this.currentPage,
       })
       .then((res) => {
@@ -124,14 +124,13 @@ export default {
   },
   methods: {
     lazyLoadArticles(isVisible) {
-      if (isVisible) {
-        if (
-          this.currentPage < this.total / this.currentPage + 1 &&
-          this.total > 7
-        ) {
-          this.currentPage++
-          this.$fetch()
-        }
+      if (!isVisible || this.total < 8) {
+        return
+      }
+
+      if (this.currentPage < Math.ceil(this.total / 8) && this.total > 8) {
+        this.currentPage++
+        this.$fetch()
       }
     },
   },
