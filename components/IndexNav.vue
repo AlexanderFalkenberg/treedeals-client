@@ -8,7 +8,7 @@
         <p>
           {{
             $t(
-              'Ein Großteil unseres Gewinns investieren wir in Baumbestände weltweit'
+              'Einen Großteil unseres Gewinns investieren wir in Baumbestände weltweit'
             )
           }}
         </p>
