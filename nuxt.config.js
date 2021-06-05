@@ -15,6 +15,7 @@ export default {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    locale: process.env.LOCALE || 'de',
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -26,6 +27,7 @@ export default {
     '~/plugins/storyblok-rich-text-renderer.js',
     '~/plugins/content-loader.js',
     '~/plugins/vue-placeholders.js',
+    '~/plugins/vue-masonry-wall.js',
     '~/plugins/vue-observe-visibility.client.js',
   ],
 

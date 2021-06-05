@@ -1,10 +1,10 @@
 <template>
   <footer class="mt-auto bg-gray-800">
     <div
-      class="container max-w-7xl mx-auto flex space-x-8 py-8 px-2 sm:px-4 lg:px-10"
+      class="container max-w-7xl mx-auto sm:flex sm:space-x-8 py-8 px-4 sm:px-4 lg:px-10"
     >
       <div class="">
-        <h2 class="text-gray-100">Top Kategorien</h2>
+        <h2 class="text-gray-100 mb-1">Top Kategorien</h2>
         <nav class="text-sm grid grid-cols-2 gap-2 text-gray-100">
           <div class="pr-3" v-for="category in categories" :key="category.uid">
             <nuxt-link :to="'/' + category.full_slug">{{

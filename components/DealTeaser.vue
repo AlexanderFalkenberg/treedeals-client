@@ -1,54 +1,36 @@
 <template>
-  <article class="w-full mb-8" v-if="deal">
-    <div class="leading-tight flex flex-1 items-stretch relative">
-      <nuxt-link :to="`/de/deals/${slug}`">
-        <div class="flex-shrink-0 mr-2 sm:block">
-          <div
-            v-if="deal.gallery"
-            class="h-20 w-20 bg-gray-200 md:w-32 md:h-32 lg:w-44 lg:h-44 relative flex items-center justify-center"
-          >
-            <img
-              :style="[
-                expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
-              ]"
-              class="object-cover rounded"
-              :src="transformImage(deal.gallery[0].filename, '220x220/smart')"
-              :alt="deal.gallery[0].alt"
-            />
-          </div>
+  <article class="items-center mb-8" v-if="deal">
+    <nuxt-link :to="`/de/deals/${slug}`">
+      <div class="leading-tight items-stretch relative">
+        <div
+          v-if="deal.gallery"
+          class="rounded relative bg-gray-200 mr-2 flex items-center justify-center"
+        >
+          <img
+            :style="[
+              expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
+            ]"
+            class="bg-gray-200 object-cover rounded md:w-auto md:h-auto"
+            :src="transformImage(deal.gallery[0].filename, '450x0')"
+            :alt="deal.gallery[0].alt"
+          />
         </div>
-      </nuxt-link>
 
-      <div class="md:flex md:flex-col flex-1 pl-0 relative self-stretch">
-        <Labels class="hidden sm:flex mb-1 mt-auto" :deal="deal" />
-
-        <nuxt-link :to="`/de/deals/${slug}`">
+        <div class="md:flex md:flex-col mt-2 flex-1 pl-0 relative self-stretch">
           <h3
             :class="[expired ? 'text-gray-500' : 'text-green-800']"
-            class="sm:text-lg md:text-xl font-display line-clamp-1"
+            class="sm:text-lg mt-1 font-display line-clamp-1"
           >
             {{ title }}
           </h3>
 
-          <p class="line-clamp-2 text-gray-600 mb-1">
-            {{ deal.intro }}
-          </p>
-
-          <!--       <div class="html">
-            <div
-              v-if="deal.content.html.content"
-              class="text-grey-700 text-sm line-clamp-2"
-            >
-              <rich-text-renderer :document="deal.content.html" />
-            </div>
-          </div> -->
-
-          <div v-if="deal.price" class="flex items-center justify-between">
-            <div class="space-x-1">
+          <div>
+            <div class="space-x-2 items-center flex">
               <span
+                v-if="deal.price"
                 :class="[
                   expired ? 'text-gray-500' : 'text-green-500',
-                  'text-sm sm:text-xl md:text-2xl font-bold ',
+                  'text-sm  md:text-xl font-bold ',
                 ]"
                 >{{ price }}€</span
               >
@@ -64,81 +46,45 @@
                 :class="[
                   expired
                     ? 'text-gray-500'
-                    : 'text-white bg-green-400 py-1 px-2',
-                  'font-bold text-xs md:text-xl rounded',
+                    : 'bg-green-100 text-green-800 py-1 px-2',
+                  'font-bold text-xs md:text-lg rounded',
                 ]"
                 v-html="discount"
               ></span>
+              <span
+                v-if="deal.discount && !deal.original_price.length > 0"
+                :class="[
+                  expired
+                    ? 'text-gray-500'
+                    : 'bg-green-100 text-green-800 py-1 px-2',
+                  'font-bold text-xs md:text-lg rounded',
+                ]"
+                v-html="deal.discount"
+              ></span>
             </div>
           </div>
-        </nuxt-link>
-
-        <div
-          class="hidden mt-3 mr-auto w-full lg:flex justify-between items-center"
-        >
-          <div class="lg:flex ml-auto space-x-2">
-            <coupon-button
-              :expired="expired"
-              class="ml-auto"
-              v-if="deal.coupon_code"
-              :coupon_code="deal.coupon_code"
-            ></coupon-button>
-            <LinkButton
-              :expired="expired"
-              :link="deal.link.url"
-              v-if="deal.link"
-            >
-              Zum Deal
-            </LinkButton>
+          <div>
+            <span class="text-xs text-gray-500">{{ timeago }}</span>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="lg:hidden sm:flex justify-between items-center mt-2 space-y-2 sm:space-y-0"
-    >
-      <div class="sm:flex ml-auto space-y-2 sm:space-y-0 sm:space-x-2">
+    </nuxt-link>
+    <div class="lg:hidden flex flex-col mt-2 space-y-2 sm:space-y-0">
+      <div class="flex space-x-2 ml-auto">
         <coupon-button
           :expired="expired"
-          class="w-fullml-auto"
+          class="w-full"
           v-if="deal.coupon_code"
           :coupon_code="deal.coupon_code"
         ></coupon-button>
         <LinkButton
           :expired="expired"
-          class="w-full ml-auto"
+          class="w-full"
           :link="deal.link.url"
           v-if="deal.link"
         >
           Zum Deal
         </LinkButton>
-      </div>
-    </div>
-
-    <div v-if="deal.update">
-      <div
-        class="flex items-center bg-gray-100 text-xs md:text-sm mt-2"
-        v-if="deal.update.length > 1"
-      >
-        <p class="p-3 flex-1">{{ deal.update }}</p>
-        <div
-          class="bg-gray-200 ml-auto self-stretch items-center inline-flex px-3"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 md:h-5 md:w-5 text-gray-800"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </div>
       </div>
     </div>
   </article>

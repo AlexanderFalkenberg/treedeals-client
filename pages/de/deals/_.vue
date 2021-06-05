@@ -60,40 +60,30 @@
           <Labels :deal="deal" />
           <div class="my-8 lg:my-12">
             <h1
-              :class="[
-                expired ? 'text-gray-500 line-through' : 'text-gray-800 ',
-              ]"
-              class="text-xl lg:text-2xl font-bold"
+              :class="[expired ? 'text-gray-500 ' : 'text-gray-800 ']"
+              class="text-xl lg:text-4xl font-bold"
             >
-              <span
-                v-if="expired"
-                class="bg-gray-800 rounded inline-block text-white font-display p-2"
-              >
-                Abgelaufen
-              </span>
               {{ title }}
             </h1>
-            <p :class="[expired ? 'text-gray-500' : 'text-gray-800', '']">
+            <!--  <p :class="[expired ? 'text-gray-500' : 'text-gray-800', '']">
               {{ deal.intro }}
-            </p>
+            </p> -->
           </div>
 
-          <div
-            v-if="deal.price"
-            class="flex flex-1 items-center justify-between"
-          >
+          <div class="flex flex-1 items-center justify-between">
             <div class="space-x-2">
               <span
+                v-if="price"
                 :class="[
                   expired ? 'text-gray-500' : 'text-green-500',
-                  'text-xl sm:text-2xl md:text-3xl  font-bold',
+                  'text-xl sm:text-2xl md:text-3xl lg:text-4xl  font-bold',
                 ]"
                 >{{ price }}€</span
               >
 
               <span
                 v-if="deal.original_price"
-                class="text-gray-400 md:text-2xl line-through text-xs"
+                class="text-gray-400 md:text-2xl lg:text-4xl line-through text-xs"
                 >{{ original_price }}€</span
               >
 
@@ -103,10 +93,21 @@
                   expired
                     ? 'text-gray-600'
                     : 'text-white bg-green-400 py-1.5 px-2',
-                  'font-bold text-xs md:text-2xl rounded',
+                  'font-bold text-xs md:text-4xl rounded',
                 ]"
                 >{{ discount }}%</span
               >
+
+              <span
+                v-if="deal.discount && !deal.original_price.length > 0"
+                :class="[
+                  expired
+                    ? 'text-gray-500'
+                    : 'bg-green-100 text-green-800 py-1 px-2',
+                  'font-bold text-xs md:text-4xl rounded',
+                ]"
+                v-html="deal.discount"
+              ></span>
             </div>
           </div>
 
