@@ -1,16 +1,15 @@
 <template>
   <a
-    v-if="link"
     :class="[
       expired
         ? 'bg-gray-300  focus:outline-none'
-        : 'bg-green-700 text-white focus:outline-none focus:shadow-outline-green active:bg-green-400 focus:ring-2 focus:ring-offset-0 focus:ring-green-100',
-      'rounded relative w-full min-w-button text-white tracking-wider uppercase inline-flex items-center whitespace-nowrap font-bold text-xs  transition duration-150 ease-in-out',
+        : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-green-400 focus:ring-2 focus:ring-offset-0 focus:ring-green-100',
+      'rounded relative w-full min-w-button text-white tracking-wider uppercase inline-flex items-center whitespace-nowrap font-bold text-sm  transition duration-150 ease-in-out',
     ]"
     :href="link"
     target="_blank"
   >
-    <span class="py-3 px-4 md:px-6">
+    <span class="py-4 px-4 md:px-4">
       <template>
         <slot></slot>
       </template>

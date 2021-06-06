@@ -130,7 +130,7 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div :class="{ hidden: !isMenuOpen }" class="lg:hidden">
       <SearchBox :search="fetchSuggestions" />
-      <div class="pb-4 px-4 sm:px-6 lg:px-10 mt-8">
+      <div class="px-4 sm:px-6 lg:px-10 my-4">
         <h2 class="font-display text-green-800 text-xl mb-2">Kategorien</h2>
         <nav class="grid grid-cols-2" aria-label="Global" id="mobile-menu">
           <span
@@ -139,7 +139,7 @@
             :key="category.uid"
           >
             <nuxt-link
-              class="mb-4 inline-block"
+              class="mb-4   inline-block"
               :to="'/' + category.full_slug"
               >{{ category.name }}</nuxt-link
             >

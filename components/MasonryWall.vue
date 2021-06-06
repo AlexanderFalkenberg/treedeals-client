@@ -1,5 +1,10 @@
 <template>
-  <vue-masonry-wall :items="deals" :options="options" @append="$emit('append')">
+  <vue-masonry-wall
+    :items="deals"
+    :options="options"
+    :ssr="{ columns: 2 }"
+    @append="$emit('append')"
+  >
     <template v-slot:default="{ item }">
       <DealCard :item="item" />
     </template>
@@ -20,10 +25,10 @@ export default {
   data() {
     return {
       options: {
-        width: 300,
+        width: 250,
         padding: {
-          2: 8,
-          default: 8,
+          2: 4,
+          default: 4,
         },
       },
     }

@@ -5,11 +5,11 @@
     class="w-full px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto"
   >
     <div
-      class="flex flex-col items-center lg:flex-row max-w-5xl mx-auto space-x-2"
+      class="flex justify-center items-end flex-row max-w-4xl mx-auto space-x-2"
     >
       <div
         v-if="deal.gallery"
-        class="flex flex-col sm:flex-row justify-center my-6 lg:my-8"
+        class="flex flex-col sm:flex-row justify-center mt-8"
       >
         <div
           v-if="deal.gallery.length > 1"
@@ -23,7 +23,7 @@
           >
             <div class="w-20 h-28 flex">
               <img
-                class="w-20 h-28 bg-gray-100"
+                class="w-20 h-28 bg-gray-100 rounded"
                 :style="[
                   expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
                 ]"
@@ -34,19 +34,16 @@
           </button>
         </div>
         <div>
-          <div
-            class="md:w-96 md:h-100 relative flex justify-center"
-            v-if="deal"
-          >
+          <div class="relative flex justify-center" v-if="deal">
             <img
               :style="[
                 expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
               ]"
-              class="sm:w-96 sm:h-100 bg-gray-100"
+              class="rounded"
               :src="
                 transformImage(
                   deal.gallery[currentIndex].filename,
-                  '384x480/smart'
+                  '500x380/smart/filters:quality(80)'
                 )
               "
               :alt="deal.gallery[currentIndex].alt"
@@ -55,35 +52,29 @@
         </div>
       </div>
 
-      <div class="flex self-stretch flex-1 lg:mt-8">
-        <div class="px-2 md:px-4 w-full">
-          <Labels :deal="deal" />
-          <div class="my-8 lg:my-12">
-            <h1
-              :class="[expired ? 'text-gray-500 ' : 'text-gray-800 ']"
-              class="text-xl lg:text-4xl font-bold"
-            >
-              {{ title }}
-            </h1>
-            <!--  <p :class="[expired ? 'text-gray-500' : 'text-gray-800', '']">
-              {{ deal.intro }}
-            </p> -->
-          </div>
-
-          <div class="flex flex-1 items-center justify-between">
+      <div class="flex items-end w-1/2 p-4 pb-0">
+        <div>
+          <Labels class="mb-2" :deal="deal" />
+          <h1
+            :class="[expired ? 'text-gray-500 ' : 'text-green-800 ']"
+            class="text-xl lg:text-3xl font-bold mb-4"
+          >
+            {{ title }}
+          </h1>
+          <div v-if="price" class="flex items-center justify-between mb-8">
             <div class="space-x-2">
               <span
                 v-if="price"
                 :class="[
                   expired ? 'text-gray-500' : 'text-green-500',
-                  'text-xl sm:text-2xl md:text-3xl lg:text-4xl  font-bold',
+                  'text-xl sm:text-2xl md:text-2xl lg:text-3xl  font-bold',
                 ]"
                 >{{ price }}€</span
               >
 
               <span
                 v-if="deal.original_price"
-                class="text-gray-400 md:text-2xl lg:text-4xl line-through text-xs"
+                class="text-gray-400 md:text-2xl lg:text-3xl line-through text-xs"
                 >{{ original_price }}€</span
               >
 
@@ -93,7 +84,7 @@
                   expired
                     ? 'text-gray-600'
                     : 'text-white bg-green-400 py-1.5 px-2',
-                  'font-bold text-xs md:text-4xl rounded',
+                  'font-bold text-xs md:text-2xl rounded',
                 ]"
                 >{{ discount }}%</span
               >
@@ -111,19 +102,17 @@
             </div>
           </div>
 
-          <div
-            class="flex-1 md:flex items-center space-y-4 sm:space-y-0 space-x-0 sm:space-x-2 mt-8 my-2 lg:my-12"
-          >
+          <div v-if="deal.link.url" class="flex-1 items-start space-y-4">
             <coupon-button
-              class="w-full md:max-w-xs"
+              class="flex-1"
               v-if="deal.coupon_code"
               :coupon_code="deal.coupon_code"
             ></coupon-button>
             <LinkButton
               :expired="expired"
-              class="w-full md:max-w-xs"
+              class="flex-1"
+              v-if="deal.link.url"
               :link="deal.link.url"
-              v-if="deal.link"
             >
               Zum Deal
             </LinkButton>
@@ -160,8 +149,10 @@
         </div>
       </div>
 
-      <div v-if="deal.html" class="html px-4 md:px-8">
-        <rich-text-renderer :document="deal.html" />
+      <div class="px-4 py-4">
+        <div v-if="deal.html" class="html">
+          <rich-text-renderer :document="deal.html" />
+        </div>
       </div>
     </section>
   </main>
@@ -337,8 +328,9 @@ export default {
     @apply font-medium text-gray-500 underline;
   }
 
-  ul {
-    @apply p-4;
+  ul,
+  ol {
+    @apply px-4;
   }
 
   li {
