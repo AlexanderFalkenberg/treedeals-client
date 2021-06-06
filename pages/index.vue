@@ -1,7 +1,7 @@
 <template>
   <section class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-8">
     <div class="grid grid-cols-12 gap-4">
-      <div class="hidden md:block col-span-2"><IndexSidenav /></div>
+      <div class="hidden lg:block col-span-2"><IndexSidenav /></div>
       <div class="col-span-12 md:col-span-8">
         <MasonryWall :deals="deals" @append="loadDeals" />
       </div>

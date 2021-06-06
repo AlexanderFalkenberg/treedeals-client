@@ -17,7 +17,6 @@
         </div>
       </div>
       <div class="md:flex md:flex-col mt-1 flex-1 pl-0 relative self-stretch">
-        <Labels class="mt-1" :deal="deal" />
         <h3
           :class="[expired ? 'text-gray-500' : 'text-green-800']"
           class="sm:text-lg mt-1 font-display line-clamp-1"
