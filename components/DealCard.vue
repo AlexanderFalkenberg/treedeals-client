@@ -24,13 +24,24 @@
           {{ title }}
         </h3>
 
-        <div v-if="deal.price">
+        <div>
           <div class="space-x-2 items-center flex justify-between pr-2">
             <div>
               <span
                 v-if="deal.original_price"
                 class="text-gray-400 line-through block text-xs"
                 >{{ deal.original_price }} €</span
+              >
+
+              <span
+                v-if="!deal.price"
+                :class="[
+                  expired
+                    ? 'text-white bg-gray-700'
+                    : 'bg-green-100 text-green-800',
+                  'font-bold text-x rounded py-1 px-2',
+                ]"
+                >{{ expired ? 'Abgelaufen' : 'Aktion' }}</span
               >
               <span
                 v-if="deal.price"
@@ -46,12 +57,12 @@
               v-if="deal.original_price"
               :class="[
                 expired ? 'text-gray-500' : 'bg-green-100 text-green-800 px-2',
-                'font-bold text-md md:text-xl rounded',
+                'font-bold text-lg rounded',
               ]"
               v-html="discount"
             ></span>
           </div>
-          <span class="text-xs text-gray-400">{{ timeago }}</span>
+          <span class="block mt-2 text-xs text-gray-400">{{ timeago }}</span>
         </div>
       </div>
     </nuxt-link>

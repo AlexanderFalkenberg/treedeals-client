@@ -60,7 +60,7 @@
           >
             {{ title }}
           </h1>
-          <div v-if="price" class="flex items-center justify-between mb-6">
+          <div class="flex items-center justify-between mb-8">
             <div class="space-x-2">
               <span
                 v-if="price"
@@ -89,7 +89,7 @@
               >
 
               <span
-                v-if="deal.discount && !deal.original_price.length > 0"
+                v-if="deal.discount && deal.original_price"
                 :class="[
                   expired
                     ? 'text-gray-500'
@@ -98,6 +98,17 @@
                 ]"
                 v-html="deal.discount"
               ></span>
+
+              <span
+                v-if="!deal.price && !deal.original_price"
+                :class="[
+                  expired
+                    ? 'text-gray-500'
+                    : 'bg-green-100 text-green-800 py-1 px-2',
+                  'font-bold text-xs md:text-4xl rounded',
+                ]"
+                >Aktion</span
+              >
             </div>
           </div>
 
