@@ -7,32 +7,7 @@
     <div
       class="justify-center items-start flex-row max-w-4xl mx-auto md:space-x-2"
     >
-      <div
-        v-if="deal.gallery"
-        class="flex flex-col sm:flex-row justify-center mt-8"
-      >
-        <div
-          v-if="deal.gallery.length > 1"
-          class="mx-auto flex flex-row sm:flex-col justify-start items-center sm:justify-start mt-4 sm:mt-0 space-x-4 sm:space-x-0 sm:space-y-4 sm:mr-4 order-last sm:order-first"
-        >
-          <button
-            v-for="(image, index) in deal.gallery.slice(0, 3)"
-            :key="image.id"
-            class="focus:outline-none block"
-            @mouseover="current(index)"
-          >
-            <div class="w-20 h-28 flex">
-              <img
-                class="w-20 h-28 bg-gray-100 rounded"
-                :style="[
-                  expired ? { filter: 'grayscale(100%)', opacity: '50%' } : {},
-                ]"
-                :src="transformImage(image.filename, '80x112/smart')"
-                :alt="image.alt"
-              />
-            </div>
-          </button>
-        </div>
+      <div v-if="deal.gallery" class="flex justify-center">
         <div>
           <div class="relative flex justify-center" v-if="deal">
             <img
@@ -43,11 +18,35 @@
               :src="
                 transformImage(
                   deal.gallery[currentIndex].filename,
-                  '500x380/smart/filters:quality(80)'
+                  '0x380/smart/filters:quality(80)'
                 )
               "
               :alt="deal.gallery[currentIndex].alt"
             />
+          </div>
+          <div
+            v-if="deal.gallery.length > 1"
+            class="mt-4 mx-auto flex justify-center space-x-4"
+          >
+            <button
+              v-for="(image, index) in deal.gallery.slice(0, 3)"
+              :key="image.id"
+              class="focus:outline-none block"
+              @mouseover="current(index)"
+            >
+              <div class="w-20 h-28 flex">
+                <img
+                  class="w-20 h-28 bg-gray-100 rounded"
+                  :style="[
+                    expired
+                      ? { filter: 'grayscale(100%)', opacity: '50%' }
+                      : {},
+                  ]"
+                  :src="transformImage(image.filename, '80x112/smart')"
+                  :alt="image.alt"
+                />
+              </div>
+            </button>
           </div>
         </div>
       </div>
