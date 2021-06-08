@@ -151,7 +151,7 @@
 </template>
 
 <script>
-import IndexSidenav from './IndexSidenav.vue'
+import IndexSidenav from './IndexSidenavRight.vue'
 import TheLogo from './TheLogo.vue'
 import { mapGetters, mapMutations } from 'vuex'
 

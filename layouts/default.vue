@@ -1,7 +1,15 @@
 <template>
   <div class="relative min-h-screen flex flex-col">
     <IndexNav />
-    <Nuxt />
+    <div class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-8">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="hidden lg:block col-span-2"><IndexSidenavLeft /></div>
+        <main class="col-span-12 lg:col-span-8">
+          <Nuxt />
+        </main>
+        <div class="hidden lg:block col-span-2"><IndexSidenavRight /></div>
+      </div>
+    </div>
     <TheFooter />
     <transition>
       <div v-if="event.show" class="fixed min-w-full bottom-0 z-40">

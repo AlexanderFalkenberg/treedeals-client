@@ -2,10 +2,10 @@
   <main
     v-if="deal"
     v-editable="deal"
-    class="w-full px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto"
+    class="w-full px-2 sm:px-4 max-w-7xl mx-auto"
   >
     <div
-      class="flex justify-center items-end flex-row max-w-4xl mx-auto space-x-2"
+      class="justify-center items-start flex-row max-w-4xl mx-auto md:space-x-2"
     >
       <div
         v-if="deal.gallery"
@@ -52,16 +52,16 @@
         </div>
       </div>
 
-      <div class="flex items-end w-1/2 p-4 pb-0">
+      <div class="flex items-end justify-center py-8 pb-0">
         <div>
           <Labels class="mb-2" :deal="deal" />
           <h1
             :class="[expired ? 'text-gray-500 ' : 'text-green-800 ']"
-            class="text-xl lg:text-3xl font-bold mb-4"
+            class="text-xl lg:text-3xl font-bold mb-6"
           >
             {{ title }}
           </h1>
-          <div v-if="price" class="flex items-center justify-between mb-8">
+          <div v-if="price" class="flex items-center justify-between mb-6">
             <div class="space-x-2">
               <span
                 v-if="price"

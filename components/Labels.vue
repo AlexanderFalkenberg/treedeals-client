@@ -9,12 +9,12 @@
     >
       Abgelaufen
     </span>
-    <span
+    <!--   <span
       v-if="deal.sustainable & !expired"
       class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-bold bg-green-100 rounded py-1 px-2"
     >
       Nachhaltig
-    </span>
+    </span> -->
     <span
       v-if="deal.free_shipping & !expired"
       class="inline-flex justify-center items-center md:h-auto md:w-auto text-xs font-bold bg-gray-100 rounded py-1 px-2"

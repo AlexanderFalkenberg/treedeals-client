@@ -33,7 +33,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import IndexSidenav from './IndexSidenav.vue'
+import IndexSidenav from './IndexSidenavRight.vue'
 export default {
   computed: {
     ...mapGetters({

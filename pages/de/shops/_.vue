@@ -41,7 +41,7 @@ export default {
 
     const { stories } = await this.$nuxt.context.app.$storyapi
       .get(`cdn/stories`, {
-        starts_with: `${process.env.locale}/kategorien/${this.$nuxt.context.route.params.pathMatch}`,
+        starts_with: `${process.env.locale}/shops/${this.$nuxt.context.route.params.pathMatch}`,
         version: version,
         per_page: 8,
         page: this.currentPage,
@@ -54,18 +54,19 @@ export default {
     const deals = await this.$nuxt.context.app.$storyapi
       .get(`cdn/stories`, {
         filter_query: {
-          categories: {
-            exists: stories[0]['uuid'],
+          shop: {
+            in: stories[0]['uuid'],
           },
         },
         starts_with: `${process.env.locale}/deals`,
-        version: 'draft',
+        version: 'published',
       })
       .then((res) => {
         this.total = res.total
         return res.data
       })
 
+    console.log(deals)
     this.deals = this.deals.concat(deals.stories)
   },
   methods: {

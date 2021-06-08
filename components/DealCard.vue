@@ -24,7 +24,7 @@
           {{ title }}
         </h3>
 
-        <div>
+        <div v-if="deal.price">
           <div class="space-x-2 items-center flex justify-between pr-2">
             <div>
               <span
@@ -45,9 +45,7 @@
             <span
               v-if="deal.original_price"
               :class="[
-                expired
-                  ? 'text-gray-500'
-                  : 'bg-green-100 text-green-800 py-2 px-2',
+                expired ? 'text-gray-500' : 'bg-green-100 text-green-800 px-2',
                 'font-bold text-md md:text-xl rounded',
               ]"
               v-html="discount"

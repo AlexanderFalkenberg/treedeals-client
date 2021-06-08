@@ -1,16 +1,8 @@
 <template>
-  <section class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-8">
-    <div class="grid grid-cols-12 gap-4">
-      <div class="hidden lg:block col-span-2"><IndexSidenav /></div>
-      <div class="col-span-12 md:col-span-8">
-        <MasonryWall :deals="deals" @append="loadDeals" />
-      </div>
-    </div>
-  </section>
+  <MasonryWall :deals="deals" @append="loadDeals" />
 </template>
 
 <script>
-import IndexSidenav from '~/components/IndexSidenav.vue'
 import SearchBox from '~/components/SearchBox.vue'
 import { ContentLoader } from 'vue-content-loader'
 import DealTeaser from '~/components/DealTeaser.vue'
@@ -18,7 +10,6 @@ export default {
   name: 'index',
   components: {
     ContentLoader,
-    IndexSidenav,
     SearchBox,
     DealTeaser,
   },
