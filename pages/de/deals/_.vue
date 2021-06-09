@@ -104,7 +104,7 @@
                 v-html="deal.discount"
               ></span>
 
-              <span
+              <!--  <span
                 v-if="!deal.price && !deal.original_price"
                 :class="[
                   expired
@@ -113,7 +113,7 @@
                   'font-bold text-xs md:text-4xl rounded',
                 ]"
                 >Aktion</span
-              >
+              > -->
             </div>
           </div>
 

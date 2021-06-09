@@ -33,7 +33,7 @@
                 >{{ deal.original_price }} €</span
               >
 
-              <span
+              <!--   <span
                 v-if="!deal.price"
                 :class="[
                   expired
@@ -42,7 +42,7 @@
                   'font-bold text-x rounded py-1 px-2',
                 ]"
                 >{{ expired ? 'Abgelaufen' : 'Aktion' }}</span
-              >
+              > -->
               <span
                 v-if="deal.price"
                 :class="[
