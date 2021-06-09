@@ -2,7 +2,7 @@
   <div class="relative w-full lg:my-2">
     <!-- Magnifying glass icon -->
     <div
-      class="h-full absolute top-0 lg:right-0 left-0 px-4 sm:px-6 lg:px-4 lg:rounded-l text-green-800 flex items-center"
+      class="h-full w-16 z-0 absolute top-0 lg:right-0 left-0 px-4 sm:px-6 lg:px-4 lg:rounded-l text-green-800 flex items-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
                 :src="
                   transformImage(
                     suggestion.content.gallery[0].filename,
-                    '50x50'
+                    '50x50/filters:quality(90)'
                   )
                 "
                 :alt="suggestion.content.gallery[0].alt"

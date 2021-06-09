@@ -42,7 +42,12 @@
                       ? { filter: 'grayscale(100%)', opacity: '50%' }
                       : {},
                   ]"
-                  :src="transformImage(image.filename, '80x112/smart')"
+                  :src="
+                    transformImage(
+                      image.filename,
+                      '80x112/smart/filters:quality(80)'
+                    )
+                  "
                   :alt="image.alt"
                 />
               </div>
