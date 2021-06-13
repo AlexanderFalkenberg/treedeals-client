@@ -6,11 +6,7 @@
       >
         <p>{{ $t('Schnäppchen und Gutscheine') }}</p>
         <p>
-          {{
-            $t(
-              'Einen Großteil unseres Gewinns investieren wir in Baumbestände weltweit'
-            )
-          }}
+          {{ $t('Unseren Gewinn investieren wir in Baumbestände weltweit') }}
         </p>
 
         <p>Große Zahl an preiswerten und nachhaltigen Produkten</p>
@@ -139,7 +135,7 @@
             :key="category.uid"
           >
             <nuxt-link
-              class="mb-4   inline-block"
+              class="mb-4 inline-block"
               :to="'/' + category.full_slug"
               >{{ category.name }}</nuxt-link
             >

@@ -1,6 +1,23 @@
 <template>
   <div class="relative min-h-screen flex flex-col">
     <IndexNav />
+    <section
+      class="max-w-7xl mx-auto text-white h-72 w-full mt-8 rounded-md px-2 sm:px-4 lg:px-10"
+    >
+      <div
+        class="text-center bg-green-800 bg-hero-pattern h-full rounded-lg w-full flex flex-col items-center justify-center p-8"
+      >
+        <h1
+          class="font-display text-2xl md:text-3xl lg:text-5xl tracking-wider"
+        >
+          Schnäppchen Plattform, die Bäume pflanzt
+        </h1>
+        <p class="md:text-xl">
+          Wir sammeln Angebote und Gutscheine und investieren 80% unseren
+          Gewinns in Aufforstungsprojekte weltweit.
+        </p>
+      </div>
+    </section>
     <div class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-8">
       <div class="grid grid-cols-12 gap-4">
         <div class="hidden lg:block col-span-2"><IndexSidenavLeft /></div>

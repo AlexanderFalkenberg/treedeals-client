@@ -1,5 +1,7 @@
 <template>
-  <MasonryWall :deals="deals" @append="loadDeals" />
+  <div>
+    <MasonryWall :deals="deals" @append="loadDeals" />
+  </div>
 </template>
 
 <script>
