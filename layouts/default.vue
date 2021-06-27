@@ -12,10 +12,7 @@
         >
           Schnäppchen Plattform, die Bäume pflanzt
         </h1>
-        <p class="md:text-xl">
-          Wir sammeln Angebote und Gutscheine und investieren 80% unseren
-          Gewinns in Aufforstungsprojekte weltweit.
-        </p>
+        <p class="md:text-xl">Ein Stück nachhaltiger Shoppen und Sparen</p>
       </div>
     </section>
     <div class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-8">

@@ -9,7 +9,7 @@
           {{ $t('Unseren Gewinn investieren wir in Baumbestände weltweit') }}
         </p>
 
-        <p>Große Zahl an preiswerten und nachhaltigen Produkten</p>
+        <p>{{ $t('Große Auswahl nachhaltiger Produkte') }}</p>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 border-b lg:border-0">
