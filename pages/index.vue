@@ -5,15 +5,12 @@
 </template>
 
 <script>
-import SearchBox from '~/components/SearchBox.vue'
 import { ContentLoader } from 'vue-content-loader'
-import DealTeaser from '~/components/DealTeaser.vue'
+
 export default {
   name: 'index',
   components: {
     ContentLoader,
-    SearchBox,
-    DealTeaser,
   },
   data() {
     return {

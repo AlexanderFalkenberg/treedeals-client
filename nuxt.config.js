@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'treedeals-client',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'de',
     },
     meta: [
       { charset: 'utf-8' },
@@ -61,7 +61,7 @@ export default {
     strategies: {
       laravelSanctum: {
         provider: 'laravel/sanctum',
-        url: 'http://localhost:3000',
+        url: process.env.BASE_URL,
       },
     },
   },
@@ -94,7 +94,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    maxChunkSize: 300000,
     babel: {
       plugins: ['@babel/plugin-proposal-optional-chaining'],
     },

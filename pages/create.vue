@@ -72,6 +72,9 @@ export default {
         await this.$axios.get('sanctum/csrf-cookie')
         const res = await this.$axios
           .post('api/deals', this.deal)
+          .then(() => {
+            console.log('Test')
+          })
           .catch((errors) => {
             console.log(errors.response.data.errors.username)
             this.errors = errors.response.data.errors

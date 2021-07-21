@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full lg:my-2">
+  <div class="relative lg:m-2">
     <!-- Magnifying glass icon -->
     <div
       class="h-full w-16 z-0 absolute top-0 lg:right-0 left-0 px-4 sm:px-6 lg:px-4 lg:rounded-l text-green-800 flex items-center"
@@ -22,7 +22,7 @@
       @input="onInputChange"
       @blur="onInputBlur"
       placeholder="Schnäppchen und Gutscheine suchen"
-      class="w-full border-b lg:border lg:rounded-md text-gray-400 outline-none focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 pl-12 py-4 lg:py-3"
+      class="w-full border-b lg:border lg:rounded-full text-gray-400 outline-none focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 pl-12 py-4 lg:py-3 text-sm font-bold"
     />
     <!-- Suggestions list -->
     <div class="relative">

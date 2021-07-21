@@ -10,12 +10,11 @@
     <input
       :style="[errors[name] ? { border: '1px solid red !important' } : {}]"
       :name="name"
-      :placeholder="placeholder"
+      :placeholder="value"
       :id="name"
-      type="text"
-      class="block w-full px-3 py-2 border border-gray-300 rounded focus:border-gray-200 focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-200"
-      v-model="input"
-      @keyup="$emit('update:input', input)"
+      :type="type"
+      class="block w-full px-3 py-2 border border-gray-300 rounded focus:border-gray-200 focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-700"
+      @keyup="$emit('update:value', $event.target.value)"
     />
     <div class="h-3">
       <div class="text-sm text-red-500" v-if="errors[name]">
@@ -27,13 +26,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      input: '',
-    }
-  },
   props: {
+    value: {
+      required: false,
+      type: String,
+      default: '',
+    },
     name: {
+      required: true,
+      type: String,
+    },
+    type: {
       required: true,
       type: String,
     },

@@ -1,0 +1,70 @@
+<template>
+  <div class="relative min-h-screen flex flex-col">
+    <IndexNav />
+    <div class="py-4 bg-gray-100 flex flex-col flex-1 justify-center">
+      <div class="max-w-7xl w-full mx-auto px-2 sm:px-6 lg:px-10">
+        <Nuxt />
+      </div>
+    </div>
+    <TheFooter />
+    <transition>
+      <div v-if="event.show" class="fixed min-w-full bottom-0 z-40">
+        <div class="bg-gray-800 text-white px-6 py-4 text-center shadow-lg">
+          <span class="font-bold uppercase">{{ event.text }}</span> wurde in die
+          Zwischenablage kopiert
+        </div>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script>
+import IndexNav from '~/components/IndexNav.vue'
+
+export default {
+  components: { IndexNav },
+  data() {
+    return {
+      event: {
+        show: false,
+        text: '',
+      },
+    }
+  },
+  created() {
+    this.$nuxt.$on('copy-event', (text) => {
+      if (this.event.show === false)
+        setTimeout(() => {
+          this.event.show = false
+        }, 3000)
+      this.event.show = true
+      this.event.text = text
+    })
+  },
+}
+</script>
+
+<style>
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 400ms;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+</style>
