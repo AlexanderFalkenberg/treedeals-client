@@ -12,7 +12,7 @@
         >
           Schnäppchen Plattform, die Bäume pflanzt
         </h1>
-        <p class="md:text-xl">Ein Stück nachhaltiger Shoppen und Sparen</p>
+        <p class="md:text-xl">Ein Stück nachhaltiger shoppen und sparen</p>
       </div>
     </section>
     <div class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-8">
