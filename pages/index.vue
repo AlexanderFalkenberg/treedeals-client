@@ -43,38 +43,17 @@ export default {
   },
   fetchKey: 'Index',
   async fetch() {
-    let version =
-      this.$nuxt.context.query._storyblok || this.$nuxt.context.isDev
-        ? 'draft'
-        : 'published'
-
-    const lang = 'de'
-
-    console.log(process.env.BASE_URL)
-
-    console.log(this.$nuxt.context.env.BASE_URL)
-
-    const { stories } = await this.$nuxt.context.app.$storyapi
-      .get(`cdn/stories`, {
-        starts_with: `${process.env.locale}/deals`,
-        version: version,
-        per_page: 8,
-        page: this.currentPage,
-      })
-      .then((res) => {
-        this.total = res.total
-        return res.data
-      })
-
-    this.deals = this.deals.concat(stories)
+    const res = await this.$axios.get('/api/deals').then(({ data }) => {
+      this.deals.push(data.data[0])
+    })
   },
   methods: {
-    loadDeals() {
+    /*  loadDeals() {
       if (this.currentPage < Math.ceil(this.total / 8) && this.total > 8) {
         this.currentPage++
         this.$fetch()
       }
-    },
+    }, */
   },
 }
 </script>

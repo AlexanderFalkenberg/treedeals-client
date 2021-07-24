@@ -11,7 +11,7 @@
               expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
             ]"
             class="bg-gray-200 object-cover rounded md:w-auto md:h-auto"
-            :src="transformImage(deal.gallery[0].filename, '450x0')"
+            :src="transformImage(deal.image[0].filename, '450x0')"
             :alt="deal.gallery[0].alt"
           />
         </div>

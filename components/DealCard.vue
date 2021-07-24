@@ -1,18 +1,16 @@
 <template>
   <article class="items-center mb-8">
+    {{ deal.image }}
     <nuxt-link :to="`/de/deals/${slug}`">
       <div class="flex-shrink-0 leading-tight items-stretch relative">
-        <div
-          v-if="deal.gallery"
-          class="rounded relative mr-2 flex items-center"
-        >
+        <div v-if="deal.image" class="rounded relative mr-2 flex items-center">
           <img
             :style="[
               expired ? { filter: 'grayscale(100%)', opacity: '35%' } : {},
             ]"
             class="sm:w-auto sm:h-auto bg-gray-200 object-cover rounded-md"
-            :src="transformImage(deal.gallery[0].filename, '300x0')"
-            :alt="deal.gallery[0].alt"
+            :src="transformImage(deal.image[0].filename, '300x0')"
+            :alt="deal.image[0].alt"
           />
         </div>
       </div>
@@ -21,7 +19,7 @@
           :class="[expired ? 'text-gray-500' : 'text-green-800']"
           class="sm:text-lg mt-1 font-display line-clamp-1"
         >
-          {{ title }}
+          {{ deal.name }}
         </h3>
 
         <div>
@@ -33,16 +31,6 @@
                 >{{ deal.original_price }} €</span
               >
 
-              <!--   <span
-                v-if="!deal.price"
-                :class="[
-                  expired
-                    ? 'text-white bg-gray-700'
-                    : 'bg-green-100 text-green-800',
-                  'font-bold text-x rounded py-1 px-2',
-                ]"
-                >{{ expired ? 'Abgelaufen' : 'Aktion' }}</span
-              > -->
               <span
                 v-if="deal.price"
                 :class="[
@@ -72,6 +60,7 @@
 <script>
 import TimeAgo from 'javascript-time-ago'
 import de from 'javascript-time-ago/locale/de'
+import { actions, getters } from 'vuex'
 
 export default {
   props: {
@@ -81,33 +70,8 @@ export default {
     },
   },
   computed: {
-    slug() {
-      return this.item.slug ? this.item.slug : ''
-    },
-    title() {
-      return this.item.name ? this.item.name : ''
-    },
     deal() {
-      return this.item.content ? this.item.content : null
-    },
-    expired() {
-      return new Date() > new Date(this.item.content.expired)
-    },
-    timeago() {
-      TimeAgo.addLocale(de)
-      const timeAgo = new TimeAgo('de-DE')
-      return this.item.published_at
-        ? timeAgo.format(new Date(this.item.published_at))
-        : false
-    },
-    discount() {
-      if (parseInt(this.deal.original_price) > parseInt(this.deal.price)) {
-        return `-${Math.round(
-          (1 - this.deal.price / this.deal.original_price) * 100
-        )}%`
-      } else {
-        return '<span class="text-red-500">Originalpreis muss größer sein als Preis</span>'
-      }
+      return this.item ? this.item : null
     },
   },
   methods: {
