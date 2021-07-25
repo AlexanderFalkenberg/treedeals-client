@@ -38,8 +38,25 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxt/image',
     '@nuxtjs/composition-api/module',
   ],
+
+  image: {
+    // Options
+    storyblok: {
+      baseURL: 'https://img2.storyblok.com',
+    },
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536,
+    },
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

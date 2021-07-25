@@ -6,6 +6,7 @@
 
 <script>
 import { ContentLoader } from 'vue-content-loader'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'index',
@@ -16,44 +17,34 @@ export default {
     return {
       currentPage: 1,
       total: 0,
-      deals: [],
-      story: {},
     }
   },
+  fetchOnServer: false,
+  async fetch() {
+    console.log(this.total)
+    this.$store.dispatch(
+      'deals/fetchDeals',
+      `api/deals?page=${this.currentPage}`
+    )
+  },
+  asyncData({ store }) {
+    store.dispatch('deals/fetchDeals', 'api/deals?page=1')
+  },
   computed: {
+    ...mapGetters({
+      deals: 'deals/deals',
+    }),
     expired() {
       return false
     },
   },
-  mounted() {
-    // Use the input event for instant update of content
-    this.$storybridge.on('input', (event) => {
-      if (event.story.id === this.story.id) {
-        this.story.content = event.story.content
-      }
-    })
-    // Use the bridge to listen the events
-    this.$storybridge.on(['published', 'change'], (event) => {
-      // window.location.reload()
-      this.$nuxt.$router.go({
-        path: this.$nuxt.$router.currentRoute,
-        force: true,
-      })
-    })
-  },
-  fetchKey: 'Index',
-  async fetch() {
-    const res = await this.$axios.get('/api/deals').then(({ data }) => {
-      this.deals.push(data.data[0])
-    })
-  },
   methods: {
-    /*  loadDeals() {
-      if (this.currentPage < Math.ceil(this.total / 8) && this.total > 8) {
+    loadDeals() {
+      if (this.currentPage < Math.ceil(this.total / 10) && this.total > 10) {
         this.currentPage++
         this.$fetch()
       }
-    }, */
+    },
   },
 }
 </script>

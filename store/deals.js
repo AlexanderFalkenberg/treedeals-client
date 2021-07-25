@@ -17,8 +17,8 @@ export const mutations = {
 }
 
 export const actions = {
-  async getDeals({ commit }) {
-    let response = await axios.get(process.env.baseUrl + '/api/home')
+  async fetchDeals({ commit }, endpoint) {
+    let response = await axios.get(`${process.env.baseUrl}/${endpoint}`)
     commit('PUSH_DEALS', response.data.data)
   },
 }
