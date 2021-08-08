@@ -1,6 +1,9 @@
 <template>
-  <div class="max-w-5xl mx-auto">
+  <div
+    class="max-w-7xl mx-auto min-h-screen flex flex-col a-center justify-center"
+  >
     <Nuxt />
+    <AuthFooter />
   </div>
 </template>
 

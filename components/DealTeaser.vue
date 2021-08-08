@@ -92,8 +92,6 @@
 
 <script>
 import CouponButton from './CouponButton.vue'
-import TimeAgo from 'javascript-time-ago'
-import de from 'javascript-time-ago/locale/de'
 
 export default {
   components: { CouponButton },
@@ -133,13 +131,13 @@ export default {
     original_price() {
       return this.data.content.original_price.toString().replace('.', ',')
     },
-    timeago() {
+    /*   timeago() {
       TimeAgo.addLocale(de)
       const timeAgo = new TimeAgo('de-DE')
       return this.data.published_at
         ? timeAgo.format(new Date(this.data.published_at))
         : false
-    },
+    }, */
     discount() {
       if (parseInt(this.deal.original_price) > parseInt(this.deal.price)) {
         return `-${Math.round(

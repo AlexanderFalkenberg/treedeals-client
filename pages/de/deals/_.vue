@@ -174,8 +174,6 @@
 </template>
 
 <script>
-import TimeAgo from 'javascript-time-ago'
-import de from 'javascript-time-ago/locale/de'
 import { ContentLoader } from 'vue-content-loader'
 import SocialLinks from '~/components/SocialLinks.vue'
 
@@ -235,11 +233,6 @@ export default {
     },
     original_price() {
       return this.data.content.original_price.toString().replace('.', ',')
-    },
-    timeago() {
-      TimeAgo.addLocale(de)
-      const timeAgo = new TimeAgo('de-DE')
-      return timeAgo.format(new Date(this.data.published_at))
     },
     discount() {
       return `-${Math.round(

@@ -58,7 +58,7 @@
             ></span>
           </div>
           <span class="block text-xs text-gray-400">
-            {{ deal.last_update }}</span
+            {{ deal.published_at }}</span
           >
         </div>
       </div>
@@ -67,9 +67,6 @@
 </template>
 
 <script>
-import TimeAgo from 'javascript-time-ago'
-import de from 'javascript-time-ago/locale/de'
-
 export default {
   props: {
     item: {

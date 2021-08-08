@@ -1,6 +1,30 @@
 <template>
   <div>
-    <MasonryWall :deals="deals" @append="loadDeals" />
+    <section
+      class="max-w-7xl mx-auto text-white h-72 w-full mt-4 rounded-md px-2 sm:px-4 lg:px-10"
+    >
+      <div
+        class="text-center bg-green-800 bg-hero-pattern h-full rounded-lg w-full flex flex-col items-center justify-center p-4"
+      >
+        <h1
+          class="font-display text-2xl md:text-3xl lg:text-5xl tracking-wider"
+        >
+          Schnäppchen Plattform, die Bäume pflanzt
+        </h1>
+        <div class="hidden lg:block w-full max-w-lg mt-4">
+          <SearchBox :search="fetchSuggestions" />
+        </div>
+      </div>
+    </section>
+    <div class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-4">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="hidden lg:block col-span-2"><IndexSidenavLeft /></div>
+        <main class="col-span-12 lg:col-span-8">
+          <MasonryWall :deals="deals" @append="loadDeals" />
+        </main>
+        <div class="hidden lg:block col-span-2"><IndexSidenavRight /></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,14 +45,14 @@ export default {
   },
   fetchOnServer: false,
   async fetch() {
-    console.log(this.total)
-    this.$store.dispatch(
+    const response = await this.$store.dispatch(
       'deals/fetchDeals',
-      `api/deals?page=${this.currentPage}`
+      `http://192.168.2.107:3000/api/deals?page=${this.currentPage}`
     )
-  },
-  asyncData({ store }) {
-    store.dispatch('deals/fetchDeals', 'api/deals?page=1')
+
+    console.log(response)
+
+    this.total = response.meta.to
   },
   computed: {
     ...mapGetters({
@@ -40,10 +64,19 @@ export default {
   },
   methods: {
     loadDeals() {
-      if (this.currentPage < Math.ceil(this.total / 10) && this.total > 10) {
+      if (this.currentPage <= this.total) {
         this.currentPage++
         this.$fetch()
       }
+    },
+    async fetchSuggestions(searchInput) {
+      const { data } = await this.$storyapi.get('cdn/stories', {
+        starts_with: 'de/deals/',
+        resolve_relations: 'categories',
+        search_term: searchInput,
+        per_page: 5,
+      })
+      return data.stories
     },
   },
 }

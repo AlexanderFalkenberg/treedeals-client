@@ -19,7 +19,11 @@
       leave-to-class="transform opacity-0 scale-95"
     >
       <div
-        v-if="form.showVerificationPrompt && !$auth.user.email_verified_at"
+        v-if="
+          form.showVerificationPrompt &&
+          $auth.user &&
+          $auth.user.email_verified_at
+        "
         class="bg-yellow-50 mt-4 rounded-md border-l-4 w-full max-w-md mx-auto border-yellow-400 p-4"
       >
         <div class="flex">

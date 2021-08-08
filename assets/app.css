@@ -27,3 +27,25 @@ body {
 .bg-hero-pattern {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 452 388' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M363.175 130.046C367.216 111.999 388.416 77.7588 440.884 85.181L363.175 130.046ZM363.175 130.046C380.825 135.57 421.078 134.33 440.884 85.181L363.175 130.046Z' fill='%234B9B61' fill-opacity='0.1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M316.498 294.273C333.207 280.304 373.934 265.392 403.171 317.497L316.498 294.273ZM316.498 294.273C323.983 314.726 351.798 348.003 403.171 317.497L316.498 294.273Z' fill='%234B9B61' fill-opacity='0.1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M92.15 109.239C73.544 116.418 31.9537 117.495 14.4408 64.3738L92.15 109.239ZM92.15 109.239C89.0638 89.5366 69.2012 52.98 14.4408 64.3738L92.15 109.239Z' fill='%23266646' fill-opacity='0.5'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M263.7 229.064C266.788 203.681 290.179 157.136 359.041 174.019L263.7 229.064ZM263.7 229.064C287.226 239.082 339.231 242.097 359.041 174.019L263.7 229.064Z' fill='%234B9B61' fill-opacity='0.1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M267.99 358.57C261.24 328.43 225.836 271.25 138.216 283.645L267.99 358.57ZM267.99 358.57C238.514 367.794 171.292 365.724 138.216 283.645L267.99 358.57Z' fill='%2350C671' fill-opacity='0.15'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M312.327 63.2049C307.168 49.4221 306.792 20.2182 346.565 13.6645L312.327 63.2049ZM312.327 63.2049C327.044 63.1587 354.495 53.1858 346.565 13.6646L312.327 63.2049Z' fill='%2350C671' fill-opacity='0.15'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M178.327 98.2048C173.168 84.422 172.792 55.2181 212.565 48.6644L178.327 98.2048ZM178.327 98.2048C193.044 98.1585 220.495 88.1857 212.565 48.6644L178.327 98.2048Z' fill='%2350C671' fill-opacity='0.2'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.3272 358.205C12.1678 344.422 11.7921 315.218 51.5648 308.664L17.3272 358.205ZM17.3272 358.205C32.0439 358.158 59.4948 348.186 51.5648 308.664L17.3272 358.205Z' fill='%2350C671' fill-opacity='0.15'/%3E%3C/svg%3E%0A");
 }
+
+.html p {
+  @apply mb-4;
+}
+
+b,
+strong {
+  @apply font-bold;
+}
+
+.html a {
+  @apply font-medium text-blue-500 underline;
+}
+
+.html ul,
+.html ol {
+  @apply px-4;
+}
+
+.html li {
+  @apply list-disc;
+}
