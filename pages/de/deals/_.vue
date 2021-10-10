@@ -18,12 +18,13 @@
               :src="
                 transformImage(
                   deal.gallery[currentIndex].filename,
-                  '0x380/smart/filters:quality(80)'
+                  '0x300/smart/filters:quality(80)'
                 )
               "
               :alt="deal.gallery[currentIndex].alt"
             />
           </div>
+
           <div
             v-if="deal.gallery.length > 1"
             class="mt-4 mx-auto flex justify-center space-x-4"

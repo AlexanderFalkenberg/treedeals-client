@@ -4,7 +4,7 @@
       <button
         @mouseenter="showIcon = true"
         @mouseleave="showIcon = false"
-        :class="[expired ? 'bg-gray-300' : 'bg-green-500 hover:bg-green-600 ']"
+        :class="[expired ? 'bg-gray-300' : 'bg-green-400 hover:bg-green-600 ']"
         class="w-full tracking-wider rounded py-4 px-4 pr-16 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
       >
         {{ coupon_code }}

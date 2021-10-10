@@ -102,7 +102,7 @@ export default {
     },
   },
   mounted() {},
-  methods: {
+methods: {
     transformImage(image, option) {
       if (!image) return ''
       if (!option) return ''
@@ -110,7 +110,7 @@ export default {
       let imageService = 'https://img2.storyblok.com/'
       let path = image.replace('https://a.storyblok.com', '')
       return imageService + option + path
-    },
+    },  
   },
   computed: {
     slug() {

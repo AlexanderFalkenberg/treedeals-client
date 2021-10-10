@@ -1,53 +1,29 @@
 <template>
-  <main v-if="deal" class="w-full px-2 sm:px-4 max-w-7xl mx-auto">
-    <div class="md:flex my-4 space-x-4">
+  <main v-if="deal" class="w-full py-4 px-4 sm:px-6 max-w-7xl mx-auto">
+    <div class="md:flex my-4 md:space-x-4">
       {{ deal.expired }}
       <figure
         :style="[{ background: `url(${image})` }]"
-        class="
-          relative
-          w-3/5
-          bg-gray-100
-          flex
-          justify-center
-          items-center
-          text-center
-          bg-center
-          rounded-md
-        "
+        class="relative lg:w-1/2 bg-gray-100 flex justify-center items-center text-center bg-center rounded-md"
       >
         <NuxtImg
           :style="[deal.expired ? { filter: 'grayscale(100%)' } : {}]"
           class="relative z-40"
-          height="350"
+          height="375"
           provider="storyblok"
           :src="image"
         />
         <div
-          class="
-            absolute
-            z-0
-            top-0
-            left-0
-            w-full
-            h-full
-            bg-gray-100 bg-opacity-50
-            backdrop-filter backdrop-blur-md
-            rounded-md
-          "
+          class="absolute z-0 top-0 left-0 w-full h-full bg-gray-100 bg-opacity-50 backdrop-filter backdrop-blur-md rounded-md"
         ></div>
       </figure>
-      <div>
+      <div class="my-4">
+        <span class="block text-xs text-gray-400">
+          {{ deal.published_at }}</span
+        >
         <h3
           :class="[deal.expired ? 'text-gray-500' : 'text-green-800']"
-          class="
-            sm:text-lg
-            md:text-lg
-            lg:text-2xl
-            mt-1
-            font-display
-            line-clamp-1
-          "
+          class="sm:text-lg md:text-lg lg:text-2xl mt-1 font-display line-clamp-1"
         >
           {{ deal.name }}
         </h3>
@@ -58,7 +34,7 @@
             >{{ deal.original_price }}€</span
           >
 
-          <div class="flex space-x-2">
+          <div class="flex items-center space-x-2">
             <span
               v-if="deal.price"
               :class="[
@@ -75,13 +51,28 @@
                   : 'text-white bg-green-400 py-1.5 px-2',
                 'font-bold text-xs md:text-2xl rounded',
               ]"
-              >{{ deal.discount }}%</span
+              >{{ deal.discount }}</span
             >
+          </div>
+          <div v-if="deal.link" class="mt-2 flex-1 items-start space-y-4">
+            <coupon-button
+              class="flex-1"
+              v-if="deal.coupon_code"
+              :coupon_code="deal.coupon_code"
+            ></coupon-button>
+            <LinkButton
+              :expired="expired"
+              class="flex-1"
+              v-if="deal.link"
+              :link="deal.link"
+            >
+              Zum Deal
+            </LinkButton>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="html" class="html my-4 max-w-3xl mx-auto">
+    <div v-if="html" class="html my-4 max-w-5xl mx-auto">
       <rich-text-renderer :document="html" />
     </div>
   </main>

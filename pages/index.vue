@@ -1,10 +1,31 @@
 <template>
   <div>
     <section
-      class="max-w-7xl mx-auto text-white h-72 w-full mt-4 rounded-md px-2 sm:px-4 lg:px-10"
+      class="
+        max-w-7xl
+        mx-auto
+        text-white
+        h-72
+        w-full
+        mt-4
+        rounded-md
+        px-2
+        sm:px-4
+        lg:px-10
+      "
     >
       <div
-        class="text-center bg-green-800 bg-hero-pattern h-full rounded-lg w-full flex flex-col items-center justify-center p-4"
+        class="
+          text-center
+          bg-green-800 bg-hero-pattern
+          h-full
+          rounded-lg
+          w-full
+          flex flex-col
+          items-center
+          justify-center
+          p-4
+        "
       >
         <h1
           class="font-display text-2xl md:text-3xl lg:text-5xl tracking-wider"
@@ -19,10 +40,9 @@
     <div class="max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-8 py-4">
       <div class="grid grid-cols-12 gap-4">
         <div class="hidden lg:block col-span-2"><IndexSidenavLeft /></div>
-        <main class="col-span-12 lg:col-span-8">
+        <main class="col-span-12 lg:col-span-10">
           <MasonryWall :deals="deals" @append="loadDeals" />
         </main>
-        <div class="hidden lg:block col-span-2"><IndexSidenavRight /></div>
       </div>
     </div>
   </div>
@@ -43,7 +63,6 @@ export default {
       total: 0,
     }
   },
-  fetchOnServer: false,
   async fetch() {
     const response = await this.$store.dispatch(
       'deals/fetchDeals',

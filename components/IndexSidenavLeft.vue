@@ -27,7 +27,7 @@
           <li v-for="category in categories" :key="category.uid">
             <nuxt-link
               class="block pb-2 pr-2 text-sm"
-              :to="'/' + category.full_slug"
+              :to="`/categories/${category.slug}`"
               >{{ category.name }}</nuxt-link
             >
           </li>
@@ -61,32 +61,10 @@ export default {
     }
   },
   async fetch() {
-    const response = await this.$nuxt.context.app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'de/kategorien/',
-        version: 'draft',
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          console.error(res)
-          context.error({
-            statusCode: 404,
-            message: 'Failed to receive content form api',
-          })
-        } else {
-          console.error(res.response.data)
-          context.error({
-            statusCode: res.response.status,
-            message: res.response.data,
-          })
-        }
-      })
-
-    this.setCategories(response.stories)
-    this.categories = response.stories
+    const response = await this.$axios.get(
+      'http://192.168.2.107:3000/api/categories'
+    )
+    this.categories = response.data
   },
   methods: {
     ...mapMutations({
