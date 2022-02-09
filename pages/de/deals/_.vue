@@ -78,7 +78,13 @@
 
               <span
                 v-if="deal.original_price"
-                class="text-gray-400 md:text-2xl lg:text-3xl line-through text-xs"
+                class="
+                  text-gray-400
+                  md:text-2xl
+                  lg:text-3xl
+                  line-through
+                  text-xs
+                "
                 >{{ original_price }}€</span
               >
 
@@ -113,7 +119,7 @@
                   'font-bold text-xs md:text-4xl rounded',
                 ]"
                 >Aktion</span
-              > -->
+              >-->
             </div>
           </div>
 
@@ -128,9 +134,8 @@
               class="flex-1"
               v-if="deal.link.url"
               :link="deal.link.url"
+              >Zum Deal</LinkButton
             >
-              Zum Deal
-            </LinkButton>
           </div>
         </div>
       </div>
@@ -144,7 +149,14 @@
         >
           <p class="p-4 flex-1">{{ deal.update }}</p>
           <div
-            class="bg-gray-200 self-stretch items-center inline-flex px-3 ml-auto"
+            class="
+              bg-gray-200
+              self-stretch
+              items-center
+              inline-flex
+              px-3
+              ml-auto
+            "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -201,6 +213,11 @@ export default {
           hid: 'og:title',
           property: 'og:title',
           content: this.title,
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website',
         },
         {
           hid: 'og:description',

@@ -2,7 +2,21 @@
   <div class="relative w-full lg:my-2">
     <!-- Magnifying glass icon -->
     <div
-      class="h-full w-16 z-0 absolute top-0 lg:right-0 left-0 px-4 sm:px-6 lg:px-4 lg:rounded-l text-green-800 flex items-center"
+      class="
+        h-full
+        w-16
+        z-0
+        absolute
+        top-0
+        lg:right-0
+        left-0
+        px-4
+        sm:px-6
+        lg:px-4 lg:rounded-l
+        text-green-800
+        flex
+        items-center
+      "
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +36,21 @@
       @input="onInputChange"
       @blur="onInputBlur"
       placeholder="Schnäppchen und Gutscheine suchen"
-      class="w-full border-b lg:border lg:rounded-md text-gray-400 outline-none focus:outline-none focus:shadow-outline-green focus:ring-2 focus:ring-offset-0 focus:ring-green-100 pl-12 py-4 lg:py-3"
+      class="
+        w-full
+        border-b
+        lg:border lg:rounded-md
+        text-gray-400
+        outline-none
+        focus:outline-none
+        focus:shadow-outline-green
+        focus:ring-2
+        focus:ring-offset-0
+        focus:ring-green-100
+        pl-12
+        py-4
+        lg:py-3
+      "
     />
     <!-- Suggestions list -->
     <div class="relative">
@@ -31,7 +59,14 @@
           v-for="suggestion in suggestions"
           :key="suggestion.id"
           :to="`/de/deals/${suggestion.slug}`"
-          class="block truncate text-gray-700 hover:text-main hover:bg-gray-100 px-2 py-2"
+          class="
+            block
+            truncate
+            text-gray-700
+            hover:text-main hover:bg-gray-100
+            px-2
+            py-2
+          "
         >
           <div @click="toggleMenu" class="flex items-center">
             <div class="w-16 h-16 bg-gray-100 mr-2">
@@ -49,7 +84,14 @@
             </div>
             <div>
               <p
-                class="inline-flex justify-between items-center font-display text-gray-800 line-cla"
+                class="
+                  inline-flex
+                  justify-between
+                  items-center
+                  font-display
+                  text-gray-800
+                  line-cla
+                "
               >
                 {{ suggestion.name }}
               </p>
